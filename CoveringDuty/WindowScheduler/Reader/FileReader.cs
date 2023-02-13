@@ -26,6 +26,8 @@ public class FileReader
         var config = new CsvConfiguration(CultureInfo.InvariantCulture)
         {
             HasHeaderRecord = true,
+            //  MissingFieldFound = null,
+            Delimiter = "|"
         };
         foreach (var file in files)
         {
@@ -37,8 +39,16 @@ public class FileReader
                 pipeFile.ReadHeader();
                 while (await pipeFile.ReadAsync())
                 {
-                    var record = pipeFile.GetRecord<LeaveDetail>();
-                    await _context.Upsert(record);
+                    try
+                    {
+                        var dto = pipeFile.GetRecord<CoveringDutyDto>();
+                        var model = Util.Map(dto);
+                        await _context.Upsert(model);
+                    }
+                    catch (CsvHelper.MissingFieldException ex)
+                    {
+                        throw ex;
+                    }
                 }
             }
 

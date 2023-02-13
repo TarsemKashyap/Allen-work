@@ -13,7 +13,7 @@ public class DbContext : IDisposable
     }
 
 
-    public async Task InsertData(IAsyncEnumerable<LeaveDetail> list)
+    public async Task InsertData(IAsyncEnumerable<CoveringDutyModel> list)
     {
         await OpenConnection();
 
@@ -27,7 +27,8 @@ public class DbContext : IDisposable
         }
 
     }
-    public async Task Upsert(LeaveDetail item)
+
+    public async Task Upsert(CoveringDutyModel item)
     {
         if (await AlreadyExists(item.UserId))
             await UpdateDataAsync(item);
@@ -36,15 +37,48 @@ public class DbContext : IDisposable
 
     }
 
-    private async Task InsertAsync(LeaveDetail item)
+    private async Task InsertAsync(CoveringDutyModel item)
     {
         await OpenConnection();
         string insertQuery = @"
-                    Insert into CoveringDuty()
-                    Value()
+                   INSERT INTO [dbo].[CoveringDuty] (
+                        [UserId],[SOEID],[UserName],
+                        [DelegateUserId],[DelegateSOEID],[DelegateUserName],
+                        [BeginDate],[EndDate],[Designation],[StartOnMyBehalf],
+                        [InboxMyBehalf],[CreatedDate],[ModifiedDate])
+                    VALUES (
+                                 @UserId
+                                ,@SOEID
+                                ,@UserName
+                                ,@DelegateUserId
+                                ,@DelegateSOEID
+                                ,@DelegateUserName
+                                ,@BeginDate
+                                ,@EndDate
+                                ,@Designation
+                                ,@StartOnMyBehalf
+                                ,@InboxMyBehalf
+                                ,@CreatedDate
+                                ,@ModifiedDate
+                                )
         ";
-
-        await _sqlcon.ExecuteAsync(insertQuery, new { });
+        var valueObject = new
+        {
+            UserId = item.UserId,
+            SOEID = item.SOEID,
+            UserName = item.UserName,
+            DelegateUserId = item.DelegateUserID,
+            DelegateSOEID = item.DelegateSOEID,
+            DelegateUserName = item.DelegateUserName,
+            BeginDate = item.BeginDate,
+            EndDate = item.EndDate,
+            Designation = item.Designation,
+            StartOnMyBehalf = item.StartOnMyBehalf,
+            InboxMyBehalf = item.InboxMyBehalf,
+            CreatedDate = item.CreatedDate,
+            ModifiedDate = item.ModifiedDate
+        };
+        await _sqlcon.ExecuteAsync(insertQuery, valueObject);
     }
 
     public async Task OpenConnection()
@@ -53,7 +87,7 @@ public class DbContext : IDisposable
             await _sqlcon.OpenAsync();
     }
 
-    private async Task UpdateDataAsync(LeaveDetail record)
+    private async Task UpdateDataAsync(CoveringDutyModel record)
     {
         await OpenConnection();
     }
@@ -62,8 +96,8 @@ public class DbContext : IDisposable
     {
         await OpenConnection();
 
-        const string userExists = "select 1 from CoveringDuty where id=@id";
-        return _sqlcon.ExecuteScalar<bool>(userExists, new { id = userId });
+        const string userExists = "select 1 from CoveringDuty where userId=@userId";
+        return _sqlcon.ExecuteScalar<bool>(userExists, new { userId = userId });
 
     }
 
