@@ -62,7 +62,13 @@ public class DbContext : IDisposable
                                 ,@ModifiedDate
                                 )
         ";
-        var valueObject = new
+        var valueObject = QueryParams(item);
+        await _sqlcon.ExecuteAsync(insertQuery, valueObject);
+    }
+
+    private object QueryParams(CoveringDutyModel item)
+    {
+        return new
         {
             UserId = item.UserId,
             SOEID = item.SOEID,
@@ -78,18 +84,37 @@ public class DbContext : IDisposable
             CreatedDate = item.CreatedDate,
             ModifiedDate = item.ModifiedDate
         };
-        await _sqlcon.ExecuteAsync(insertQuery, valueObject);
     }
 
     public async Task OpenConnection()
     {
-        if (_sqlcon.State != System.Data.ConnectionState.Open)
-            await _sqlcon.OpenAsync();
+        // if (_sqlcon.State != System.Data.ConnectionState.Open)
+        //     await _sqlcon.OpenAsync();
     }
 
     private async Task UpdateDataAsync(CoveringDutyModel record)
     {
         await OpenConnection();
+        string updateQuery = @"
+                UPDATE [CoveringDuty]
+                    SET 
+                        [SOEID] = @SOEID,
+                        [UserName] = @UserName,
+                        [DelegateUserId] = @DelegateUserId,
+                        [DelegateSOEID] = @DelegateSOEID,
+                        [DelegateUserName] = @DelegateUserName,
+                        [BeginDate] = @BeginDate,
+                        [EndDate] = @EndDate,
+                        [Designation] = @Designation,
+                        [StartOnMyBehalf] = @StartOnMyBehalf,
+                        [InboxMyBehalf] = @InboxMyBehalf,
+                        [ModifiedDate] = @ModifiedDate
+                    WHERE [UserId] = @UserId
+        ";
+        record.ModifiedDate = DateTime.Now;
+        var valueObject = QueryParams(record);
+        await _sqlcon.ExecuteAsync(updateQuery, valueObject);
+
     }
 
     private async Task<bool> AlreadyExists(string userId)

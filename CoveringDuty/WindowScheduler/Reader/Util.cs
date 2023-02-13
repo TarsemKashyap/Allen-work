@@ -2,7 +2,7 @@
 public static class Util
 {
 
-   internal static CoveringDutyModel Map(CoveringDutyDto dto)
+    internal static CoveringDutyModel Map(CoveringDutyDto dto)
     {
         return new CoveringDutyModel
         {
@@ -14,19 +14,24 @@ public static class Util
             DelegateSOEID = dto.DelegateSOEID,
             BeginDate = ParseDate(dto.BeginDate),
             EndDate = ParseDate(dto.EndDate),
-            Designation=dto.Designation,
-            StartOnMyBehalf=dto.StartOnMyBehalf,
-            InboxMyBehalf=dto.InboxMyBehalf,
-            CreatedDate=DateTime.Now,
-            ModifiedDate=DateTime.Now
+            Designation = dto.Designation,
+            StartOnMyBehalf = dto.StartOnMyBehalf,
+            InboxMyBehalf = dto.InboxMyBehalf,
+            CreatedDate = DateTime.Now,
+            ModifiedDate = DateTime.Now
         };
 
     }
 
     private static DateTime ParseDate(string dateTime)
     {
-        DateTime.TryParse(dateTime, out DateTime dt);
-        return dt;
+        // DateTime.TryParse(dateTime, out DateTime dt);
+        if (DateTime.TryParseExact(dateTime, "d/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime dt))
+        {
+            return dt;
+        }
+        DateTime.TryParseExact(dateTime, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime dt2);
+        return dt2;
 
     }
 }

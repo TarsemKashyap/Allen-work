@@ -1,6 +1,6 @@
 using System;
 
-public class CoveringDutyModel
+public record CoveringDutyModel
 {
     public int Id { get; set; }
     public string UserId { get; set; }
