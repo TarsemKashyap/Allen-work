@@ -1,7 +1,9 @@
 User ID|SOE ID|User Name|Delegate User ID|Delegate SOE ID|Delegate User Name|Begin Date |End Date |Designation|Start on my behalf|Do Inbox tasks on my behalf
 11006245|USESYS|David Abraham|11006223,11034223,17806346|USEVGH,USEGHY,USEYUI|Lee Jein,Aman Rathore,Xui Wong |1/10/2022|31/10/2022|Assistant Manager-Human Resources||Hire
-11006245|USESYS|David Abraham|11006223,11034223,17806346|USEVGH,USEGHY,USEYUI|Lee Jein,Aman Rathore,Xui Wong |1/10/2022|31/10/2022|Assistant Manager-Human Resources||Close position
-11005645|USESYD|Apple Lore|11006343,11034673,17676346|USECVH,UEDFHY,UBHJUI|Jack Fern,Alan Ong,Rucyp Nygusi |1/11/2022|20/11/2022|Director-Information Technology|Create Expense Report|For all Business Process
+11006242|USESYS|David Abraham|11006223,11034223,17806346|USEVGH,USEGHY,USEYUI|Lee Jein,Aman Rathore,Xui Wong |1/10/2022|31/10/2022|Assistant Manager-Human Resources||Close position
+11005643|USESYD|Apple Lore|11006343,11034673,17676346|USECVH,UEDFHY,UBHJUI|Jack Fern,Alan Ong,Rucyp Nygusi |1/11/2022|20/11/2022|Director-Information Technology|Create Expense Report|For all Business Process
 11006285|USEACB|Beng Lee|11006343,11034673,17676346|UEDFHY|Jack Fern|1/11/2022|20/11/2022|Senior Manager-Information Technology||For all Business Process
-11006285|USEACB|Beng Lee|11006343,11034673,17676346|USECVH|Rucyp Nygusi|1/11/2022|20/11/2022|Senior Manager-Information Technology||For all Business Process
+11006290|USEACB|Beng Lee|11006343,11034673,17676346|USECVH|Rucyp Nygusi|1/11/2022|20/11/2022|Senior Manager-Information Technology||For all Business Process
 11005648|USESYD|May Flower|11007843|USECXH|John David|1/11/2022|20/11/2022|Manager-Procurement Services||Hire;Add Additional Job
+11005649|USESYD|May Flower|11007843|USECXH|John David|1/11/2022|20/11/2022|Manager-Procurement Services||Hire;Add Additional Job
+11005699|USESYD|Tarsem|11007843|USECXH|John David|1/11/2022|20/11/2022|Manager-Procurement Services||Hire;Add Additional Job
