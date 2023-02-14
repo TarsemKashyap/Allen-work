@@ -20,8 +20,9 @@ public class FileReader
     internal async Task Import()
     {
         _logger.LogInformation("Running Import Operation");
-        ImportConfig importConfig = ReadImportConfig();
-        DirectoryInfo folder = new DirectoryInfo(importConfig.FolderPath);
+        FileConfig importConfig = ReadImportConfig();
+        DirectoryInfo folder = new DirectoryInfo(importConfig.InboundFolder);
+
         var files = folder.GetFiles(importConfig.SearchPattern);
         var config = new CsvConfiguration(CultureInfo.InvariantCulture)
         {
@@ -29,43 +30,68 @@ public class FileReader
             //  MissingFieldFound = null,
             Delimiter = "|"
         };
-        foreach (var file in files)
+        try
         {
-            using (var reader = new StreamReader(file.FullName))
-            using (var pipeFile = new CsvReader(reader, config))
+            foreach (var file in files)
             {
-                await _context.OpenConnection();
-                await pipeFile.ReadAsync();
-                pipeFile.ReadHeader();
-                while (await pipeFile.ReadAsync())
+                using (var reader = new StreamReader(file.FullName))
+                using (var pipeFile = new CsvReader(reader, config))
                 {
-                    try
+                    await _context.OpenConnection();
+                    await pipeFile.ReadAsync();
+                    pipeFile.ReadHeader();
+                    while (await pipeFile.ReadAsync())
                     {
-                        var dto = pipeFile.GetRecord<CoveringDutyDto>();
-                        var model = Util.Map(dto);
-                        await _context.Upsert(model);
-                    }
-                    catch (CsvHelper.MissingFieldException ex)
-                    {
-                        throw ex;
+                        try
+                        {
+                            var dto = pipeFile.GetRecord<CoveringDutyDto>();
+                            var model = Util.Map(dto);
+                            await _context.Upsert(model);
+                        }
+                        catch (CsvHelper.MissingFieldException ex)
+                        {
+                            throw ex;
+                        }
                     }
                 }
-            }
 
+                MoveFile(importConfig.ProcessFolder, file);
+
+            }
         }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+
+
 
 
 
     }
 
-    private ImportConfig ReadImportConfig()
+    private static void MoveFile(string folder, FileInfo file)
     {
-        var folderPath = _configuration["ImportConfig:FolderPath"];
-        var searchPattern = _configuration["ImportConfig:SearchPattern"];
-        return new ImportConfig
+        if (!Directory.Exists(folder))
         {
-            FolderPath = folderPath,
-            SearchPattern = searchPattern
+            Directory.CreateDirectory(folder);
+        }
+        string fileName = $"{DateTime.Today.ToString("yyyyMMdd")}_{file.Name}";
+
+        string archievePath = Path.Combine(folder, fileName);
+        File.Move(file.FullName, archievePath);
+    }
+
+    private FileConfig ReadImportConfig()
+    {
+        var folderPath = _configuration["FileConfig:InboundFolder"];
+        var archive = _configuration["FileConfig:ProcessFolder"];
+        var searchPattern = _configuration["FileConfig:SearchPattern"];
+        return new FileConfig
+        {
+            InboundFolder = folderPath,
+            SearchPattern = searchPattern,
+            ProcessFolder = archive
         };
 
     }
