@@ -32,7 +32,7 @@ public class FileReader
             using var reader = XmlReader.Create(file.FullName, settings);
 
             XDocument xdocument = XDocument.Load(file.FullName);
-            IEnumerable<XElement> employees = xdocument.Root.Elements();
+            IEnumerable<XElement> employees = xdocument.Root.Elements().Where(e=>e.Name == "Employee");
             foreach (var employee in employees)
             {
                 var dto = new EmployeeDto
