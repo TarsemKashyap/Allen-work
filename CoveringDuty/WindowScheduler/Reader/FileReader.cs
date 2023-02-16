@@ -37,7 +37,6 @@ public class FileReader
                 using (var reader = new StreamReader(file.FullName))
                 using (var pipeFile = new CsvReader(reader, config))
                 {
-                    await _context.OpenConnection();
                     await pipeFile.ReadAsync();
                     pipeFile.ReadHeader();
                     while (await pipeFile.ReadAsync())

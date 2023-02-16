@@ -15,7 +15,6 @@ public class DbContext : IDisposable
 
     public async Task InsertData(IAsyncEnumerable<CoveringDutyModel> list)
     {
-        await OpenConnection();
 
         await foreach (var item in list)
         {
@@ -39,7 +38,6 @@ public class DbContext : IDisposable
 
     private async Task InsertAsync(CoveringDutyModel item)
     {
-        await OpenConnection();
         string insertQuery = @"
                    INSERT INTO [dbo].[CoveringDuty] (
                         [UserId],[SOEID],[UserName],
@@ -86,15 +84,10 @@ public class DbContext : IDisposable
         };
     }
 
-    public async Task OpenConnection()
-    {
-        // if (_sqlcon.State != System.Data.ConnectionState.Open)
-        //     await _sqlcon.OpenAsync();
-    }
+    
 
     private async Task UpdateDataAsync(CoveringDutyModel record)
     {
-        await OpenConnection();
         string updateQuery = @"
                 UPDATE [CoveringDuty]
                     SET 
@@ -119,7 +112,6 @@ public class DbContext : IDisposable
 
     private async Task<bool> AlreadyExists(string userId)
     {
-        await OpenConnection();
 
         const string userExists = "select 1 from CoveringDuty where userId=@userId";
         return _sqlcon.ExecuteScalar<bool>(userExists, new { userId = userId });

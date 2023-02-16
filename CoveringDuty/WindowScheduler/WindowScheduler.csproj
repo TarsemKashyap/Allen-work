@@ -20,6 +20,11 @@
     <PackageReference Include="nlog" Version="5.1.1" />
     <PackageReference Include="NLog.Extensions.Logging" Version="5.2.1" />
   </ItemGroup>
+<ItemGroup>
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
  <ItemGroup>
      <None Update="nlog.config" CopyToOutputDirectory="Always" />
  </ItemGroup>
