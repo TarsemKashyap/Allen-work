@@ -1,0 +1,416 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <link rel="stylesheet" href="../_catalogs/masterpage/eRequest/Apps/StyleLib/Styles/Spinner.css" />
+
+    <!-- ===== Layout Scripts in SharePoint  =========================================================================================== -->
+    <script src="/_layouts/15/clientpeoplepicker.js"></script>
+    <script src="/_layouts/15/clienttemplates.js"></script>
+    <script src="/_layouts/15/clientforms.js"></script>
+    <script src="/_layouts/15/sp.runtime.js"></script>
+    <script src="/_layouts/15/autofill.js"></script>
+    <script src="/_layouts/15/sp.js"></script>
+
+    <script type="text/javascript" src="/_layouts/15/init.js"></script>
+    <script type="text/javascript" src="/_layouts/15/1033/strings.js"></script>
+    <script type="text/javascript" src="/_layouts/15/core.js"></script>
+
+    <!-- ===== Custom Scripts in Master  =========================================================================================== -->
+    <script src="../_catalogs/masterpage/eRequest/Apps/app.js"></script>
+    <script src="../_catalogs/masterpage/eRequest/Apps/baseSvc.js"></script>
+    <script src="../_catalogs/masterpage/eRequest/Apps/commonSvc.js"></script>
+    <script src="../_catalogs/masterpage/eRequest/Apps/utility.js"></script>
+    <script src="../_catalogs/masterpage/eRequest/Apps/SystemAccess/SysAccDashboardController.js"></script>
+    <script src="../_catalogs/masterpage/eRequest/Apps/SystemAccess/SysAccService.js"></script>
+    <script src="//cdn.rawgit.com/rainabba/jquery-table2excel/1.1.0/dist/jquery.table2excel.min.js"></script>
+    <!-- ===== Date Picker-jquery-ui.css  =========================================================================================== -->
+
+    <style>
+        input[type=reset] {
+            background-color: #ffce00 !important;
+            border: none;
+            text-decoration: none;
+            color: white;
+            margin: 20px 20px;
+            cursor: pointer;
+        }
+    </style>
+    <style>
+
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+            border: 1px solid #ddd;
+        }
+
+            .pagination a.active {
+                background-color: #4CAF50;
+                color: white;
+                border: 1px solid #4CAF50;
+            }
+
+            .pagination a:hover:not(.active) {
+                background-color: #ddd;
+            }
+    </style>
+    <style>
+        .arrow {
+            border: solid black;
+            border-width: 0 3px 3px 0;
+            display: inline-block;
+            padding: 3px;
+        }
+
+        .right {
+            transform: rotate(-45deg);
+            -webkit-transform: rotate(-45deg);
+        }
+
+        .left {
+            transform: rotate(135deg);
+            -webkit-transform: rotate(135deg);
+        }
+
+        .up {
+            transform: rotate(-135deg);
+            -webkit-transform: rotate(-135deg);
+        }
+
+        .down {
+            transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+        }
+    </style>
+    <style>
+        #ui-datepicker-div.ui-datepicker .ui-widget-header {
+            border: 1px solid #aaa;
+            background: #e9e9e9;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+            #ui-datepicker-div.ui-datepicker .ui-state-hover, #ui-datepicker-div.ui-datepicker.ui-widget-content .ui-state-hover, #ui-datepicker-div.ui-datepicker .ui-widget-header .ui-state-hover {
+                border: 1px solid #ccc;
+                background: #ededed;
+                color: #2b2b2b;
+            }
+
+                #ui-datepicker-div.ui-datepicker .ui-state-hover .ui-icon {
+                    background-image: url(images/ui-icons_222222_256x240.png)
+                }
+
+            #ui-datepicker-div.ui-datepicker .ui-widget-header .ui-icon {
+                background-image: url(images/ui-icons_222222_256x240.png)
+            }
+
+        #ui-datepicker-div.ui-datepicker .ui-state-default, #ui-datepicker-div.ui-datepicker.ui-widget-content .ui-state-default {
+            color: rgb(0,69,126);
+        }
+
+        #ui-datepicker-div.ui-datepicker .ui-widget-header select, #ui-datepicker-div.ui-datepicker.ui-helper-clearfix select {
+            font-weight: normal;
+            display: inline;
+            height: auto;
+            margin: 1px 0;
+            padding: 0;
+            -webkit-appearance: menulist;
+            -moz-appearance: menulist;
+            background-image: none;
+        }
+
+        #ui-datepicker-div.ui-datepicker .ui-datepicker-prev-hover, #ui-datepicker-div.ui-datepicker .ui-datepicker-next-hover {
+            top: 2px;
+        }
+
+        #ui-datepicker-div.ui-datepicker .ui-datepicker-prev-hover {
+            left: 2px;
+        }
+
+        #ui-datepicker-div.ui-datepicker .ui-datepicker-next-hover {
+            right: 2px;
+        }
+    </style>
+    <script>
+        $(function () {
+            var dateToday = new Date();
+            $("#ApplicationDate").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd/mm/yy'
+
+            });
+            $("#ApplicationEndDate").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd/mm/yy'
+            });
+        });
+    </script>
+</head>
+<body>
+    <div ng-app="eRequestApp">       
+        <div ng-controller="SysAccDashboardController" ng-init="init()">
+            <!-- Main Section -->
+            <div class="main-wrapper">
+                <!-- partial:partials/_sidebar.html -->
+                <nav class="sidebar">
+                    <div class="sidebar-header">
+                        <a href="#" class="sidebar-brand">
+                            <img src="../_catalogs/masterpage/eRequest/Apps/StyleLib/Images/logo.png" alt="" class="img-fluid" style="padding:35px">
+                        </a>
+                        <div class="sidebar-toggler not-active">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="sidebar-body">
+                        <ul class="nav">
+                            <li class="nav-item nav-category">Main</li>
+                            <li class="nav-item">
+                                <a target="_parent" href="/erequest/Pages/SystemAccessReq.aspx" class="nav-link">
+                                    <i class="link-icon" data-feather="send"></i>
+                                    <span class="link-title">New Request</span>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a target="_parent" href="/erequest/Pages/SystemAccessGrid.aspx" class="nav-link">
+                                    <i class="link-icon" data-feather="send"></i>
+                                    <span class="link-title">Dashboard</span>
+                                </a>
+                            </li>
+                            <li ng-show="isAdminGroup" class="nav-item ">
+                                <a target="_parent" href="/erequest/Pages/SystemAccessAdmin.aspx" class="nav-link">
+                                    <i class="link-icon" data-feather="send"></i>
+                                    <span class="link-title">Admin Dashboard</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <!-- partial -->
+                <div class="page-wrapper">
+                    <!-- partial:partials/_navbar.html -->
+                    <nav class="navbar">
+                        <a href="#" class="sidebar-toggler">
+                            <i data-feather="menu"></i>
+                        </a>
+                        <div class="navbar-content" style="background-color: #fff;">
+                            <!--<div class="search-form">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i data-feather="search"></i>
+                                        </div>
+                                    </div>
+                                    <input type="text" class="form-control" id="navbarForm" placeholder="Search here...">
+                                </div>
+                            </div>-->
+                            <ul class="navbar-nav">
+                                <li class="nav-item dropdown nav-profile">
+                                    <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-toggle="dropdown"
+                                       aria-haspopup="true" aria-expanded="false">
+                                        <img src="../_catalogs/masterpage/eRequest/Apps/StyleLib/Images/faces/face1.jpg" alt="profile">
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="profileDropdown">
+                                        <div class="dropdown-header d-flex flex-column align-items-center">
+                                            <div class="figure mb-3">
+                                                <img src="../_catalogs/masterpage/eRequest/Apps/StyleLib/Images/faces/face1.jpg" alt="">
+                                            </div>
+                                            <div class="info text-center">
+                                                <p class="name font-weight-bold mb-0">Hi {{appProperties.CurrentUser.Title}}</p>
+                                                <p class="email text-muted mb-3">{{appProperties.CurrentUser.Email}}</p>
+                                            </div>
+                                        </div>
+                                        <div ng-show="isSiteAdmin" class="dropdown-body">
+                                            <ul class="profile-nav p-0 pt-3">
+                                                <li class="nav-item">
+                                                    <a target="_parent" href="/erequest/_layouts/15/viewlsts.aspx" class="nav-link">
+                                                        <i data-feather="edit"></i>
+                                                        <span>Site Contents</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a target="_parent" href="/erequest/_layouts/15/settings.aspx" class="nav-link">
+                                                        <i data-feather="log-out"></i>
+                                                        <span>Site Settings</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <!-- partial -->
+                    <div class="page-content">
+                        <h4>Dashboard</h4>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="exampleInputUsername1">Application ID</label>
+                                    <input ng-model="appProperties.ApplicationID" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="exampleInputUsername1">Request Type</label>
+                                    <select name="ddlRequestType" id="ddlRequestType" class="form-control" ng-model="appProperties.RequestTypeCode" required>
+                                        <option ng-repeat="item in appProperties.RequestTypeMaster" ng-selected="appProperties.Title == item.Title" value="{{item.Title}}">{{item.Title}}</option>
+                                        <option value="">--Select--</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div ng-hide="IsMyPending" class="col-md-4">
+                                <div class="form-group">
+                                    <label for="exampleInputUsername1">Status</label>
+                                    <select id="ApplicationStatus" ng-model="appProperties.ApplicationStatus" class="form-control" name="Status">
+                                        <option value="Pending">Pending</option>
+                                        <option value="Approved">Approved</option>
+                                        <option value="Rejected">Rejected</option>
+                                        <option ng-selected="" value="">--Select--</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="">From Date</label>
+                                    <input type="text" name="ApplicationDate" placeholder="DD/MM/YYYY" ng-model="appProperties.ApplicationDate" id="ApplicationDate" class="form-control" required>
+
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="">To Date</label>
+                                    <input class="form-control" placeholder="DD/MM/YYYY" ng-model="appProperties.ApplicationEndDate" name="ApplicationEndDate" id="ApplicationEndDate" />
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                    <li class="nav-item">
+                                        <input class="nav nav-pills mt-4" style="background-color:#ffce00;color:#c90207 ;border: none;border-radius: 0.25rem" ng-click="search()" type="button" value="Search">
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <input class="nav nav-pills mt-4" style="background-color:#ffce00;color:#c90207 ;border: none;border-radius: 0.25rem" ng-click="celarsearch()" type="reset" value="Reset">
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <p style="color:#444">Please select “My Submitted Requests” to check the status of your applications.</p>
+                        </div>
+                        <div class="row">
+                            <p style="color:#444">Please select “My Pending Tasks” if you have received an email to endorse an application.</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pending" role="tab" ng-click="getPending();" aria-controls="pills-home" aria-selected="true">My Pending Task</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#all" role="tab" ng-click="getAllRequstorData()" aria-controls="pills-profile" aria-selected="false">My Submitted Request</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <div class="col"><div class="dataTables_length form-group row" id="dataTableExample_length"><label>Show <select name="dataTableExample_length" ng-model="itemsPerPage" ng-change="search(3)" aria-controls="dataTableExample" class="custom-select custom-select-sm form-control"><option selected value="10">10</option><option value="30">30</option><option value="50">50</option><option value="">All</option></select> entries</label></div></div>
+                            <!--<div class="col"><input type="search" ng-model="searchText" ng-keyup="search()" class="form-control" placeholder="Search" aria-controls="dataTableExample"></div>-->
+                        </div>
+                        <div class="tab-content" id="pills-tabContent">
+
+                            <div class="row">
+                                <div class="col-md-12 grid-margin stretch-card">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered table-hover">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="ID" custom-sort order="'ID'" sort="sort">APPLICATION ID</th>
+                                                            <th>APPLICATION TYPE</th>
+                                                            <th class="Author.Title" custom-sort order="'Author.Title'" sort="sort">REQUESTER NAME</th>
+                                                            <th class="Created" custom-sort order="'Created'" sort="sort">REQUESTED DATE</th>
+                                                            <!--<th class="RequestTypeCode" custom-sort order="'RequestTypeCode'" sort="sort">TYPE OF REQUEST</th>-->
+                                                            <th class="SystemAccess" custom-sort order="'SystemAccess'" sort="sort">REQUEST FOR</th>
+                                                            <th class="WorkFlowStatus" custom-sort order="'WorkFlowStatus'" sort="sort">APPLICATION STATUS</th>
+                                                            <th>REQUEST PENDING WITH</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <!-- musubmitted task -->
+                                                        <tr ng-repeat="item in pagedItems[currentPage] | orderBy:sort.sortingOrder:sort.reverse">
+                                                            <td><a target="_self" href="/erequest/Pages/SystemAccessReq.aspx?ReqId={{item.ID}}">{{item.ApplicationID}}</a></td>
+                                                            <td>System Access</td>
+                                                            <td>{{item.Author.Title}}</td>
+                                                            <td>{{item.Created | date : 'dd/MM/yyyy'}}</td>
+                                                            <!--<td>{{getWorkAreadCode(item.WorkAreaCode)}}</td>-->
+                                                            <td>{{item.SystemAccess}}</td>
+                                                            <td>{{getStatus(item)}}</td>
+                                                            <td>{{getWFStatus(item)}}</td>
+                                                        </tr>
+                                                        <tr ng-show="filteredItems.length>itemsPerPage">
+                                                            <td colspan="7">
+                                                                <nav class="pull-right">
+                                                                    <ul class="pagination justify-content-end  mt-2">
+                                                                        <li ng-class="{disabled: currentPage == 0}">
+                                                                            <a href="#" ng-click="prevPage()">&laquo; Prev</a>
+                                                                        </li>
+                                                                        <li ng-repeat="n in range(pagedItems.length, currentPage, currentPage + gap) " ng-class="{active: n == currentPage}" ng-click="$parent.currentPage = n;">
+                                                                            <a href="#" ng-bind="n + 1">1</a>
+                                                                        </li>
+
+
+                                                                        <li ng-class="{disabled: (currentPage) == pagedItems.length - 1}">
+                                                                            <a href="#" ng-click="nextPage()">Next &raquo;</a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </nav>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="7">
+                                                                <span ng-hide="pagedItems.length>0">No records found</span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="ongoing" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+                            <div class="tab-pane fade" id="closed" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+                        </div>
+                    </div>
+                    <!-- partial:partials/_footer.html -->
+                    <footer class="footer d-flex flex-column flex-md-row align-items-center justify-content-between">
+                        <p class="text-muted text-center text-md-left">
+                            Copyright © 2020 NPark. All rights reserved
+                        </p>
+                    </footer>
+                    <!-- partial -->
+                </div>
+            </div>
+            <!-- Main Section -->
+            <div ng-show="loaded" class="loading">Loading&#8230;</div>
+        </div>
+    </div>    
+</body>
+</html>

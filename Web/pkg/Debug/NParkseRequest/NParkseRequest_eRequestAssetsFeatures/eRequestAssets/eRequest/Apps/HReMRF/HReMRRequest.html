@@ -1,0 +1,1237 @@
+﻿<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <!-- ===== Layout Scripts in SharePoint  =========================================================================================== -->
+    <script src="/_layouts/15/clientpeoplepicker.js"></script>
+    <script src="/_layouts/15/clienttemplates.js"></script>
+    <script src="/_layouts/15/clientforms.js"></script>
+    <script src="/_layouts/15/sp.runtime.js"></script>
+    <script src="/_layouts/15/autofill.js"></script>
+    <script src="/_layouts/15/sp.js"></script>
+
+    <script type="text/javascript" src="/_layouts/15/init.js"></script>
+    <script type="text/javascript" src="/_layouts/15/1033/strings.js"></script>
+    <script type="text/javascript" src="/_layouts/15/core.js"></script>
+    <link rel="stylesheet" href="../_catalogs/masterpage/eRequest/Apps/StyleLib/Styles/style.css" />
+    <link rel="stylesheet" href="../_catalogs/masterpage/eRequest/Apps/StyleLib/Styles/Spinner.css" />
+    <!-- ===== Custom Scripts in Master  =========================================================================================== -->
+
+    <script src="../_catalogs/masterpage/eRequest/Apps/app.js"></script>
+    <script src="../_catalogs/masterpage/eRequest/Apps/baseSvc.js"></script>
+    <script src="../_catalogs/masterpage/eRequest/Apps/commonSvc.js"></script>
+    <script src="../_catalogs/masterpage/eRequest/Apps/utility.js"></script>
+    <script src="../_catalogs/masterpage/eRequest/Apps/HReMRF/HReMR.js"></script>
+    <script src="../_catalogs/masterpage/eRequest/Apps/HReMRF/HReMRRequestController.js"></script>
+    <!-- ===== Date Picker-jquery-ui.css  =========================================================================================== -->
+    <style type="text/css">
+        body {
+            font-family: "Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif;
+        }
+
+        .container {
+            width: 100% !important;
+        }
+
+        h4, .ms-h4 {
+            font-size: 1.7em;
+            color: #262626;
+        }
+
+        label {
+            display: inline-block;
+            /* max-width: 100%; */
+            margin-bottom: 5px;
+            font-weight: 500;
+            /* text-align: left; */
+            /* font-size: 12px; */
+        }
+
+        .sp-peoplepicker-topLevel, .sp-peoplepicker-topLevelDisabled {
+            cursor: text;
+            height: 100%;
+            width: 305px !important;
+            position: relative;
+            padding: 3px 25px 3px 0px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .redColor {
+            color: red;
+        }
+
+        .checkbox, .radio {
+            position: relative;
+            display: initial !important;
+            margin-top: 10px;
+            margin-left: 25px !important;
+            margin-bottom: 0px !important;
+            color: darkslateblue !important;
+        }
+
+        .flex-container {
+            display: flex;
+        }
+
+        .flex-child {
+            flex: 1;
+        }
+
+            .flex-child:first-child {
+                margin-right: 40px;
+            }
+
+        .application_detail {
+            position: relative;
+            padding: 30px 30px 0px;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .top_heading {
+            position: absolute;
+            top: -11px;
+            background: #fff;
+            padding: 0px 10px;
+            left: 20px;
+            font-size: 16px;
+        }
+    </style>
+    <style>
+        #ui-datepicker-div.ui-datepicker .ui-widget-header {
+            border: 1px solid #aaa;
+            background: #e9e9e9;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+            #ui-datepicker-div.ui-datepicker .ui-state-hover, #ui-datepicker-div.ui-datepicker.ui-widget-content .ui-state-hover, #ui-datepicker-div.ui-datepicker .ui-widget-header .ui-state-hover {
+                border: 1px solid #ccc;
+                background: #ededed;
+                color: #2b2b2b;
+            }
+
+                #ui-datepicker-div.ui-datepicker .ui-state-hover .ui-icon {
+                    background-image: url(images/ui-icons_222222_256x240.png)
+                }
+
+            #ui-datepicker-div.ui-datepicker .ui-widget-header .ui-icon {
+                background-image: url(images/ui-icons_222222_256x240.png)
+            }
+
+        #ui-datepicker-div.ui-datepicker .ui-state-default, #ui-datepicker-div.ui-datepicker.ui-widget-content .ui-state-default {
+            color: rgb(0,69,126);
+        }
+
+        #ui-datepicker-div.ui-datepicker .ui-widget-header select, #ui-datepicker-div.ui-datepicker.ui-helper-clearfix select {
+            font-weight: normal;
+            display: inline;
+            height: auto;
+            margin: 1px 0;
+            padding: 0;
+            -webkit-appearance: menulist;
+            -moz-appearance: menulist;
+            background-image: none;
+        }
+
+        #ui-datepicker-div.ui-datepicker .ui-datepicker-prev-hover, #ui-datepicker-div.ui-datepicker .ui-datepicker-next-hover {
+            top: 2px;
+        }
+
+        #ui-datepicker-div.ui-datepicker .ui-datepicker-prev-hover {
+            left: 2px;
+        }
+
+        #ui-datepicker-div.ui-datepicker .ui-datepicker-next-hover {
+            right: 2px;
+        }
+
+        #peoplePickerProposedBuddy_TopSpan, #peoplePickerSupportingOfficer_TopSpan, #peoplePickerPrimarySupervisor_TopSpan, #peoplePickerSecondarySupervisor_TopSpan {
+            margin-left: -16px;
+            margin-top: -9px;
+            height: 35px;
+            width: 112% !important;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            ///////
+            var dateToday = new Date();
+            var startDate;
+            var endDate;
+            $("#internStartDate").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                //minDate: 0,
+                dateFormat: 'dd/mm/yy',
+                autoclose: true,
+                endDate: dateToday
+            })
+            ///////
+            $("#internEndDate").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                minDate: 0,
+                dateFormat: 'dd/mm/yy',
+                autoclose: true,
+                endDate: dateToday
+            });
+            ///////
+            $('#internStartDate').change(function () {
+                startDate = $(this).datepicker('getDate');
+                $("#internEndDate").datepicker("option", "minDate", startDate);
+                document.getElementById("internEndDate").value = "";
+            })
+
+            ///////
+            $('#internEndDate').change(function () {
+                endDate = $(this).datepicker('getDate');
+                $("#internStartDate").datepicker("option", "maxDate", endDate);
+            })
+            ///////
+            $("#ProdDataPatchSignOff").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                minDate: 0,
+                dateFormat: 'dd/mm/yy'
+            });
+            ////////////////
+        })
+    </script>
+
+</head>
+<body>
+    <div ng-app="eRequestApp">
+        <div ng-controller="HReMRRequestController" ng-init="init()">
+            <ng-form name="appForm" ng-app novalidate>
+                <!-- partial:../../partials/_sidebar.html -->
+                <nav class="sidebar">
+
+                    <div class="sidebar-header">
+                        <a href="#" class="sidebar-brand">
+                            <img src="../_catalogs/masterpage/eRequest/Apps/StyleLib/Images/logo.png" alt="" class="img-fluid" style="padding: 35px">
+                        </a>
+                        <div class="sidebar-toggler not-active">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-body">
+                        <ul class="nav">
+                            <li class="nav-item nav-category">Main</li>
+                            <li class="nav-item">
+                                <a target="_parent" href="/erequest/Pages/HReMRServiceRequest.aspx" class="nav-link">
+                                    <i class="link-icon" data-feather="send"></i>
+                                    <span class="link-title">New Request</span>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a target="_parent" href="/erequest/Pages/HReMRServiceDashboard.aspx" class="nav-link">
+                                    <i class="link-icon" data-feather="send"></i>
+                                    <span class="link-title">Dashboard</span>
+                                </a>
+                            </li>
+                            <li ng-show="isAdminGroup" class="nav-item ">
+                                <a target="_parent" href="/erequest/Pages/HReMRAdminDashboard.aspx" class="nav-link">
+                                    <i class="link-icon" data-feather="send"></i>
+                                    <span class="link-title">Admin Dashboard</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <!-- partial -->
+                <div class="page-wrapper">
+                    <nav class="navbar">
+                        <a href="#" class="sidebar-toggler">
+                            <i data-feather="menu"></i>
+                        </a>
+                        <div class="navbar-content" style="background-color: #fff;">
+                            <!--<div class="search-form">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i data-feather="search"></i>
+                                        </div>
+                                    </div>
+                                    <input type="text" ng-model="appProperties.BranchHeadMaster.Title" class="form-control" id="navbarForm" placeholder="Search here...">
+                                </div>
+                            </div>-->
+                            <ul class="navbar-nav">
+                                <li class="nav-item dropdown nav-profile">
+                                    <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-toggle="dropdown"
+                                       aria-haspopup="true" aria-expanded="false">
+                                        <img src="../_catalogs/masterpage/eRequest/Apps/StyleLib/Images/faces/face1.jpg" alt="profile">
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="profileDropdown">
+                                        <div class="dropdown-header d-flex flex-column align-items-center">
+                                            <div class="figure mb-3">
+                                                <img src="../_catalogs/masterpage/eRequest/Apps/StyleLib/Images/faces/face1.jpg" alt="">
+                                            </div>
+                                            <div class="info text-center">
+                                                <p class="name font-weight-bold mb-0">Hi {{appProperties.CurrentUser.Title}}</p>
+                                                <p class="email text-muted mb-3">{{appProperties.CurrentUser.Email}}</p>
+                                            </div>
+                                        </div>
+                                        <div ng-show="isSiteAdmin" class="dropdown-body">
+                                            <ul class="profile-nav p-0 pt-3">
+                                                <li class="nav-item">
+                                                    <a target="_parent" href="/erequest/_layouts/15/viewlsts.aspx" class="nav-link">
+                                                        <i data-feather="edit"></i>
+                                                        <span>Site Contents</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a target="_parent" href="/erequest/_layouts/15/settings.aspx" class="nav-link">
+                                                        <i data-feather="log-out"></i>
+                                                        <span>Site Settings</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <!-- Main Section -->
+                    <div class="page-content">
+                        <h4 class="pb-2 pagehead">NEW REQUEST</h4> 
+                        <div class="row">
+                            <div ng-if="appProperties.HRRequests.ID != ''" class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInputUsername1">Application ID</label>
+                                    <input type="text" class="form-control" name="apllicationID" id="apllicationID" ng-model="appProperties.HRRequests.ApplicationID" disabled />
+                                </div>
+                            </div>
+                            <div style="display:none" class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInputUsername1">Application Date</label>
+                                    <input type="text" class="form-control" id="apllicationDate" ng-model="appProperties.HRRequests.ApplicationDate" disabled />
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInputUsername1">Requestor ID</label>
+                                    <input type="text" class="form-control" id="requesterID" ng-model="appProperties.HRRequests.Author.LoginName" disabled />
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInputUsername1">Requestor Name</label>
+                                    <input type="text" class="form-control" id="requesterName" ng-model="appProperties.HRRequests.Author.Title" disabled />
+                                </div>
+                            </div>
+                            <!--<div class="col-md-3">
+            <div class="form-group">
+                <label for="exampleInputUsername1">On Behalf</label>
+                <input type='checkbox' ng-disabled="IsSApproveButton" id="chkboxBehalf" ng-click='checkVal()' value='1' ng-model="OnBehalf">
+            </div>
+        </div>-->
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInputUsername1">On Behalf</label>
+                                    <input type='checkbox' ng-disabled="IsSApproveButton" id="chkboxBehalf" ng-click='checkVal()' value='1' ng-model="OnBehalf">
+                                </div>
+                            </div>
+                            <div ng-show="OnBehalf" class="col-md-3">
+                                <div class="form-group">
+                                    <label for="my-input">Requestor Name</label>
+                                    <input ng-hide="IsSubmitButton" type="text" class="form-control" id="username" ng-model="appProperties.HRRequests.RequestedFor.Title" disabled />
+                                    <div ng-show="IsSubmitButton" title="peoplePickerRequestedFor" id="peoplePickerRequestedFor"></div>
+                                    <span class="redColor" ng-show="IsRequestedReq">Requestor Name is Required.</span>
+                                </div>
+                            </div>
+                            <div ng-show="OnBehalf" class="col-md-3" style="display:none">
+                                <div class="form-group">
+                                    <label for="exampleInputText1">User Id</label>
+                                    <input type="text" class="form-control" id="userID" ng-model="appProperties.HRRequests.RequestedFor.LoginName" disabled />
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+
+
+                        <div class="card-group">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Request Details</h4>
+                                    <div class="application_detail col-md-10">
+                                        <div class="top_heading">Manpower Request</div>
+                                        <div class="row w-100">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Type of Manpower Request</label>
+                                                    <select name="ddlManpowerRequestType" ng-disabled="IsSApproveButton" id="ddlManpowerRequestType" class="form-control" ng-change="selectRequestType(appProperties.HRRequests.ManpowerRequestType)" ng-model="appProperties.HRRequests.ManpowerRequestType" required>
+                                                        <option value="">--Select--</option>
+                                                        <option ng-repeat="item in appProperties.ManpowerRequestTypes" ng-selected="appProperties.HRRequests.ManpowerRequestType == item.Id" value="{{item.Title}}">{{item.Title}}</option>
+                                                    </select>
+                                                    <span class="redColor" ng-show="appForm.ddlManpowerRequestType.$invalid && appForm.ddlManpowerRequestType.$touched">Manpower Request Type is Required.</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6" ng-show="appProperties.HRRequests.ManpowerRequestType=='Replacement'">
+                                                <div class="form-group">
+                                                    <label for="">Fullname of the Staff to be replaced</label>
+                                                    <input type="text" name="replacementStaff" ng-disabled="IsSApproveButton" autocomplete="off" placeholder="Staff Full Name" ng-disabled="IsSApproveButton" ng-model="appProperties.HRRequests.ReplacementFullname" id="replacementStaff" class="form-control" required>
+                                                    <span class="redColor" ng-show="appForm.replacementStaff.$invalid && appForm.replacementStaff.$touched">Full Name is Required.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="application_detail col-md-10" ng-show="isNewRequirement">
+                                        <div class="top_heading">Manpower Details</div>
+                                        <div class="row w-100">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Manpower Type</label>
+                                                    <select name="ddlManpowerType" id="ddlManpowerType" ng-disabled="IsSApproveButton" ng-change="selectRequestManType(appProperties.HRRequests.ManpowerType)" class="form-control" ng-model="appProperties.HRRequests.ManpowerType" required>
+                                                        <option value="">--Select--</option>
+                                                        <option ng-repeat="item in appProperties.ManpowerTypes" value="{{item.Title}}">{{item.Title}}</option>
+                                                    </select>
+                                                    <span class="redColor" ng-show="appForm.ddlManpowerType.$invalid && appForm.ddlManpowerType.$touched">Manpower Type is Required.</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="">Job Designation</label>
+                                                    <input type="text" name="jobDesignation" ng-disabled="IsSApproveButton" autocomplete="off" placeholder="Job Designation" ng-disabled="IsSApproveButton" ng-model="appProperties.HRRequests.JobDesignation" id="jobDesignation" class="form-control" required>
+                                                    <span class="redColor" ng-show="appForm.jobDesignation.$invalid && appForm.jobDesignation.$touched">Job Designation is Required.</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4" ng-show="appProperties.HRRequests.ManpowerType=='Contract Employment (Short-term)' || appProperties.HRRequests.ManpowerType=='Contract Employment (Project Funded)'">
+                                                <div class="form-group">
+                                                    <label>Contract Duration (in months)</label>
+                                                    <select name="ddlDeploymentDuration" id="ddlDeploymentDuration" ng-disabled="IsSApproveButton" class="form-control" ng-model="appProperties.HRRequests.DeploymentDuration" required="1==1">
+                                                        <option value="">--Select--</option>
+                                                        <option ng-repeat="item in appProperties.DeploymentDurations" value="{{item.Title}}">{{item.Title}}</option>
+                                                    </select>
+                                                    <span class="redColor" ng-show="appForm.ddlDeploymentDuration.$invalid && appForm.ddlDeploymentDuration.$touched">Contract Duration is Required.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row w-100">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>No. of Manpower Resources Required</label>
+                                                    <input type="text" name="noOfManpower" ng-disabled="IsSApproveButton" autocomplete="off" placeholder="No. Of Manpower" ng-model="appProperties.HRRequests.NoOfManpower" id="noOfManpower" class="form-control" required>
+                                                    <span class="redColor" ng-show="appForm.noOfManpower.$invalid && appForm.noOfManpower.$touched">No. Of Manpower is required.</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="">Office Location</label>
+                                                    <input type="text" name="workLocation" ng-disabled="IsSApproveButton" autocomplete="off" placeholder="Office Location" ng-model="appProperties.HRRequests.WorkLocation" id="workLocation" class="form-control" required>
+                                                    <span class="redColor" ng-show="appForm.workLocation.$invalid && appForm.workLocation.$touched">Office Location is Required.</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="my-input">Computer Requirement</label>
+                                                    <select name="ddlComputerRequirement" id="ddlComputerRequirement" ng-disabled="IsSApproveButton" class="form-control" ng-model="appProperties.HRRequests.ComputerRequirement" Required>
+                                                        <option value="">--Select--</option>
+                                                        <option ng-repeat="item in appProperties.ComputerRequirements" value="{{item.Title}}">{{item.Title}}</option>
+                                                    </select>
+                                                    <span class="redColor" ng-show="appForm.ddlComputerRequirement.$invalid && appForm.ddlComputerRequirement.$touched">Computer Requirement is Required.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row w-100">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="my-input">Proposed Supporting Officer's Name</label>
+                                                    <input type="text" class="form-control" name="supportingOfficer" ng-hide="IsSubmitButton" disabled id="supportingOfficer" ng-model="appProperties.HRRequests.SupportingOfficer.Title" Required />
+                                                    <div ng-show="IsSubmitButton" title="peoplePickerSupportingOfficer" id="peoplePickerSupportingOfficer" class="form-control"></div>
+                                                    <span class="redColor" ng-show="isProposedPeopleBuddyReq">Proposed Supporting Officer is Required.</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="my-input">Proposed Buddy's Name</label>
+                                                    <input ng-hide="IsSubmitButton" type="text" class="form-control" name="proposedBuddy" disabled id="proposedBuddy" ng-model="appProperties.HRRequests.ProposedBuddy.Title" Required />
+                                                    <div ng-show="IsSubmitButton" title="peoplePickerProposedBuddy" id="peoplePickerProposedBuddy" class="form-control"></div>
+                                                    <span class="redColor" ng-show="isProposedPeoplePicReq">Proposed Buddy's Name is Required.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="application_detail col-md-10" ng-show="isNewRequirement">
+                                        <div class="top_heading">Tick if applicable</div>
+                                        <div class="row w-100 form-group">
+                                            <div class="col-md-4">
+                                                <span class="form-check form-check-flat form-check-primary">
+                                                    <label class="form-check-label">
+                                                        <input type="checkbox" name="chkNewRequiredAccess" id="chkNewRequiredAccess" ng-disabled="IsSApproveButton" ng-checked="CheckboxNewRequiredAccess=='Yes'" ng-true-value="'Yes'" ng-model="appProperties.HRRequests.AccessToSecretFiles">
+                                                        Required Access to Secret Files?
+                                                        <i class="input-frame"></i>
+                                                    </label>
+                                                </span>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <span class="form-check form-check-flat form-check-primary">
+                                                    <label class="form-check-label">
+                                                        <input type="checkbox" name="chkHandPhoneSubsidy" id="chkHandPhoneSubsidy" ng-disabled="IsSApproveButton" ng-checked="CheckboxHandPhoneSubsidy=='Yes'" ng-true-value="'Yes'" ng-model="appProperties.HRRequests.HandPhoneSubsidy">
+                                                        Entitled to Hand Phone Subsidy?
+                                                        <i class="input-frame"></i>
+                                                    </label>
+                                                </span>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <span class="form-check form-check-flat form-check-primary">
+                                                    <label class="form-check-label">
+                                                        <input type="checkbox" name="chkNewRosterOffday" ng-change="ShowHidetext()" id="chkNewRosterOffday" ng-disabled="IsSApproveButton" ng-checked="CheckboxRosterOffday=='Yes'" ng-true-value="'Yes'" ng-model="appProperties.HRRequests.RosterOffday">
+                                                        On Rostered Off-days Arrangement
+                                                        <i class="input-frame"></i>
+                                                    </label>
+                                                    <span ng-show="Isdivtext">By checking this, Staff will be required to work on Sat/Sun/PH and their off-days will be rostered accordingly.</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Intern section-->
+                                    <div class="application_detail col-md-10" id="internManpower" ng-show="isIntern">
+                                        <div class="top_heading">Manpower Details</div>
+                                        <div class="row w-100">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>No. of Intern(s) Required</label>
+                                                    <input type="text" name="noOfInternRequired" only-digits ng-disabled="IsSApproveButton" autocomplete="off" placeholder="No. Of Intern" ng-model="appProperties.HRRequests.NoOfInternRequired" id="noOfInternRequired" class="form-control" required>
+                                                    <span class="redColor" ng-show="appForm.noOfInternRequired.$invalid && appForm.noOfInternRequired.$touched">No. Of Intern is Required.</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Name of Institution</label>
+                                                    <input type="text" name="nameOfInstitution" ng-disabled="IsSApproveButton" autocomplete="off" placeholder="Name of Institute" ng-model="appProperties.HRRequests.NameOfInstitution" id="nameOfInstitution" class="form-control" required>
+                                                    <span class="redColor" ng-show="appForm.nameOfInstitution.$invalid && appForm.nameOfInstitution.$touched">Name of Institution is Required.</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Name of Course</label>
+                                                    <input type="text" name="nameOfCourse" ng-disabled="IsSApproveButton" autocomplete="off" placeholder="Name of Course" ng-model="appProperties.HRRequests.NameOfCourse" id="nameOfCourse" class="form-control" required>
+                                                    <span class="redColor" ng-show="appForm.nameOfCourse.$invalid && appForm.nameOfCourse.$touched">Name of Course is Required.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row w-100">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="">Internship Start Date</label>
+                                                    <input type="text" name="internStartDate" ng-disabled="IsSApproveButton" autocomplete="off" placeholder="DD-MM-YYYY" ng-model="appProperties.HRRequests.InternStartDate" id="internStartDate" class="form-control datepicker" required>
+                                                    <span class="redColor" ng-show="appForm.internStartDate.$invalid && appForm.internStartDate.$touched">Start Date is Required.</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Internship End Date</label>
+                                                    <input type="text" name="internEndDate" ng-disabled="IsSApproveButton" autocomplete="off" placeholder="DD-MM-YYYY" ng-model="appProperties.HRRequests.InternEndDate" id="internEndDate" class="form-control datepicker" required>
+                                                    <span class="redColor" ng-show="appForm.internEndDate.$invalid && appForm.internEndDate.$touched">End Date is Required.</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Office Location</label>
+                                                    <input type="text" name="workLocation" ng-disabled="IsSApproveButton" autocomplete="off" placeholder="Work Location" ng-model="appProperties.HRRequests.WorkLocation" id="tempWorkingLocation" class="form-control" required>
+                                                    <span class="redColor" ng-show="appForm.workLocation.$invalid && appForm.workLocation.$touched">Office Location is Required.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row w-100">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="">Working Hours</label>
+                                                    <!--<input type="text" name="workingHours" ng-disabled="IsSApproveButton" autocomplete="off" placeholder="Working Hours" ng-disabled="IsSApproveButton" ng-model="appProperties.HRRequests.WorkingHours" id="workingHours" class="form-control" required>
+    <span class="redColor" ng-show="appForm.workingHours.$invalid && appForm.workingHours.$touched">Working Hours is Required.</span>-->
+
+                                                    <div class="row">
+                                                        <div class="form-check form-check-flat form-check-primary" ng-repeat="subscription in entities">
+                                                            <label class="form-check-label">
+                                                                <input type="checkbox" ng-disabled="IsSApproveButton" ng-model="subscription.checked"  ng-click="updateSelection($index, entities)" />{{subscription.name}}
+                                                            </label>
+                                                        </div>
+                                                        <div style="display:none" class="col-md-8">
+                                                            <span class="form-check form-check-flat form-check-primary">
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox" class="radio" name="chkWHStandard" id="chkWHStandard" ng-checked="chkWHStandard=='Yes'" ng-true-value="'Yes'" ng-click="checkWoringHr()" >
+                                                                    Mon to Thurs: 8:30am to 6:00pm; Fri: 8:30am to 5:30pm
+                                                                    <i class="input-frame"></i>
+                                                                </label>
+                                                            </span>
+                                                        </div>
+                                                        <div style="display:none" class="col-md-4">
+                                                            <span class="form-check form-check-flat form-check-primary">
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox" class="radio" name="chkWHOthers" id="chkWHOthers" ng-click="checkValInter()" value='1' ng-model="isInternOther" />
+                                                                    Others
+                                                                    <i class="input-frame"></i>
+                                                                </label>
+                                                            </span>
+                                                        </div>
+                                                        <div class="col-md-12" ng-show="isInternOther">
+                                                            <input type="text" name="otherWorkingHours" ng-keyup="clearReq()" ng-disabled="IsSApproveButton" autocomplete="off" placeholder="Enter working hours" ng-model="appProperties.HRRequests.InternOtherText" id="otherWorkingHours" class="form-control" required>
+                                                            <span class="redColor" ng-show="IsotherWorkingHours">Working Hour is Required.</span>
+                                                        </div>
+                                                    </div>
+                                                    <span class="redColor" ng-show="WorkingHrsIsmandtry">Working Hour is Required and select any one</span>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        </div>
+                                    <div class="application_detail col-md-10" id="internAccess" ng-show="isIntern">
+                                        <div class="top_heading">Tick if Applicable</div>
+                                        <div class="row w-100 form-group">
+                                            <div class="col-md-4">
+                                                <span class="form-check form-check-flat form-check-primary">
+                                                    <label class="form-check-label">
+                                                        <input type="checkbox" class="radio" name="chkIntTempAccessCard" ng-disabled="IsSApproveButton" id="chkIntTempAccessCard" ng-change="ShowHide()" ng-model="appProperties.HRRequests.TempAccessCardRequired">
+                                                        Require Temp Access Card
+                                                        <i class="input-frame"></i>
+                                                    </label>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <!-- <div ng-show='IsIntAccessCardRequired' class="row w-100 form-group">
+                                            <div class="col-md-4">
+                                                <span class="form-check form-check-flat form-check-primary">
+                                                    <label class="form-check-label">
+                                                        <input type="checkbox" class="radio" name="chkInternTempAccessCard" id="chkInternTempAccessCard" ng-checked="CheckboxTempAccessCard=='Yes'" ng-true-value="'Yes'" ng-model="appProperties.HRRequests.FilesAccessCardRequired">
+                                                        Required Access to Files
+                                                        <i class="input-frame"></i>
+                                                    </label>
+                                                </span>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <span class="form-check form-check-flat form-check-primary">
+                                                    <label class="form-check-label">
+                                                        <input type="checkbox" class="radio" name="chkInternInterview" id="chkInternInterview" ng-checked="CheckboxchkInternInterview=='No'" ng-true-value="'No'" ng-model="appProperties.HRRequests.InternInterviewRequired">
+                                                        Entitled to Hand Phone Subsidy
+                                                        <i class="input-frame"></i>
+                                                    </label>
+                                                </span>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <span class="form-check form-check-flat form-check-primary">
+                                                    <label class="form-check-label">
+                                                        <input type="checkbox" class="radio" ng-change="ShowHidetext()" name="chkInternRosteredOffdays" id="chkInternRosteredOffdays" ng-checked="CheckboxRosterOffday=='No'" ng-true-value="'No'" ng-model="appProperties.HRRequests.RosterOffday">
+                                                        On Rostered Off-days Arrangement
+                                                        <i class="input-frame"></i>
+                                                    </label>
+                                                    <span ng-show="Isdivtext">By checking this, Staff will be required to work on Sat/Sun/PH and their off-days will be rostered accordingly.</span>
+                                                </span>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                    <div class="application_detail col-md-10" id="internOthers" ng-show="isIntern">
+                                        <div class="top_heading">Other Details</div>
+                                        <div class="row w-100">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="my-input">Job Description (Please elaborate)</label>
+                                                    <textarea style="width:100%" ng-disabled="IsSApproveButton" cols="90" rows="3" name="internJobDescription" id="internJobDescription" ng-model="appProperties.HRRequests.JobDescription" required></textarea>
+                                                    <span class="redColor" ng-show="appForm.internJobDescription.$invalid && appForm.internJobDescription.$touched">Job Description is Required.</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="my-input">Learning Outcomes (Please elaborate)</label>
+                                                    <textarea style="width:100%" ng-disabled="IsSApproveButton" cols="90" rows="3" name="internLearningOutcome" id="internLearningOutcome" ng-model="appProperties.HRRequests.LearningOutcome" required></textarea>
+                                                    <span class="redColor" ng-show="appForm.internLearningOutcome.$invalid && appForm.internLearningOutcome.$touched">Learning Outcome is Required.</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="my-input">Any Other Requirements</label>
+                                                    <textarea style="width:100%" ng-disabled="IsSApproveButton" cols="90" rows="3" name="internOtherRequirement" id="internOtherRequirement" ng-model="appProperties.HRRequests.OtherRequirement"></textarea>
+                                                    <span class="redColor" ng-show="appForm.internOtherRequirement.$invalid && appForm.internOtherRequirement.$touched">RemarksReasons is Required.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row w-100">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="my-input">Division to be Attached</label>
+                                                    <select name="ddlDivisionAttached" id="ddlDivisionAttached" ng-disabled="IsSApproveButton" class="form-control" ng-model="appProperties.HRRequests.DivisionToAttach" required>
+                                                        <option value="">--Select--</option>
+                                                        <option value="0">N/A</option>
+                                                        <option ng-repeat="item in appProperties.Divisions | orderBy:'Title'" value="{{item.Title}}">{{item.Title}}</option>
+                                                    </select>
+                                                    <span class="redColor" ng-show="appForm.ddlDivisionAttached.$invalid && appForm.ddlDivisionAttached.$touched">Division to be Attached is Required.</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="my-input">Branch to be Attached</label>
+                                                    <select name="ddlBranchAttached" id="ddlBranchAttached" ng-disabled="IsSApproveButton" class="form-control" ng-model="appProperties.HRRequests.BranchToAttach" required>
+                                                        <option value="">--Select--</option>
+                                                        <option value="0">N/A</option>
+                                                        <option ng-repeat="item in appProperties.Branches | orderBy:'Title'" value="{{item.Title}}">{{item.Title}}</option>
+                                                    </select>
+                                                    <span class="redColor" ng-show="appForm.ddlBranchAttached.$invalid && appForm.ddlBranchAttached.$touched">Branch to be Attached is Required.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row w-100">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="my-input">Primary Supervisor</label>                                                  
+
+                                                    <input type="text" class="form-control" name="primarySupervisor" id="primarySupervisor" ng-hide="IsSubmitButton" disabled  ng-model="appProperties.HRRequests.PrimarySupervisor.Title" Required />
+                                                    <div ng-show="IsSubmitButton" title="peoplePickerPrimarySupervisor" id="peoplePickerPrimarySupervisor" class="form-control"></div>
+                                                    <span class="redColor" ng-show="IsPrimarySupervisor">Primary Supervisor is Required.</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="my-input">Secondary Supervisor</label>
+                                                    <input type="text" class="form-control" name="secondarySupervisor" id="secondarySupervisor" ng-hide="IsSubmitButton" disabled ng-model="appProperties.HRRequests.SecondarySupervisor.Title" Required />
+                                                    <div ng-show="IsSubmitButton" title="peoplePickerSecondarySupervisor" id="peoplePickerSecondarySupervisor" class="form-control"></div>
+                                                    <span class="redColor" ng-show="IsSecondarySupervisor">Secondary Supervisor is Required.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Intern section ends here -->
+                                    <!-- Temporary Manpower starts here -->
+                                    <div class="application_detail col-md-10" id="temporaryManpower" ng-show="isTemporary">
+                                        <div class="top_heading">Manpower Details</div>
+                                        <div class="row w-100">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>No. of Temp. Staff Required</label>
+                                                    <input type="text" name="noOfTempStaff" ng-disabled="IsSApproveButton" autocomplete="off" placeholder="Enter Number" ng-disabled="IsSApproveButton" ng-model="appProperties.HRRequests.NoOfTempStaff" id="noOfTempStaff" class="form-control" required>
+                                                    <span class="redColor" ng-show="appForm.noOfTempStaff.$invalid && appForm.noOfTempStaff.$touched">No. Of Temp Staff is Required.</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Duration Required (in Weeks)</label>
+                                                     <select name="tempDurationRequired" id="tempDurationRequired" ng-disabled="IsSApproveButton" class="form-control" ng-model="appProperties.HRRequests.TempDurationRequired" required>
+                                                        <option value="">--Select--</option>                                                     
+                                                          <option value="1">1</option> 
+                                                          <option value="2">2</option> 
+                                                          <option value="3">3</option> 
+                                                         <option value="4">4</option> 
+                                                          <option value="5">5</option> 
+                                                          <option value="6">6</option> 
+                                                          <option value="7">7</option> 
+                                                         <option value="8">8</option> 
+                                                          <option value="9">9</option> 
+                                                          <option value="10">10</option> 
+                                                         <option value="11">11</option> 
+                                                          <option value="12">12</option> 
+                                                          <option value="13">13</option> 
+                                                          <option value="14">14</option>
+                                                          <option value="15">15</option> 
+                                                          <option value="16">16</option> 
+                                                          <option value="17">17</option> 
+                                                         <option value="18">18</option> 
+                                                          <option value="19">19</option> 
+                                                          <option value="20">20</option>                                                          
+                                                    </select>                                                
+                                                    <span class="redColor" ng-show="appForm.tempDurationRequired.$invalid && appForm.tempDurationRequired.$touched">Duration is Required.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row w-100">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="">Justification</label>
+                                                    <textarea style="width:100%" ng-disabled="IsSApproveButton" cols="90" rows="3" name="tempStaffJustification" id="tempStaffJustification" ng-model="appProperties.HRRequests.Justification" required></textarea>
+                                                    <span class="redColor" ng-show="appForm.tempStaffJustification.$invalid && appForm.tempStaffJustification.$touched">Justification is Required.</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Job Description</label>
+                                                    <textarea style="width:100%" ng-disabled="IsSApproveButton" cols="90" rows="3" name="tempJobDescription" id="tempJobDescription" ng-model="appProperties.HRRequests.JobDescription" required></textarea>
+                                                    <span class="redColor" ng-show="appForm.tempJobDescription.$invalid && appForm.tempJobDescription.$touched">Job Description is Required.</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for=""> Skillsets</label>
+                                                    <textarea style="width:100%" ng-disabled="IsSApproveButton" cols="90" rows="3" name="tempSkillsets" id="tempSkillsets" ng-model="appProperties.HRRequests.Skillsets" required></textarea>
+                                                    <span class="redColor" ng-show="appForm.tempSkillsets.$invalid && appForm.tempSkillsets.$touched">Skillsets is Required.</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Any Other Requirements</label>
+                                                    <textarea style="width:100%" ng-disabled="IsSApproveButton" cols="90" rows="3" name="tempOtherRequirement" id="tempOtherRequirement" ng-model="appProperties.HRRequests.OtherRequirement" required></textarea>
+                                                    <!--<span class="redColor" ng-show="appForm.tempOtherRequirement.$invalid && appForm.tempOtherRequirement.$touched">Any one of the option to be selected.</span>-->
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="application_detail col-md-10" id="temporaryQualification" ng-show="isTemporary">
+                                        <div class="top_heading">Qualification</div>
+                                        <div class="row w-100 form-group">
+                                            <div class="col-md-4">
+                                                <span class="form-check form-check-flat form-check-primary">
+                                                    <label class="form-check-label">
+                                                        <input type="checkbox" class="radio" name="chkTempDegree" id="chkTempDegree" ng-disabled="IsSApproveButton" ng-checked="CheckboxDegree=='Yes'" ng-true-value="'Yes'" ng-model="appProperties.HRRequests.Degree">
+                                                        Degree
+                                                        <i class="input-frame"></i>
+                                                    </label>
+                                                </span>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <span class="form-check form-check-flat form-check-primary">
+                                                    <label class="form-check-label">
+                                                        <input type="checkbox" class="radio" name="chkTempDiploma" id="chkTempDiploma" ng-disabled="IsSApproveButton" ng-checked="CheckboxDiploma=='No'" ng-true-value="'No'" ng-model="appProperties.HRRequests.Diploma">
+                                                        Diploma
+                                                        <i class="input-frame"></i>
+                                                    </label>
+                                                </span>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <span class="form-check form-check-flat form-check-primary">
+                                                    <label class="form-check-label">
+                                                        <input type="checkbox" class="radio" name="chkTempNITEC" id="chkTempNITEC" ng-disabled="IsSApproveButton" ng-checked="CheckboxNITEC=='No'" ng-true-value="'No'" ng-model="appProperties.HRRequests.NITEC">
+                                                        NITEC / Higher NITEC
+                                                        <i class="input-frame"></i>
+                                                    </label>
+                                                </span>
+                                            </div>
+                                            <span class="redColor" ng-show="IsQualification">Any one of the option to be selected.</span>
+                                        </div>
+                                        <div class="row w-100 form-group">
+                                            <div class="col-md-4">
+                                                <span class="form-check form-check-flat form-check-primary">
+                                                    <label class="form-check-label">
+                                                        <input type="checkbox" class="radio" name="chkTempALevel" id="chkTempALevel" ng-disabled="IsSApproveButton" ng-checked="CheckboxALevel=='Yes'" ng-true-value="'Yes'" ng-model="appProperties.HRRequests.ALevel">
+                                                        A Level
+                                                        <i class="input-frame"></i>
+                                                    </label>
+                                                </span>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <span class="form-check form-check-flat form-check-primary">
+                                                    <label class="form-check-label">
+                                                        <input type="checkbox" class="radio" name="chkTempOLevel" id="chkTempOLevel" ng-disabled="IsSApproveButton" ng-checked="CheckboxOLevel=='No'" ng-true-value="'No'" ng-model="appProperties.HRRequests.OLevel">
+                                                        O Level
+                                                        <i class="input-frame"></i>
+                                                    </label>
+                                                </span>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <span class="form-check form-check-flat form-check-primary">
+                                                    <label class="form-check-label">
+                                                        <input type="checkbox" class="radio" name="chkTempNLevel" id="chkTempNLevel" ng-disabled="IsSApproveButton" ng-checked="CheckboxNLevel=='No'" ng-true-value="'No'" ng-model="appProperties.HRRequests.NLevel">
+                                                        N Level
+                                                        <i class="input-frame"></i>
+                                                    </label>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="application_detail col-md-10" id="temporaryOthers" ng-show="isTemporary">
+                                        <div class="top_heading">Other Details</div>
+
+                                        <div class="col-md-8">
+                                            <div class="row w-100">
+                                                <div class="col-md-10">
+                                                    <label>Working Hours</label>
+                                                    <div class="row">
+                                                        <div class="form-check form-check-flat form-check-primary" ng-repeat="subscription in entities">
+                                                            <label class="form-check-label">
+                                                                <input type="checkbox" ng-disabled="IsSApproveButton" ng-model="subscription.checked" ng-click="updateSelection1($index, entities)" />{{subscription.name}}
+                                                            </label>
+                                                        </div>
+                                                        <div style="display:none" class="col-md-6">
+                                                            <span class="form-check form-check-flat form-check-primary">
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox" class="radio" name="chkTempWHStandard" id="chkTempWHStandard" ng-click="checkWoringHr()" ng-checked="CheckboxWHStandard=='Yes'" ng-true-value="'Yes'" ng-model="appProperties.HRRequests.WorkingHour">
+                                                                    Mon to Thurs: 8:30am to 6:00pm; Fri: 8:30am to 5:30pm
+                                                                    <i class="input-frame"></i>
+                                                                </label>
+                                                            </span>
+                                                        </div>
+                                                        <div style="display:none" class="col-md-6">
+                                                            <span class="form-check form-check-flat form-check-primary">
+                                                                <label class="form-check-label">
+                                                                    <input type='checkbox' ng-disabled="IsSApproveButton" id="chkTempWHOthers" ng-click="checkValTemp()" value='1' ng-model="isTemporaryOther" />
+                                                                    Others
+                                                                    <i class="input-frame"></i>
+                                                                </label>
+                                                            </span>
+                                                        </div>
+                                                        <span class="redColor" ng-show="WorkingtmpHrsIsmandtry">Working Hour is Required and select any one</span>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Office Location</label>
+                                                <input type="text" name="workLocation" ng-disabled="IsSApproveButton" autocomplete="off" placeholder="Work Location" ng-model="appProperties.HRRequests.WorkLocation" id="tempWorkingLocation" class="form-control" required>
+                                                <span class="redColor" ng-show="appForm.workLocation.$invalid && appForm.workLocation.$touched">Office Location is Required.</span>
+                                            </div>
+                                        </div>
+                                        <div class="row w-100">
+                                            <div class="col-md-4" ng-show="isTemporaryOther">
+                                                <div class="form-group">
+                                                    <input type="text" name="tempOtherWorkingHours" ng-keyup="clearReq1()" ng-disabled="IsSApproveButton" autocomplete="off" placeholder="Working Hours" ng-model="appProperties.HRRequests.WorkingHourOtherText" id="tempOtherWorkingHours" class="form-control" required>
+                                                    <span class="redColor" ng-show="IsWorkingHourOtherText">Working Hour is Required.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="application_detail col-md-10" id="temporaryAccess" ng-show="isTemporary">
+                                        <div class="top_heading">Tick if Applicable</div>
+                                        <div class="row w-100 form-group">
+                                            <div class="col-md-4">
+                                                <span class="form-check form-check-flat form-check-primary">
+                                                    <label class="form-check-label">
+                                                        <input type="checkbox" class="radio" name="chkTempAccessCard" id="chkTempAccessCard" ng-disabled="IsSApproveButton" ng-checked="CheckboxTempAccessCard=='Yes'" ng-true-value="'Yes'" ng-model="appProperties.HRRequests.TempAccessCard">
+                                                        Required Temp Access Card
+                                                        <i class="input-frame"></i>
+                                                    </label>
+                                                </span>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <span class="form-check form-check-flat form-check-primary">
+                                                    <label class="form-check-label">
+                                                        <input type="checkbox" class="radio" ng-change="ShowHidetext()" name="chkTempRosteredOffdays" id="chkTempRosteredOffdays" ng-disabled="IsSApproveButton" ng-checked="CheckboxTempRosteredOffdays=='Yes'" ng-true-value="'Yes'" ng-model="appProperties.HRRequests.RosterOffday">
+                                                        On Rostered Off-days Arrangement
+                                                        <i class="input-frame"></i>
+                                                    </label>
+                                                </span>
+                                                <span ng-show="Isdivtext">By checking this, Staff will be required to work on Sat/Sun/PH and their off-days will be rostered accordingly.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Temporary Manpower ends here -->
+                                    <!-- Attachment section starts here -->
+                                    <div class="application_detail col-md-10">
+                                        <div class="top_heading">Attachment</div>
+                                        <div class="row w-100">
+                                            <div class="col-md-10">
+                                                <div class="form-group">
+                                                    <label  ng-show="appProperties.appFiles.length>0 || appProperties.appFileProperties.length>0" for="my-input">Attachments (Approval Papers). </label><br><span  ng-show="IsSubmitButton" class="redColor"><h10>Note: Filesize should not exceed 2MB. Accepted file format is .pdf, png, doc, docx, jpg.</h10></span>
+                                                    <input ng-show="IsSubmitButton" type="file" class="form-control file-upload-info file-upload-browse btn btn-primary" multiple onchange="angular.element(this).scope().upload(this)" id="filex" name="filex" />
+                                                    <span class="redColor" ng-show="isSelectedFile">Please select file to approve...</span>
+                                                    <div ng-show="appProperties.appFiles.length>0 || appProperties.appFileProperties.length>0" class="Table center">
+                                                        <div class="form-group">
+                                                            <table id="file_list2" role="presentation" class="" aria-live="polite" tabindex="-1">
+                                                                <tfoot>
+                                                                    <tr ng-repeat="item in appProperties.appFileProperties track by $index" class="active">
+                                                                        <td ng-if="item.url!='#'">
+                                                                            <a target="_blank" href="{{item.url}}">{{item.fileName}}</a>
+                                                                        </td>
+                                                                        <td ng-if="item.url=='#'">
+                                                                            {{item.fileName}}
+                                                                        </td>
+                                                                        <td ng-show="IsSubmitButton">
+                                                                            <a class="btn btn-xs delete-record" ng-click="removeFiles($index,item.fileName)">X</a>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tfoot>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Attachment section ends here -->
+                                    <!-- Funding Section starts -->
+                                    <div ng-if="!isPermanent" class="application_detail col-md-10">
+                                        <div class="top_heading">Funding Detail</div>
+                                        <div class="row w-100">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="my-input">Type of Funding</label>
+                                                    <!--<input type="text" class="form-control" id="CostCentre" ng-model="appProperties.CRSRRequests.CostCentre" />-->
+                                                    <select name="ddlFundingType" id="ddlFundingType" ng-disabled="IsSApproveButton" class="form-control" ng-model="appProperties.HRRequests.FundingType" required>
+                                                        <option value="">--Select--</option>
+                                                        <option ng-repeat="item in appProperties.FundingTypes" value="{{item.Title}}">{{item.Title}}</option>
+                                                    </select>
+                                                    <span class="redColor" ng-show="appForm.ddlFundingType.$invalid && appForm.ddlFundingType.$touched">Type of Funding is Required.</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4" ng-if="appProperties.HRRequests.FundingType=='Others'">
+                                                <div class="form-group">
+                                                    <label for="my-input">Name of Funding</label>
+                                                    <input type="text" class="form-control" name="fundingName" id="fundingName" ng-disabled="IsSApproveButton" ng-model="appProperties.HRRequests.FundingName" required />
+                                                    <span class="redColor" ng-show="appForm.fundingName.$invalid && appForm.fundingName.$touched">Funding Name is Required.</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4" ng-show="appProperties.HRRequests.FundingType=='Others' || appProperties.HRRequests.FundingType=='OOE'">
+                                                <div class="form-group">
+                                                    <label for="my-input">Fund Centre</label>
+                                                    <input type="text" class="form-control" name="fundCentre" id="fundCentre" ng-disabled="IsSApproveButton" ng-model="appProperties.HRRequests.FundCentre" required />
+                                                    <span class="redColor" ng-show="appForm.fundCentre.$invalid && appForm.fundCentre.$touched">Fund Centre is Required.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row w-100" ng-show="appProperties.HRRequests.FundingType=='Others' || appProperties.HRRequests.FundingType=='OOE'">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="my-input">Cost Centre</label>
+                                                    <input type="text" class="form-control" name="costCentre" id="costCentre" ng-disabled="IsSApproveButton" ng-model="appProperties.HRRequests.CostCentre" required />
+                                                    <span class="redColor" ng-show="appForm.costCentre.$invalid && appForm.costCentre.$touched">Cost Centre is Required.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Adding suitable Interns starts here -->
+                                    <div class="application_detail col-md-10" id="internSuitableCandidates" ng-show="isIntern">
+                                        <div class="top_heading">Please complete the following section if there are suitable Intern.</div>
+
+                                        <div class="row w-100">
+                                            <div class="col-md-12">
+                                                <table id="tblsTempWorkers" class="table-bordered table-hover" style="margin-bottom:20px;">
+                                                    <tr>
+                                                        <th style="width:30%">Name of Candidate</th>
+                                                        <th style="width:20%">Contact No.</th>
+                                                        <th style="width:30%">Email</th>
+                                                        <th style="width:20%">Upload Resume</th>
+                                                    </tr>
+                                                    <tbody>
+                                                        <tr ng-show="IsSubmitButton">
+                                                            <td><input type="text" class="form-control" ng-model="appProperties.HRRequests.NameOfIntern" /></td>
+                                                            <td><input type="text" class="form-control" ng-model="appProperties.HRRequests.InternContactNo" /></td>
+                                                            <td><input type="text" class="form-control" ng-model="appProperties.HRRequests.InternEmail" /></td>
+                                                            <td><input id="fileIntern" type="file" ng-file-model="internfiles" /> </td>
+                                                            <td>
+                                                                <ul class="nav nav-pills mb-3" id="pills-tab-temp" role="tablist">
+                                                                    <li ng-show="IsSubmitButton" class="nav-item">
+                                                                        <a class="nav-link active" id="pills-home-tab-temp" data-toggle="pill" href="#all" value="Add" ng-click="addIntern()" role="tab" aria-controls="pills-home" aria-selected="true">Add</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                        <tr ng-repeat="m in appProperties.HRRequests.InternContactInfos">
+                                                            <td>{{m.NameOfIntern}}</td>
+                                                            <td>{{m.InternContactNo}}</td>
+                                                            <td>{{m.InternEmail}}</td>
+                                                            <td ng-show="IsSubmitButton">{{m.ResumeFile}}</td>
+                                                            <td ng-hide="IsSubmitButton"><a target="_blank" href="{{m.AttachmentFiles.results[0].ServerRelativeUrl}}"> {{m.AttachmentFiles.results[0].FileName}}</a></td>
+                                                            <td><input type="button" ng-show="IsSubmitButton" ng-click="Removeintern($index)" value="Remove" /></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Adding suitable Interns ends here -->
+                                    <!-- Adding suitable Temp Manpower starts here -->
+                                    <div class="application_detail col-md-10" id="temporaryCandidates" ng-show="isTemporary">
+                                        <div class="top_heading">Please complete following section if there are suitable temporary Staff</div>
+                                        <div class="row w-100">
+                                            <div class="col-md-12">
+                                                <table id="tblsTempWorkers" class="table-bordered table-hover" style="margin-bottom:20px;">
+                                                    <tr>
+                                                        <th style="width:30%">Name of Candidate</th>
+                                                        <th style="width:20%">Contact No.</th>
+                                                        <th style="width:30%">Email</th>
+                                                        <th style="width:20%">Upload Resume</th>
+                                                    </tr>
+                                                    <tbody>
+                                                        <tr ng-show="IsSubmitButton">
+                                                            <td><input type="text" class="form-control" ng-model="appProperties.HRRequests.Title" /></td>
+                                                            <td><input type="text" class="form-control" ng-model="appProperties.HRRequests.ContactNo" /></td>
+                                                            <td><input type="text" class="form-control" ng-model="appProperties.HRRequests.Email" /></td>
+                                                            <td><input id="uploadFileID" type="file" ng-file-model="tempfiles" multiple /> </td>
+                                                            <td>
+                                                                <ul class="nav nav-pills mb-3" id="pills-tab-temp" role="tablist">
+                                                                    <li ng-show="IsSubmitButton" class="nav-item">
+                                                                        <a class="nav-link active" id="pills-home-tab-temp" data-toggle="pill" href="#all" value="Add" ng-click="addTemporaryWorker()" role="tab" aria-controls="pills-home" aria-selected="true">Add</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                        <tr ng-repeat="m in appProperties.HRRequests.TemporaryCandidates">
+                                                            <td>{{m.Title}}</td>
+                                                            <td>{{m.ContactNo}}</td>
+                                                            <td>{{m.Email}}</td>
+                                                            <td ng-show="IsSubmitButton">{{m.FileName}}</td>
+                                                            <td ng-hide="IsSubmitButton"><a target="_blank" href="{{m.AttachmentFiles.results[0].ServerRelativeUrl}}"> {{m.AttachmentFiles.results[0].FileName}}</a></td>
+                                                            <td><input type="button" ng-show="IsSubmitButton" ng-click="Remove($index)" value="Remove" /></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Adding suitable Temp Manpower ends here -->
+                                </div>
+                                <div ng-show="isExistingRequest" class="card-group pt-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <!-- Other Detail Ends -->
+                                                <div class="col-md-12">
+                                                    <label for="tNumber">Comments <span class="redColor">*</span></label>
+                                                    <textarea id="ticketNumber" ng-model="appProperties.appComments.Comments" name="Comments" class="form-control"></textarea><!--required-->
+                                                    <div ng-hide="!appProperties.appComments.length" class="Table center">
+                                                        <div class="col-md-12 col-sm-12">
+                                                            <table id="file_list" role="presentation" class="table table-condensed" aria-live="polite" tabindex="-1">
+                                                                <thead>
+                                                                    <tr class="active">
+                                                                        <th scope="col">Comments / Action</th>
+                                                                        <th scope="col">Action By</th>
+                                                                        <th scope="col">Date</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tfoot>
+                                                                    <tr ng-repeat="item in appProperties.appComments track by $index" class="">
+                                                                        <td class="col-md-6 col-sm-6" style="white-space:normal;">
+                                                                            {{item.UserComments}}
+                                                                        </td>
+                                                                        <td class="col-md-3 col-sm-3">
+                                                                            {{item.Author.Title}}
+                                                                        </td >
+                                                                        <td class="col-md-3 col-sm-3">
+                                                                            {{item.Created | date : 'dd/MMM/yyyy hh:mm a'}}
+                                                                        </td>
+                                                                    </tr>
+                                                                </tfoot>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-group pt-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <!-- Button Section Starts here-->
+                                        <div class="col-md-6">
+                                            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                                <li ng-show="IsSubmitButton" class="nav-item">
+                                                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#all" value="Submit" ng-click="submitHRRequest(1,$event,appForm)" role="tab" aria-controls="pills-home" aria-selected="true">Submit</a>
+                                                </li>
+
+                                                <li ng-show="IsUserReRouteButton" class="nav-item">
+                                                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" ng-click="submitHRRequest(0,$event,appForm)" href="#all" role="tab" aria-controls="pills-profile" aria-selected="false">Re-Route to User</a>
+                                                </li>
+                                                <li ng-show="IsUserReRouteIMNOButton" class="nav-item">
+                                                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" ng-click="submitHRRequest(5,$event,appForm)" href="#all" role="tab" aria-controls="pills-profile" aria-selected="false">Re-Route to User</a>
+                                                </li>
+                                                <li ng-show="IsReRouteButton" class="nav-item">
+                                                    <a href="#all" data-toggle="pill" ng-click="submitHRRequest(5,$event,appForm)" class="nav-link" id="pills-profile-tab" role="tab" aria-controls="pills-profile" aria-selected="false">Route Back</a>
+                                                </li>
+                                                <li ng-show="IsSApproveButton" class="nav-item">
+                                                    <a class="nav-link" id="pills-profile-tab-close" data-toggle="pill" ng-click="submitHRRequest(2,$event,appForm)" href="#all" role="tab" aria-controls="pills-profile" aria-selected="false">Approve</a>
+                                                </li>
+                                                <li ng-show="IsRejectButton" class="nav-item">
+                                                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" ng-click="submitHRRequest(3,$event,appForm)" href="#all" role="tab" aria-controls="pills-profile" aria-selected="false">Reject</a>
+                                                </li>
+                                                <li ng-show="IsCloseButton" class="nav-item">
+                                                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" ng-click="submitHRRequest(4,$event,appForm)" href="#all" role="tab" aria-controls="pills-profile" aria-selected="false">Close</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                        <!-- Button Section end here-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- Main Section -->
+                    <footer class="footer d-flex flex-column flex-md-row align-items-center justify-content-between">
+                        <p class="text-muted text-center text-md-left">
+                            Copyright © 2020 NPark. All rights reserved
+                        </p>
+                    </footer>
+                </div>
+                <div class="modal" id="my_modal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div style="display:none;" class="pull-right">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="my-input">Delegate Approver </label>
+                                    <div ng-repeat="Information in CheckboxDelegateUserInfo">
+                                        <input type="checkbox" class="" name="SelectionChkboxDelegateUserInfo[]" value="{{Information}}" ng-checked="SelectionChkboxDelegateUserInfo.indexOf(Information) > -1"
+                                               ng-click="toggleSelectionChkboxDelegateUser(Information)"> {{Information}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <input id="btnSubmitRequest" class="frmbutton" value="Submit" ng-click="submitCRSRRequest(15,$event,appForm)" type="button" />
+                                <button class="btn btn-warning" type="button" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-form>
+            <div ng-show="loaded" class="loading">Loading&#8230;</div>
+        </div>
+        <!-- ===== child controller  =========================================================================================== -->
+        <script type="text/ng-template" id="myModal.html">
+            <div class="modal-dialog">
+                <div class="modal-header">
+
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="full_name" class="col-md-5 col-form-label rightText">Delegate Approver <span class="redColor"> *</span></label>
+                        <div class="col-md-7">
+                            <div ng-repeat="Information in CheckboxDelegateUserInfo">
+                                <input type="checkbox" class="custom-control-input" ng-disabled="IsSubmitMode" name="SelectionChkboxDelegateUserInfo[]" value="{{Information}}" ng-checked="SelectionChkboxDelegateUserInfo.indexOf(Information) > -1"
+                                       ng-click="toggleSelectionChkboxDelegateUser(Information)"> {{Information}}                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div align="center" class="form-group">
+                        <input id="btnSubmitRequest" class="frmbutton" value="Submit" ng-click="submitCRSRRequest(15,$event,appForm)" type="button" />
+                        <button class="btn btn-warning" type="button" ng-click="cancelModal()">Close</button>
+                    </div>
+                    <!--<button class="btn btn-primary" type="button" ng-click="ok()">Ok</button>-->
+
+                </div>
+            </div>
+        </script>
+        <style>
+            .modal-dialog {
+                top: 20%;
+                left: 0%;
+                width: 750px;
+            }
+
+            .modal-body {
+                position: relative;
+                padding-top: 15px;
+                padding-bottom: 30px;
+                /* padding-left: 5px; */
+                padding-right: 100px;
+            }
+        </style>
+    </div>
+</body>
+</html>

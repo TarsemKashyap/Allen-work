@@ -1,0 +1,873 @@
+﻿<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <!-- ===== Layout Scripts in SharePoint  =========================================================================================== -->
+    <script src="/_layouts/15/clientpeoplepicker.js"></script>
+    <script src="/_layouts/15/clienttemplates.js"></script>
+    <script src="/_layouts/15/clientforms.js"></script>
+    <script src="/_layouts/15/sp.runtime.js"></script>
+    <script src="/_layouts/15/autofill.js"></script>
+    <script src="/_layouts/15/sp.js"></script>
+
+    <script type="text/javascript" src="/_layouts/15/init.js"></script>
+    <script type="text/javascript" src="/_layouts/15/1033/strings.js"></script>
+    <script type="text/javascript" src="/_layouts/15/core.js"></script>
+    <link rel="stylesheet" href="../_catalogs/masterpage/eRequest/Apps/StyleLib/Styles/style.css" />
+    <link rel="stylesheet" href="../_catalogs/masterpage/eRequest/Apps/StyleLib/Styles/Spinner.css" />
+    <!-- ===== Custom Scripts in Master  =========================================================================================== -->
+
+    <script src="../_catalogs/masterpage/eRequest/Apps/app.js"></script>
+    <script src="../_catalogs/masterpage/eRequest/Apps/baseSvc.js"></script>
+    <script src="../_catalogs/masterpage/eRequest/Apps/commonSvc.js"></script>
+    <script src="../_catalogs/masterpage/eRequest/Apps/utility.js"></script>
+    <script src="../_catalogs/masterpage/eRequest/Apps/SystemAccess/SysAccService.js"></script>
+    <script src="../_catalogs/masterpage/eRequest/Apps/SystemAccess/SysAccRequestController.js"></script>
+    <!-- ===== Date Picker-jquery-ui.css  =========================================================================================== -->  
+
+    <style type="text/css">
+        body {
+            font-family: "Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif;
+        }
+
+        .container {
+            width: 100% !important;
+        }
+
+        h4, .ms-h4 {
+            font-size: 1.7em;
+            color: #262626;
+        }
+
+        label {
+            display: inline-block;
+            /* max-width: 100%; */
+            margin-bottom: 5px;
+            font-weight: 500;
+            /* text-align: left; */
+            /* font-size: 12px; */
+        }
+
+        .sp-peoplepicker-topLevel, .sp-peoplepicker-topLevelDisabled {
+            cursor: text;
+            height: 100%;
+            width: 305px !important;
+            position: relative;
+            padding: 3px 25px 3px 0px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .redColor {
+            color: red;
+        }
+
+        .checkbox, .radio {
+            position: relative;
+            display: initial !important;
+            margin-top: 10px;
+            margin-left: 25px !important;
+            margin-bottom: 0px !important;
+            color: darkslateblue !important;
+        }
+    </style>
+    <style>
+        .scrollTable {
+            height: 350px;
+            overflow-y: auto;
+        }
+    </style>
+    <style>
+        #ui-datepicker-div.ui-datepicker .ui-widget-header {
+            border: 1px solid #aaa;
+            background: #e9e9e9;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+            #ui-datepicker-div.ui-datepicker .ui-state-hover, #ui-datepicker-div.ui-datepicker.ui-widget-content .ui-state-hover, #ui-datepicker-div.ui-datepicker .ui-widget-header .ui-state-hover {
+                border: 1px solid #ccc;
+                background: #ededed;
+                color: #2b2b2b;
+            }
+
+                #ui-datepicker-div.ui-datepicker .ui-state-hover .ui-icon {
+                    background-image: url(images/ui-icons_222222_256x240.png)
+                }
+
+            #ui-datepicker-div.ui-datepicker .ui-widget-header .ui-icon {
+                background-image: url(images/ui-icons_222222_256x240.png)
+            }
+
+        #ui-datepicker-div.ui-datepicker .ui-state-default, #ui-datepicker-div.ui-datepicker.ui-widget-content .ui-state-default {
+            color: rgb(0,69,126);
+        }
+
+        #ui-datepicker-div.ui-datepicker .ui-widget-header select, #ui-datepicker-div.ui-datepicker.ui-helper-clearfix select {
+            font-weight: normal;
+            display: inline;
+            height: auto;
+            margin: 1px 0;
+            padding: 0;
+            -webkit-appearance: menulist;
+            -moz-appearance: menulist;
+            background-image: none;
+        }
+
+        #ui-datepicker-div.ui-datepicker .ui-datepicker-prev-hover, #ui-datepicker-div.ui-datepicker .ui-datepicker-next-hover {
+            top: 2px;
+        }
+
+        #ui-datepicker-div.ui-datepicker .ui-datepicker-prev-hover {
+            left: 2px;
+        }
+
+        #ui-datepicker-div.ui-datepicker .ui-datepicker-next-hover {
+            right: 2px;
+        }
+    </style>
+    <script>
+        $(function () {
+            var dateToday = new Date();
+            $("#DateRequiredBy").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                minDate: 0,
+                dateFormat: 'dd/mm/yy'
+
+            });
+            $("#OffRenoProjectEndDate").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                minDate: 0,
+                dateFormat: 'dd/mm/yy'
+            });
+            $("#OffRenoProjectStartDate").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                minDate: 0,
+                dateFormat: 'dd/mm/yy'
+            });
+        });
+    </script>
+</head>
+<body>
+    <div ng-app="eRequestApp">
+        <div ng-controller="SysAccRequestController" ng-init="init()">
+            <ng-form name="appForm" ng-app novalidate>
+                <!-- partial:../../partials/_sidebar.html -->
+                <nav class="sidebar">
+
+                    <div class="sidebar-header">
+                        <a href="#" class="sidebar-brand">
+                            <img src="../_catalogs/masterpage/eRequest/Apps/StyleLib/Images/logo.png" alt="" class="img-fluid" style="padding: 35px">
+                        </a>
+                        <div class="sidebar-toggler not-active">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-body">
+                        <ul class="nav">
+                            <li class="nav-item nav-category">Main</li>
+                            <li class="nav-item">
+                                <a target="_parent" href="/erequest/Pages/SystemAccessReq.aspx" class="nav-link">
+                                    <i class="link-icon" data-feather="send"></i>
+                                    <span class="link-title">New Request</span>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a target="_parent" href="/erequest/Pages/SystemAccessGrid.aspx" class="nav-link">
+                                    <i class="link-icon" data-feather="send"></i>
+                                    <span class="link-title">Dashboard</span>
+                                </a>
+                            </li>
+                            <li ng-show="isAdminGroup" class="nav-item ">
+                                <a target="_parent" href="/erequest/Pages/SystemAccessAdmin.aspx" class="nav-link">
+                                    <i class="link-icon" data-feather="send"></i>
+                                    <span class="link-title">Admin Dashboard</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <!-- partial -->
+                <div class="page-wrapper">
+                    <nav class="navbar">
+                        <a href="#" class="sidebar-toggler">
+                            <i data-feather="menu"></i>
+                        </a>
+                        <div class="navbar-content" style="background-color: #fff;">
+
+                            <ul class="navbar-nav">
+                                <li class="nav-item dropdown nav-profile">
+                                    <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-toggle="dropdown"
+                                       aria-haspopup="true" aria-expanded="false">
+                                        <img src="../_catalogs/masterpage/eRequest/Apps/StyleLib/Images/faces/face1.jpg" alt="profile">
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="profileDropdown">
+                                        <div class="dropdown-header d-flex flex-column align-items-center">
+                                            <div class="figure mb-3">
+                                                <img src="../_catalogs/masterpage/eRequest/Apps/StyleLib/Images/faces/face1.jpg" alt="">
+                                            </div>
+                                            <div class="info text-center">
+                                                <p class="name font-weight-bold mb-0">Hi {{appProperties.CurrentUser.Title}}</p>
+                                                <p class="email text-muted mb-3">{{appProperties.CurrentUser.Email}}</p>
+                                            </div>
+                                        </div>
+                                        <div ng-show="isSiteAdmin" class="dropdown-body">
+                                            <ul class="profile-nav p-0 pt-3">
+                                                <li class="nav-item">
+                                                    <a target="_parent" href="/erequest/_layouts/15/viewlsts.aspx" class="nav-link">
+                                                        <i data-feather="edit"></i>
+                                                        <span>Site Contents</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a target="_parent" href="/erequest/_layouts/15/settings.aspx" class="nav-link">
+                                                        <i data-feather="log-out"></i>
+                                                        <span>Site Settings</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <!-- Main Section -->
+                    <div class="page-content">
+                        <h4 class="pb-2 pagehead">NEW REQUEST</h4>
+
+                        <div class="row">
+                            <div ng-if="appProperties.SystemAccess.ID != ''" class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInputUsername1">Application ID</label>
+                                    <input type="text" class="form-control" name="apllicationID" id="apllicationID" ng-model="appProperties.SystemAccess.ApplicationID" disabled />
+                                </div>
+                            </div>
+                            <div style="display:none" class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInputUsername1">Application Date</label>
+                                    <input type="text" class="form-control" id="apllicationDate" ng-model="appProperties.SystemAccess.ApplicationDate" disabled />
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInputUsername1">Requestor ID</label>
+                                    <input type="text" class="form-control" id="requesterID" ng-model="appProperties.SystemAccess.Author.LoginName" disabled />
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInputUsername1">Requestor Name</label>
+                                    <input type="text" class="form-control" id="requesterName" ng-model="appProperties.SystemAccess.Author.Title" disabled />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-check form-check-flat form-check-primary">
+                                    <div class="form-group">
+                                        <label for="exampleInputUsername1">On Behalf</label>
+                                        <input type='checkbox' ng-disabled="IsSApproveButton" id="chkboxBehalf" ng-click='checkVal()' value='1' ng-model="OnBehalf">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- dont use ng-if dome element need to use in controller -->
+                            <div ng-show="OnBehalf" class="col-md-3">
+                                <div class="form-group">
+                                    <label for="my-input">User Name</label>
+                                    <input type="text" ng-hide="IsSubmitButton" class="form-control" id="username" ng-disabled="IsSApproveButton" ng-model="appProperties.SystemAccess.RequestedFor.Title" />
+                                    <div ng-show="IsSubmitButton" title="peoplePickerRequestedFor" id="peoplePickerRequestedFor"></div>
+                                    <span class="redColor" ng-show="IsRequestedReq">User Name is Required.</span>
+                                </div>
+                            </div>
+                            <div ng-show="OnBehalf" class="col-md-2">
+
+                            </div>
+                            <div ng-show="OnBehalf" class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInputText1">User Id</label>
+                                    <input type="text" class="form-control" id="userID" ng-model="appProperties.SystemAccess.RequestedFor.LoginName" disabled />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-group">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Apply for transfer/In advance </h4>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-check form-check-flat form-check-primary">
+                                                <label class="form-check-label">
+                                                    <input type="checkbox" ng-disabled="IsSApproveButton" ng-click='checktransferVal()' value='1' ng-model="Ontransfer" class="form-check-input">
+                                                    Transfer/In advance
+                                                    <i class="input-frame"></i>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div ng-if="Ontransfer" class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Apply for</label>
+                                                <select ng-model="appProperties.SystemAccess.ApplyforTransferInAdvance" ng-disabled="IsSApproveButton" class="form-control form-control-sm mb-3">
+                                                    <option selected value="">--select--</option>
+                                                    <option value="Transfer">Transfer</option>
+                                                    <option value="In advance">In advance</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div style="display:none" class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="exampleInputText1">Approver for apply for transfer/In advance</label>
+                                                <input id="my-input" class="form-control" readonly type="text" name="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-group pt-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Request Details</h4>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>System</label>
+                                                <select name="ddlSystemAccess" ng-disabled="IsSApproveButton" id="ddlSystemAccess" ng-change="getSystemRequestType(appProperties.SystemAccess.SystemAccess)" class="form-control form-control-sm mb-3" ng-model="appProperties.SystemAccess.SystemAccess" required>
+                                                    <option ng-repeat="item in appProperties.SystemAccessMaster" ng-selected="item.Title == appProperties.SystemAccess.SystemAccess" ng-value="{{item}}">{{item.Title}}</option>
+                                                    <option value="">--Select--</option>
+                                                </select>
+                                                <span id="spnothr" ng-show="appForm.ddlSystemAccess.$invalid && appForm.ddlSystemAccess.$touched" class="text-danger">System is mandatory.</span>
+                                            </div>
+                                        </div>
+                                        <div ng-if="IsMaven" class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Access Option</label>
+                                                <select name="ddlAccessOption" id="ddlAccessOption" ng-change="getAccessRequestType()" class="form-control form-control-sm mb-3" ng-model="appProperties.SystemAccess.AccessOption" required>
+                                                    <option ng-repeat="item in appProperties.AccessOptionMaster" ng-selected="item.Title==appProperties.SystemAccess.AccessOption" value="{{item.Title}}">{{item.Title}}</option>
+                                                    <option value="">--Select--</option>
+                                                </select>
+                                                <span id="spnothr" ng-show="appForm.ddlAccessOption.$invalid && appForm.ddlAccessOption.$touched" class="text-danger">Access Option is mandatory.</span>
+                                            </div>
+                                        </div>
+                                        <div ng-if="IsTypeOfRequest" class="col-md-8">
+                                            <div class="form-group">
+                                                <label>Type of Request</label>
+                                                <div class="row">
+                                                    <div ng-repeat="Information in appProperties.TypeOfRequestMaster | orderBy : 'ID'" class="form-check form-check-flat form-check-primary col-md-3">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" ng-disabled="IsSApproveButton" name="SelectionCheckboxInformation[]" value="{{Information.Title}}" ng-checked="SelectionCheckboxInformation.indexOf(Information.Title) > -1"
+                                                                   ng-click="toggleCheckboxInfoSelection(Information.Title)">
+                                                            {{Information.Title}}
+                                                            <i class="input-frame"></i>
+                                                        </label>
+                                                    </div>
+                                                    <span id="spnosthr" ng-show="IsTypeOfRequestValid" class="text-danger">Type of Request is mandatory.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div ng-if="IsFileShare" class="col-md-8">
+                                            <div class="form-group">
+                                                <label>Type of Request</label>
+                                                <div class="row">
+                                                    <div ng-repeat="Information in TypeOfRequesFilterFileShare | orderBy : 'ID'" class="form-check form-check-flat form-check-primary col-md-3">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" name="SelectionCheckboxInformation[]" ng-disabled="IsSApproveButton" value="{{Information.Title}}" ng-checked="SelectionCheckboxInformation.indexOf(Information.Title) > -1"
+                                                                   ng-click="toggleCheckboxInfoSelection(Information.Title)">
+                                                            {{Information.Title}}
+                                                            <i class="input-frame"></i>
+                                                        </label>
+                                                    </div>
+                                                    <span id="spnosthr" ng-show="IsFileShareValid" class="text-danger">Type of Request is mandatory.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- EVE Section start -->
+                        <div ng-if="IsEVEModules" class="card-group  pt-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Modules</h4>(Allowed to select one module)
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div ng-repeat="Information in CheckboxFilterModules" class="form-check form-check-flat form-check-primary col-md-2">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" ng-disabled="IsSApproveButton" name="SelectionCheckboxInformation[]" value="{{Information.Title}}" ng-checked="SelectionCheckboxEVEmodules.indexOf(Information.Title) > -1"
+                                                                   ng-click="toggleCheckboxEVEmodulesSelection(Information.Title)">
+                                                            {{Information.Title}}
+                                                            <i class="input-frame"></i>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <span id="spnosthr" ng-show="IsModulesValid" class="text-danger">Modules is mandatory.Please select one module</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ACE Section start -->
+                        <div ng-if="IsACEModule" class="card-group pt-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Module</h4>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Module</label>
+
+                                                <select name="ddlGroupArea" ng-disabled="IsSApproveButton" id="ddlGroupArea" ng-change="getFilterACEData()" class="col-md-6 form-control form-control-sm mb-3" ng-model="appProperties.SystemAccess.AceMoudle" required>
+                                                    <option ng-repeat="item in appProperties.ACEModuleMasterData | unique:'Title'" ng-selected="item.Title==appProperties.SystemAccess.AceMoudle" value="{{item.Title}}">{{item.Title}}</option>
+                                                    <option value="">--Select--</option>
+                                                </select>
+                                                <span id="spnothr" ng-show="appForm.ddlGroupArea.$invalid && appForm.ddlGroupArea.$touched" class="text-danger">Module is mandatory.</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- PAL Section start -->
+
+                        <div ng-if="IsTypeOfRoles" class="card-group pt-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Roles</h4>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div ng-repeat="Information in CheckboxRoleInformation" class="form-check form-check-flat form-check-primary col-md-2">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" ng-disabled="IsSApproveButton" class="form-check-input" name="SelectionCheckboxInformation[]" value="{{Information.Title}}" ng-checked="SelectionCheckboxRoleInformation.indexOf(Information.Title) > -1"
+                                                                   ng-click="toggleCheckboxRoleInfoSelection(Information.Title)">
+                                                            {{Information.Title}}
+                                                            <i class="input-frame"></i>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <span id="spnosthr" ng-show="IsTypeOfRolesValid" class="text-danger">Roles is mandatory.</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-if="IsModuleAccess" class="card-group pt-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Module Access in Maven Application</h4>
+                                    <div class="row">
+                                        <div class="table-responsive scrollTable">
+                                            <table class="table table-sm">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Module</th>
+                                                        <th>Access Required</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="item in appProperties.MavenGroupMaster | unique:'Title'">
+                                                        <td scope="row">{{item.Title}}</td>
+                                                        <td>
+                                                            <div class="form-check form-check-flat form-check-primary">
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox" ng-disabled="IsSApproveButton" class="custom-control-input" id="chkMvnbox{{$index}}" ng-model="item.ViewAccess" ng-true-value="'true'" ng-false-value="'false'"
+                                                                           ng-click="toggleModuleMavenCheckboxInfoSelection(item)">
+                                                                    <i class="input-frame"></i>
+                                                                </label>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <table ng-show="SelectionModuleMavenCheckboxInformation.length>0" class="table table-sm">
+                                            <thead>
+                                                <tr>
+                                                    <th>Module</th>
+                                                    <th>Access Required</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="item in SelectionModuleMavenCheckboxInformation">
+                                                    <td scope="row">{{item.Title}}</td>
+                                                    <td>
+                                                        <div class="form-check form-check-flat form-check-primary">
+                                                            <label class="form-check-label">
+                                                                <input type="checkbox" class="custom-control-input" id="chkxMvnbox{{$index}}" ng-disabled="IsSubmitMode" ng-model="item.ViewAccess" ng-true-value="'true'" ng-false-value="'false'"
+                                                                       ng-click="toggleModuleMavenCheckboxInfoSelection(item)">
+                                                                <i class="input-frame"></i>
+                                                            </label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-if="IsLayerAccess" class="card-group pt-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Layer Access</h4>
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label>Group</label>
+
+                                                <select name="ddlGroupArea" ng-disabled="IsSApproveButton" id="ddlGroupArea" ng-change="getFilterMavanData()" class="col-md-6 form-control form-control-sm mb-3" ng-model="appProperties.SystemAccess.GroupName" required>
+                                                    <option ng-repeat="item in appProperties.MavenGroupMaster | unique:'Title'" ng-selected="item.GroupName==appProperties.SystemAccess.GroupName" value="{{item.Title}}">{{item.Title}}</option>
+                                                    <option value="">--Select--</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div ng-show="appProperties.MavenGroupFilterData.length>0" class="row">
+                                        <div class="table-responsive">
+                                            <table class="table table-sm">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Group</th>
+                                                        <th>Layer Name</th>
+                                                        <th ng-show="IsShowFeatureClass">Feature Class</th>
+                                                        <th>View Access Required</th>
+                                                        <th>Edit Access Required</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                    <tr ng-repeat="item in appProperties.MavenGroupFilterData">
+                                                        <td scope="row">{{item.Title}}</td>
+                                                        <td scope="row">{{item.Layer}}</td>
+                                                        <td ng-show="IsShowFeatureClass" scope="row">{{item.Feature}}</td>
+                                                        <td>
+                                                            <div class="form-check form-check-flat form-check-primary">
+                                                                <label class="form-check-label"><input type="checkbox" id="chkxViewbox{{$index}}" class="form-check-input" ng-model="item.ViewAccess" ng-click="toggleModuleViewCheckboxInfoSelection(item)" ng-true-value="'true'" ng-false-value="'false'">   <i class="input-frame"></i></label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-check form-check-flat form-check-primary">
+                                                                <div class="form-check form-check-flat form-check-primary">
+                                                                    <label class="form-check-label"><input type="checkbox" id="chkxEditbox{{$index}}" class="form-check-input" ng-model="item.EditAccess" ng-click="toggleModuleViewCheckboxInfoSelection(item)" ng-true-value="'true'" ng-false-value="'false'">   <i class="input-frame"></i></label>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                            <table ng-show="SelectionModuleViewCheckboxInformation.length>0" class="table table-sm">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Group</th>
+                                                        <th>Layer Name</th>
+                                                        <th ng-show="IsShowFeatureClass">Feature Class</th>
+                                                        <th>View Access Required</th>
+                                                        <th>Edit Access Required</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                    <tr ng-repeat="item in SelectionModuleViewCheckboxInformation track by $index">
+                                                        <td scope="row">{{item.Title}}</td>
+                                                        <td scope="row">{{item.Layer}}</td>
+                                                        <td ng-show="IsShowFeatureClass" scope="row">{{item.Feature}}</td>
+                                                        <td>
+                                                            <div class="form-check form-check-flat form-check-primary">
+                                                                <div class="form-check form-check-flat form-check-primary">
+                                                                    <label class="form-check-label"><input type="checkbox" id="chkViewbox{{$index}}" class="form-check-input" ng-model="item.ViewAccess" ng-click="toggleModuleViewCheckboxInfoSelection(item)" ng-true-value="'true'" ng-false-value="'false'">   <i class="input-frame"></i></label>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-check form-check-flat form-check-primary">
+                                                                <div class="form-check form-check-flat form-check-primary">
+                                                                    <label class="form-check-label"><input type="checkbox" id="chkEditbox{{$index}}" class="form-check-input" ng-model="item.EditAccess" ng-click="toggleModuleViewCheckboxInfoSelection(item)" ng-true-value="'true'" ng-false-value="'false'">   <i class="input-frame"></i></label>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Module Section -->
+                        <!-- ACE domain Section start -->
+                        <div ng-if="IsACEModule" class="card-group pt-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">ACE ROLE & DOMAIN</h4>
+                                    <div class="row">
+                                        <div class="table-responsive scrollTable">
+                                            <table class="table table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>JOB Role Code</th>
+                                                        <th>Job Description</th>
+                                                        <th>Domain</th>
+                                                        <th>Select</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="item in appProperties.ACERoleFilterData | unique:'Title'">
+                                                        <td scope="row">{{item.Title}}</td>
+                                                        <td scope="row">{{item.ACERoleDescription}}</td>
+                                                        <td scope="row">{{item.Domain}}</td>
+                                                        <td ng-hide="IsSApproveButton" ><a href="#doaminPop" data-toggle="modal" data-id="{{item.ID}}">Select required domain</a></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <table style="display:none" ng-show="SelectionModuleACECheckboxInformation.length>0" class="table table-sm">
+                                            <thead>
+                                                <tr>
+                                                    <th>Module</th>
+                                                    <th>Job Description</th>
+                                                    <th>Access Required</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="item in SelectionModuleACECheckboxInformation">
+                                                    <td scope="row">{{item.Title}}</td>
+                                                    <td scope="row">{{item.ACERoleDescription}}</td>
+                                                    <td>
+                                                        <div class="form-check form-check-flat form-check-primary">
+                                                            <label class="form-check-label">
+                                                                <input type="checkbox" class="custom-control-input" id="chkxMvnbox{{$index}}" ng-disabled="IsSubmitMode" ng-model="item.ViewAccess" ng-true-value="'true'" ng-false-value="'false'"
+                                                                       ng-click="toggleModuleACECheckboxInfoSelection(item)">
+                                                                <i class="input-frame"></i>
+                                                            </label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ACE domain Section start -->
+                        <!-- end removal-->
+                        <div class="card-group pt-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Other Details</h4>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">Date Required By</label>
+                                                <input autocomplete="off" placeholder="DD/MM/YYYY" ng-disabled="IsSApproveButton" ng-model="appProperties.SystemAccess.DateRequiredBy" name="DateRequiredBy" id="DateRequiredBy" type="text" class="form-control" required>
+                                                <span id="spnothr" ng-show="appForm.DateRequiredBy.$invalid && appForm.DateRequiredBy.$touched" class="text-danger">Date Required By is mandatory.</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                           
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">Attachment</label>
+                                                <span id="attach">
+                                                    <input id="uploadFileID" ng-disabled="IsSApproveButton" type="file" ng-file-model="files" multiple />
+                                                    <span class="attach-Text" ng-repeat="file in files">
+                                                        <span>{{file.name}}</span><a title='Click to Remove' ng-click="removeFile(file, $index)"> X </a>
+                                                    </span>
+                                                </span>
+                                                <table ng-if="appProperties.SystemAccess.AttachmentFiles.results.length>0" class="table table-hover">
+                                                    <tbody>
+                                                        <tr ng-repeat="item in appProperties.SystemAccess.AttachmentFiles.results">
+                                                            <td class="custom-blue">
+                                                                <a target="_blank" href="{{item.ServerRelativeUrl}}">{{item.FileName}}</a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleFormControlTextarea1">Remarks / Reasons</label>
+                                                <textarea ng-disabled="IsSApproveButton" cols="90" rows="3" name="exampleFormControlTextarea1" id="exampleFormControlTextarea1" ng-model="appProperties.SystemAccess.RemarksReasons" required></textarea>
+                                                <span id="spnothr" ng-show="appForm.exampleFormControlTextarea1.$invalid && appForm.exampleFormControlTextarea1.$touched" class="text-danger">Remarks / Reasons is mandatory.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-show="IsCommentsSection" class="card-group pt-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <!-- Other Detail Ends -->
+                                        <div class="col-md-12">
+                                            <label for="tNumber">Comments <span class="redColor">*</span></label>
+                                            <textarea id="ticketNumber" ng-model="appProperties.appComments.Comments" name="Comments" class="form-control"></textarea><!--required-->
+                                            <div ng-hide="!appProperties.appComments.length" class="Table center">
+                                                <div class="col-md-12 col-sm-12">
+                                                    <table id="file_list" role="presentation" class="table table-condensed" aria-live="polite" tabindex="-1">
+                                                        <thead>
+                                                            <tr class="active">
+                                                                <th scope="col">Comments / Action</th>
+                                                                <th scope="col">Action By</th>
+                                                                <th scope="col">Date</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tfoot>
+                                                            <tr ng-repeat="item in appProperties.appComments track by $index" class="">
+                                                                <td>
+                                                                    {{item.UserComments}}
+                                                                </td>
+                                                                <td>
+                                                                    {{item.CommentsBy.Title}}
+                                                                </td>
+                                                                <td>
+                                                                    {{item.Created | date : 'dd/MMM/yyyy hh:mm a'}}
+                                                                </td>
+                                                            </tr>
+                                                        </tfoot>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-group pt-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <!-- Button Section Starts here-->
+                                        <div class="col-md-6">
+                                            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                                <li ng-show="IsSubmitButton" class="nav-item">
+                                                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pending" value="Submit" ng-click="submitListItem(1,$event,appForm)" role="tab" aria-controls="pills-home" aria-selected="true">Submit</a>
+                                                </li>
+
+                                                <li ng-show="IsUserReRouteButton" class="nav-item">
+                                                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" ng-click="submitListItem(4,$event,appForm)" href="#all" role="tab" aria-controls="pills-profile" aria-selected="false">Re-Route to User</a>
+                                                </li>
+                                                <li ng-show="IsUserReRouteIMNOButton" class="nav-item">
+                                                    <a class="nav-link active" id="pills-profile-tab" data-toggle="pill" ng-click="submitListItem(5,$event,appForm)" href="#all" role="tab" aria-controls="pills-profile" aria-selected="false">Re-Route to User</a>
+                                                </li>
+                                                <li ng-show="IsReRouteButton" class="nav-item">
+                                                    <a href="#my_modal" data-toggle="modal" class="nav-link active" id="pills-profile-tab" role="tab" aria-controls="pills-profile" aria-selected="false">Re-Route</a>
+                                                </li>
+                                                <li ng-show="IsSApproveButton" class="nav-item">
+                                                    <a class="nav-link active" id="pills-profile-tab" data-toggle="pill" ng-click="submitListItem(2,$event,appForm)" href="#all" role="tab" aria-controls="pills-profile" aria-selected="false">Approve</a>
+                                                </li>
+                                                <li ng-show="IsRejectButton" class="nav-item">
+                                                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" ng-click="submitListItem(3,$event,appForm)" href="#all" role="tab" aria-controls="pills-profile" aria-selected="false">Reject</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" ng-click="submitListItem(0,$event,appForm)" href="#all" role="tab" aria-controls="pills-profile" aria-selected="false">Close</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!-- Button Section end here-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Main Section -->
+                    <footer class="footer d-flex flex-column flex-md-row align-items-center justify-content-between">
+                        <p class="text-muted text-center text-md-left">
+                            Copyright © 2020 NPark. All rights reserved
+                        </p>
+                    </footer>
+                </div>
+                <div class="modal" id="my_modal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div style="display:none;" class="pull-right">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="my-input">Delegate Approver </label>
+                                    <div ng-repeat="Information in CheckboxDelegateUserInfo">
+                                        <input type="checkbox" class="" name="SelectionChkboxDelegateUserInfo[]" value="{{Information}}" ng-checked="SelectionChkboxDelegateUserInfo.indexOf(Information) > -1"
+                                               ng-click="toggleSelectionChkboxDelegateUser(Information)"> {{Information}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <input id="btnSubmitRequest" class="frmbutton" value="Submit" ng-click="submitListItem(15,$event,appForm)" type="button" />
+                                <button class="btn btn-warning" data-dismiss="modal" type="button">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal" id="doaminPop" >
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div style="display:none;" class="pull-right">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            </div>
+                            <div class="modal-body">
+                                <div style="height:400px;" class="table-responsive scrollTable">
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th>Domain</th>
+                                                <th>Access Required</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in appProperties.ACEDomainMasterData | unique:'Title'">
+                                                <td scope="row">{{item.Title}} : {{item.JobDescription}}</td>
+                                                <td>
+                                                    <div class="form-check form-check-flat form-check-primary">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" id="chk-{{$index}}" ng-model="options[$index].checked" ng-click="toggleDomainSelection($index)" ng-true-value="'true'" ng-false-value="'false'" />
+                                                            <i class="input-frame"></i>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>                              
+                            </div>
+                            <div class="modal-footer">
+                                <input id="btnSubmitRequest" class="frmbutton" value="Submit" ng-click="addDomainRequest(1,$event,appForm)" type="button" />
+                                <button class="btn btn-warning" type="button" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-form>
+            <div ng-show="loaded" class="loading">Loading&#8230;</div>
+        </div>       
+    </div>
+</body>
+</html>

@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="e4280fa6-5257-47f1-b101-14be226e44b8" solutionId="e4280fa6-5257-47f1-b101-14be226e44b8" resetWebServer="false" sharePointProductVersion="16.0" name="NParkseRequest" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
+  <features>
+    <featureReference itemId="b34d1b16-8da4-4dfb-811d-2c53a3fb2aed" />
+  </features>
+</package>

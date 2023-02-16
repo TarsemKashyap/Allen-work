@@ -1,0 +1,256 @@
+﻿<Project ToolsVersion="16.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{02D6E275-FE7D-4A59-9076-DE8A7116753D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NParkseRequest</RootNamespace>
+    <AssemblyName>NParkseRequest</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetOfficeVersion>16.0</TargetOfficeVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{C1CDDADD-2546-481F-9697-4EA41081F2FC};{14822709-B5A1-4724-98CA-57A101D1B079};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
+    <MinimumOfficeToolsVersion>14.0</MinimumOfficeToolsVersion>
+    <IncludeAssemblyInPackage>False</IncludeAssemblyInPackage>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.SharePoint" />
+    <Reference Include="Microsoft.SharePoint.Client.ServerRuntime" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="eRequestAssets\eRequest\Apps\StyleLib\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="eRequestAssets\eRequest\Apps\StyleLib\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="eRequestAssets\eRequest\Apps\StyleLib\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="eRequestAssets\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{cc7a4acb-5780-4118-9107-cfb5f9e1ae4a}</SharePointProjectItemId>
+    </None>
+    <None Include="Features\eRequestAssetsFeatures\eRequestAssetsFeatures.feature">
+      <FeatureId>{b34d1b16-8da4-4dfb-811d-2c53a3fb2aed}</FeatureId>
+    </None>
+    <None Include="key.snk" />
+    <None Include="MasterPage\eRequestMaster.Master" />
+    <None Include="MasterPage\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{f82162ac-eda5-4c51-a5b0-645b511078a9}</SharePointProjectItemId>
+    </None>
+    <None Include="Package\Package.package">
+      <PackageId>{e4280fa6-5257-47f1-b101-14be226e44b8}</PackageId>
+    </None>
+    <None Include="Package\Package.Template.xml">
+      <DependentUpon>Package.package</DependentUpon>
+    </None>
+    <None Include="PageModule\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{4929c6ff-e3be-4e9d-a8e5-f319d471dc10}</SharePointProjectItemId>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="eRequestAssets\Elements.xml" />
+    <Content Include="eRequestAssets\eRequest\Apps\Admin\HReMRAdminService.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\Admin\HReMRAdmin.html" />
+    <Content Include="eRequestAssets\eRequest\Apps\Admin\SysAccessAdmin.html" />
+    <Content Include="eRequestAssets\eRequest\Apps\Admin\HReMRAdminController.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\Admin\SysAccessAdminController.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\Admin\SysAccAdminService.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\Admin\UtilityAdminDashboard.html" />
+    <Content Include="eRequestAssets\eRequest\Apps\Admin\UtilityAdminDashboardController.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\Admin\UtilityAdminDashboardService.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\Admin\ITAdminDashboard.html" />
+    <Content Include="eRequestAssets\eRequest\Apps\Admin\CRSRAdminDashboard.html" />
+    <Content Include="eRequestAssets\eRequest\Apps\Admin\ITAdminDashboardController.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\Admin\CRSRAdminDashboardController.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\Admin\ITAdminDashboardService.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\Admin\CRSRAdminDashboardService.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\app.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\baseSvc.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\commonSvc.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\ExportExcel\ExportExcel.html" />
+    <Content Include="eRequestAssets\eRequest\Apps\ExportExcel\ExportExcelController.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\ExportExcel\ExportExcelService.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\Home\eRequestHome.html" />
+    <Content Include="eRequestAssets\eRequest\Apps\CRSR\CRSRService.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\CRSR\CRSRDashboard.html" />
+    <Content Include="eRequestAssets\eRequest\Apps\CRSR\CRSRDashboardController.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\CRSR\CRSREnquiry.html" />
+    <Content Include="eRequestAssets\eRequest\Apps\CRSR\CRSREnquiryController.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\CRSR\CRSRRequest.html" />
+    <Content Include="eRequestAssets\eRequest\Apps\CRSR\CRSRRequestController.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\HReMRF\HReMR.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\HReMRF\HReMRDashboard.html" />
+    <Content Include="eRequestAssets\eRequest\Apps\HReMRF\HReMRDashboardController.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\HReMRF\HReMRRequest.html" />
+    <Content Include="eRequestAssets\eRequest\Apps\HReMRF\HReMRRequestController.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Js\jquery-3.6.0.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Js\jquery-3.6.0.min.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\SystemAccess\SysAccService.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\SystemAccess\SysAccDashboard.html" />
+    <Content Include="eRequestAssets\eRequest\Apps\SystemAccess\SysAccDashboardController.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\SystemAccess\SysAccRequest.html" />
+    <Content Include="eRequestAssets\eRequest\Apps\SystemAccess\SysAccRequestController.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Images\404.svg" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Images\bgOffice.jpg" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Images\carousel\img1.jpg" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Images\carousel\img10.jpg" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Images\carousel\img11.jpg" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Images\carousel\img12.jpg" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Images\carousel\img2.jpg" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Images\carousel\img3.jpg" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Images\carousel\img4.jpg" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Images\carousel\img5.jpg" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Images\carousel\img6.jpg" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Images\carousel\img7.jpg" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Images\carousel\img8.jpg" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Images\carousel\img9.jpg" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Images\faces\face1.jpg" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Images\faces\face2.jpg" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Images\faces\face3.jpg" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Images\faces\face4.jpg" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Images\faces\face5.jpg" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Images\faces\face6.jpg" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Images\faces\face7.jpg" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Images\faces\face8.html" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Images\faces\face9.html" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Images\favicon.ico" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Images\favicon.png" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Images\folder.png" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Images\logo-placeholder.png" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Images\logo.png" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Images\meeting.png" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Images\overlay-placeholder.jpg" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Images\placeholder.jpg" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Images\sample1.jpg" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Images\sample2.jpg" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Images\sample3.jpg" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Images\tree.png" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Js\angular-animate.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Js\angular-filter.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Js\angular-local-storage.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Js\angular-material.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Js\angular-resource.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Js\angular-resource.min.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Js\angular-route.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Js\angular-sanitize.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Js\angular-touch.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Js\angular-ui.min.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Js\angular.min.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Js\jquery.min.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Styles\bootstrap.min.css" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Js\bootstrap.min.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Js\csv.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Js\dropify.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Js\jquery-ui.min.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Js\ng-grid-layout.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Js\ng-grid.debug.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Js\ng-grid.min.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Js\ng-table.min.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Js\pdfmake.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Js\quick-ng-repeat.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Js\ui-bootstrap-tpls-2.5.0.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Js\ui-bootstrap-tpls.min.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Js\ui-bootstrap.min.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Js\ui-grid.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Js\underscore.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Js\vfs_fonts.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Styles\animate.min.css" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Styles\carousel.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Styles\core.css" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Styles\core.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Styles\dropify.min.css" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Styles\dropify.min.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Styles\feather.min.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Styles\flag-icon.min.css" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Styles\iconfont.css" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Styles\jquery-ui.min.css" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Styles\owl.carousel.min.css" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Styles\owl.carousel.min.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Styles\owl.theme.default.min.css" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Styles\owl.video.play.html" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Styles\spinner.css" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Styles\style.css" />
+    <Content Include="eRequestAssets\eRequest\Apps\StyleLib\Styles\template.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\ITService\ITServiceDashboard.html" />
+    <Content Include="eRequestAssets\eRequest\Apps\ITService\ITServiceDashboardController.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\ITService\ITServiceEnquiry.html" />
+    <Content Include="eRequestAssets\eRequest\Apps\ITService\ITServiceEnquiryController.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\ITService\ITService.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\ITService\ITServiceRequest.html" />
+    <Content Include="eRequestAssets\eRequest\Apps\ITService\ITServiceRequestController.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\Utility\UtilityEnquiry.html" />
+    <Content Include="eRequestAssets\eRequest\Apps\Utility\UtilityDashboard.html" />
+    <Content Include="eRequestAssets\eRequest\Apps\Utility\UtilityEnquiryController.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\Utility\UtilityServiceRequest.html" />
+    <Content Include="eRequestAssets\eRequest\Apps\Utility\UtilityServiceRequestController.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\Utility\UtilityDashboardController.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\Utility\UtilityService.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\UserLog\loginUserController.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\UserLog\loginUserService.js" />
+    <Content Include="eRequestAssets\eRequest\Apps\utility.js" />
+    <Content Include="Features\eRequestAssetsFeatures\eRequestAssetsFeatures.Template.xml">
+      <DependentUpon>eRequestAssetsFeatures.feature</DependentUpon>
+    </Content>
+    <Content Include="MasterPage\Elements.xml" />
+    <Content Include="PageModule\HReMRAdminDashboard.aspx" />
+    <Content Include="PageModule\HReMRServiceDashboard.aspx" />
+    <Content Include="PageModule\HReMRServiceRequest.aspx" />
+    <Content Include="PageModule\SystemAccessAdmin.aspx" />
+    <Content Include="PageModule\ITAdminDashboard.aspx" />
+    <Content Include="PageModule\CRSRAdminDashboard.aspx" />
+    <Content Include="PageModule\eRequestHome.aspx" />
+    <Content Include="PageModule\Elements.xml" />
+    <Content Include="PageModule\CRSREnquiry.aspx" />
+    <Content Include="PageModule\CRSRDashboard.aspx" />
+    <Content Include="PageModule\ITServiceEnquiry.aspx" />
+    <Content Include="PageModule\CRSRRequest.aspx" />
+    <Content Include="PageModule\SystemAccessGrid.aspx" />
+    <Content Include="PageModule\SystemAccessReq.aspx" />
+    <Content Include="PageModule\UtilityAdminDashboard.aspx" />
+    <Content Include="PageModule\UtilityEnquiry.aspx" />
+    <Content Include="PageModule\UtilityDashboard.aspx" />
+    <Content Include="PageModule\ITServiceDashboard.aspx" />
+    <Content Include="PageModule\ITServiceRequest.aspx" />
+    <Content Include="PageModule\ExportExcel.aspx" />
+    <Content Include="PageModule\UtilityService.aspx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(VSToolsPath)\SharePointTools\Microsoft.VisualStudio.SharePoint.targets" Condition="'$(VSToolsPath)' != ''" />
+</Project>

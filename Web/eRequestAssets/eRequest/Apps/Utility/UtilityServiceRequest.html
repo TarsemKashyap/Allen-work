@@ -1,0 +1,611 @@
+﻿<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <!-- ===== Layout Scripts in SharePoint  =========================================================================================== -->
+    <script src="/_layouts/15/clientpeoplepicker.js"></script>
+    <script src="/_layouts/15/clienttemplates.js"></script>
+    <script src="/_layouts/15/clientforms.js"></script>
+    <script src="/_layouts/15/sp.runtime.js"></script>
+    <script src="/_layouts/15/autofill.js"></script>
+    <script src="/_layouts/15/sp.js"></script>
+
+    <script type="text/javascript" src="/_layouts/15/init.js"></script>
+    <script type="text/javascript" src="/_layouts/15/1033/strings.js"></script>
+    <script type="text/javascript" src="/_layouts/15/core.js"></script>
+    <link rel="stylesheet" href="../_catalogs/masterpage/eRequest/Apps/StyleLib/Styles/style.css" />
+    <link rel="stylesheet" href="../_catalogs/masterpage/eRequest/Apps/StyleLib/Styles/Spinner.css" />
+
+    <!-- ===== Custom Scripts in Master  =========================================================================================== -->
+    <script src="../_catalogs/masterpage/eRequest/Apps/app.js"></script>
+    <script src="../_catalogs/masterpage/eRequest/Apps/baseSvc.js"></script>
+    <script src="../_catalogs/masterpage/eRequest/Apps/commonSvc.js"></script>
+    <script src="../_catalogs/masterpage/eRequest/Apps/utility.js"></script>
+    <script src="../_catalogs/masterpage/eRequest/Apps/Utility/UtilityService.js"></script>
+    <script src="../_catalogs/masterpage/eRequest/Apps/Utility/UtilityServiceRequestController.js"></script>
+    <!-- ===== Date Picker-jquery-ui.css  =========================================================================================== -->
+    <style type="text/css">
+        body {
+            font-family: "Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif;
+        }
+
+        .container {
+            width: 100% !important;
+        }
+
+        h4, .ms-h4 {
+            font-size: 1.7em;
+            color: #262626;
+        }
+
+        label {
+            display: inline-block;
+            /* max-width: 100%; */
+            margin-bottom: 5px;
+            font-weight: 500;
+            /* text-align: left; */
+            /* font-size: 12px; */
+        }
+
+        .sp-peoplepicker-topLevel, .sp-peoplepicker-topLevelDisabled {
+            cursor: text;
+            height: 100%;
+            width: 305px !important;
+            position: relative;
+            padding: 3px 25px 3px 0px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .redColor {
+            color: red;
+        }
+
+        .checkbox, .radio {
+            position: relative;
+            display: initial !important;
+            margin-top: 10px;
+            margin-left: 25px !important;
+            margin-bottom: 0px !important;
+            color: darkslateblue !important;
+        }
+    </style>
+    <style>
+        .scrollTable {
+            height: 350px;
+            overflow-y: auto;
+        }
+    </style>
+    <style>
+        #ui-datepicker-div.ui-datepicker .ui-widget-header {
+            border: 1px solid #aaa;
+            background: #e9e9e9;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+            #ui-datepicker-div.ui-datepicker .ui-state-hover, #ui-datepicker-div.ui-datepicker.ui-widget-content .ui-state-hover, #ui-datepicker-div.ui-datepicker .ui-widget-header .ui-state-hover {
+                border: 1px solid #ccc;
+                background: #ededed;
+                color: #2b2b2b;
+            }
+
+                #ui-datepicker-div.ui-datepicker .ui-state-hover .ui-icon {
+                    background-image: url(images/ui-icons_222222_256x240.png)
+                }
+
+            #ui-datepicker-div.ui-datepicker .ui-widget-header .ui-icon {
+                background-image: url(images/ui-icons_222222_256x240.png)
+            }
+
+        #ui-datepicker-div.ui-datepicker .ui-state-default, #ui-datepicker-div.ui-datepicker.ui-widget-content .ui-state-default {
+            color: rgb(0,69,126);
+        }
+
+        #ui-datepicker-div.ui-datepicker .ui-widget-header select, #ui-datepicker-div.ui-datepicker.ui-helper-clearfix select {
+            font-weight: normal;
+            display: inline;
+            height: auto;
+            margin: 1px 0;
+            padding: 0;
+            -webkit-appearance: menulist;
+            -moz-appearance: menulist;
+            background-image: none;
+        }
+
+        #ui-datepicker-div.ui-datepicker .ui-datepicker-prev-hover, #ui-datepicker-div.ui-datepicker .ui-datepicker-next-hover {
+            top: 2px;
+        }
+
+        #ui-datepicker-div.ui-datepicker .ui-datepicker-prev-hover {
+            left: 2px;
+        }
+
+        #ui-datepicker-div.ui-datepicker .ui-datepicker-next-hover {
+            right: 2px;
+        }
+    </style>
+    <script>
+        $(function () {
+            var dateToday = new Date();
+            $("#DateRequiredBy").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                minDate: 0,
+                dateFormat: 'dd/mm/yy'
+
+            });
+            $("#OffRenoProjectEndDate").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                minDate: 0,
+                dateFormat: 'dd/mm/yy'
+            });
+            $("#OffRenoProjectStartDate").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                minDate: 0,
+                dateFormat: 'dd/mm/yy'
+            });
+        });
+    </script>
+</head>
+<body>
+    <div ng-app="eRequestApp">
+        <div ng-controller="UtilityServiceRequestController" ng-init="init()">
+            <ng-form name="appForm" ng-app novalidate>
+                <!-- partial:../../partials/_sidebar.html -->
+                <nav class="sidebar">
+
+                    <div class="sidebar-header">
+                        <a href="#" class="sidebar-brand">
+                            <img src="../_catalogs/masterpage/eRequest/Apps/StyleLib/Images/logo.png" alt="" class="img-fluid" style="padding: 35px">
+                        </a>
+                        <div class="sidebar-toggler not-active">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-body">
+                        <ul class="nav">
+                            <li class="nav-item nav-category">Main</li>
+                            <li class="nav-item">
+                                <a target="_parent" href="/erequest/Pages/utilityservice.aspx" class="nav-link">
+                                    <i class="link-icon" data-feather="send"></i>
+                                    <span class="link-title">New Request</span>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a target="_parent" href="/erequest/Pages/UtilityDashboard.aspx" class="nav-link">
+                                    <i class="link-icon" data-feather="send"></i>
+                                    <span class="link-title">Dashboard</span>
+                                </a>
+                            </li>                          
+                            <li ng-show="isAdminGroup" class="nav-item ">
+                                <a target="_parent" href="/erequest/Pages/UtilityAdminDashboard.aspx" class="nav-link">
+                                    <i class="link-icon" data-feather="send"></i>
+                                    <span class="link-title">Admin Dashboard</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <!-- partial -->
+                <div class="page-wrapper">
+                    <nav class="navbar">
+                        <a href="#" class="sidebar-toggler">
+                            <i data-feather="menu"></i>
+                        </a>
+                        <div class="navbar-content" style="background-color: #fff;">
+                           
+                            <ul class="navbar-nav">
+                                <li class="nav-item dropdown nav-profile">
+                                    <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-toggle="dropdown"
+                                       aria-haspopup="true" aria-expanded="false">
+                                        <img src="../_catalogs/masterpage/eRequest/Apps/StyleLib/Images/faces/face1.jpg" alt="profile">
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="profileDropdown">
+                                        <div class="dropdown-header d-flex flex-column align-items-center">
+                                            <div class="figure mb-3">
+                                                <img src="../_catalogs/masterpage/eRequest/Apps/StyleLib/Images/faces/face1.jpg" alt="">
+                                            </div>
+                                            <div class="info text-center">
+                                                <p class="name font-weight-bold mb-0">Hi {{appProperties.CurrentUser.Title}}</p>
+                                                <p class="email text-muted mb-3">{{appProperties.CurrentUser.Email}}</p>
+                                            </div>
+                                        </div>
+                                        <div ng-show="isSiteAdmin" class="dropdown-body">
+                                            <ul class="profile-nav p-0 pt-3">
+                                                <li class="nav-item">
+                                                    <a target="_parent" href="/erequest/_layouts/15/viewlsts.aspx" class="nav-link">
+                                                        <i data-feather="edit"></i>
+                                                        <span>Site Contents</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a target="_parent" href="/erequest/_layouts/15/settings.aspx" class="nav-link">
+                                                        <i data-feather="log-out"></i>
+                                                        <span>Site Settings</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <!-- Main Section -->
+                    <div class="page-content">
+                        <h4 class="pb-2 pagehead">NEW REQUEST</h4>
+                        <div class="row">
+                            <div ng-if="appProperties.UtilityRequests.ID != ''" class="col-md-4">
+                                <div class="form-group">
+                                    <label for="exampleInputUsername1">Application ID</label>
+                                    <input type="text" class="form-control" name="apllicationID" id="apllicationID" ng-model="appProperties.UtilityRequests.ApplicationID" disabled />
+                                </div>
+                            </div>
+                            <div style="display:none" class="col-md-3">
+                                <div  class="form-group">
+                                    <label for="exampleInputUsername1">Application Date</label>
+                                    <input type="text" class="form-control" id="apllicationDate" ng-model="appProperties.UtilityRequests.ApplicationDate" disabled />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="exampleInputUsername1">Requestor ID</label>
+                                    <input type="text" class="form-control" id="requesterID" ng-model="appProperties.UtilityRequests.Author.LoginName" disabled />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="exampleInputUsername1">Requestor Name</label>
+                                    <input type="text" class="form-control" id="requesterName" ng-model="appProperties.UtilityRequests.Author.Title" disabled />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-1">
+                                <div class="form-check form-check-flat form-check-primary">
+                                    <div class="form-group">
+                                        <label for="exampleInputUsername1">On Behalf</label>
+                                        <input type='checkbox' ng-disabled="IsSApproveButton" id="chkboxBehalf" ng-click='checkVal()' value='1' ng-model="OnBehalf">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- dont use ng-if dome element need to use in controller -->
+                            <div ng-show="OnBehalf" class="col-md-3">
+                                <div class="form-group">
+                                    <label for="my-input">User Name</label>
+                                    <input type="text" ng-hide="IsSubmitButton" class="form-control" id="username" ng-model="appProperties.UtilityRequests.RequestedFor.Title" />
+                                    <div ng-show="IsSubmitButton" title="peoplePickerRequestedFor" id="peoplePickerRequestedFor"></div>
+                                </div>
+                            </div>
+                            <div ng-show="OnBehalf" class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInputText1">User Id</label>
+                                    <input type="text" class="form-control" id="userID" ng-model="appProperties.UtilityRequests.RequestedFor.LoginName" disabled />
+                                </div>
+                            </div>
+                        </div>
+
+
+                        
+                        <!-- start Request Details -->
+                        <div class="card-group">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Request Details</h4>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Purpose</label>
+                                                <label class="form-control" ng-repeat="item in appProperties.PurposeMaster | orderBy:'Title'">
+                                                    <input type="radio" name="Purpose" id="Purpose" required ng-disabled="IsAllcontrolDisbable" ng-change="CheckIsNewAccountNo(appForm)" ng-model="appProperties.UtilityRequests.Purpose" value="{{item.Title}}" /> {{item.Title}}
+                                                </label>
+                                                <span class="redColor" ng-show="appForm.Purpose.$invalid && appForm.Purpose.$touched">Purpose is Required.</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Utilities Applying For</label>
+                                            </div>
+                                            <div class="form-check form-check-flat form-check-primary">
+                                                <div ng-repeat="Information in CheckboxInformation">
+                                                    <div class="col-md-12">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" ng-disabled="IsAllcontrolDisbable" class="custom-control-input" name="SelectionCheckboxInformation[]" value="{{Information}}" ng-checked="SelectionCheckboxInformation.indexOf(Information) > -1"
+                                                                   ng-click="toggleCheckboxInfoSelection(Information)"> {{Information}}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <span class="redColor" ng-show="IsChkUtilitiesReuire">Utilities Applying For is Required.</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Vendor</label>
+                                                <select name="VendorName1" id="VendorName1" ng-disabled="IsAllcontrolDisbable" class="form-control" ng-model="appProperties.UtilityRequests.ElectricityVendor">
+                                                    <option ng-repeat="item in appProperties.UtilitiesVendor1" ng-selected="appProperties.UtilityRequests.ElectricityVendor == item.Title" value="{{item.Title}}">{{item.Title}}</option>
+                                                    <option value="">--Select--</option>
+                                                </select>
+                                                <!--<span class="redColor" ng-show="IsRequire">Vendor is Required.</span>-->
+                                                <select name="VendorName2" style="margin-top:5px;" id="VendorName2" ng-disabled="IsAllcontrolDisbable" class="form-control" ng-model="appProperties.UtilityRequests.WaterVendor">
+                                                    <option ng-repeat="item in appProperties.UtilitiesVendor2" ng-selected="appProperties.UtilityRequests.WaterVendor == item.Title" value="{{item.Title}}">{{item.Title}}</option>
+                                                    <option value="">--Select--</option>
+                                                </select>
+                                                <!--<span class="redColor" ng-show="IsRequire1">Vendor is Required.</span>-->
+
+                                            </div>
+                                            </div>
+                                    </div>
+
+
+                                    <div class="row">
+
+
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="exampleInputUsername1">Indicate Account No.</label>
+                                                <input type="text" id="AccountNo" name="AccountNo" ng-model="appProperties.UtilityRequests.IndicateAccountNo" class="form-control" ng-disabled="IsAccountNoDisabled" ng-required="IsAccountNo" />
+                                                <span class="redColor" ng-show="appForm.AccountNo.$invalid && appForm.AccountNo.$touched">AccountNo is Required.</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="exampleInputUsername1">Cost Centre</label>
+                                                <select name="CostCentreName" id="CostCentreName" class="form-control" ng-disabled="IsAllcontrolDisbable" ng-model="appProperties.UtilityRequests.CostCentre" required>
+                                                    <option ng-repeat="item in appProperties.CostCentreMaster" ng-selected="appProperties.UtilityRequests.CostCentre == item.Title" value="{{item.Title}}">{{item.Title}}</option>
+                                                    <option value="">--Select--</option>
+                                                </select>
+                                                <span class="redColor" ng-show="appForm.CostCentreName.$invalid && appForm.CostCentreName.$touched">Cost Centre is Required.</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleFormControlTextarea1">Premises Address(Stated by vendor)</label>
+                                                <textarea ng-disabled="IsSApproveButton" cols="90" rows="3" name="PremisesAddress" id="PremisesAddress" ng-model="appProperties.UtilityRequests.PremisesAddress" required></textarea>
+                                                <span class="redColor" ng-show="appForm.PremisesAddress.$invalid && appForm.PremisesAddress.$touched">Premises Address is Required.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div ng-if="IsOpenNewAccount" class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleFormControlTextarea1">Billing Description (e.g. Exact Location, Lamp post No, Postal Code)</label>
+                                                <input id="BillingDescription" name="BillingDescription" ng-model="appProperties.UtilityRequests.BillingDescription" type="text" class="form-control" required />
+                                                <span class="redColor" ng-show="appForm.BillingDescription.$invalid && appForm.BillingDescription.$touched">Billing Description is Required.</span>
+                                            </div>
+                                        </div>
+                                        <!--<div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="exampleFormControlTextarea1">GL Code</label>
+                                                <input id="GLCode" name="GLCode" ng-model="appProperties.UtilityRequests.GLCode" type="text" class="form-control"  />
+                                                <span class="redColor" ng-show="appForm.GLCode.$invalid && appForm.GLCode.$touched">GLCode is Required.</span>
+                                            </div>
+                                        </div>-->
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="exampleFormControlTextarea1">Fund Centre</label>
+                                                <input id="FundCentre" name="FundCentre" ng-model="appProperties.UtilityRequests.FundCentre" type="text" class="form-control" required />
+                                                <span class="redColor" ng-show="appForm.FundCentre.$invalid && appForm.FundCentre.$touched">Fund Centre is Required.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end Request Details -->
+                        <!-- Module Section -->
+                        <!-- end removal-->
+
+                        <div class="card-group pt-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Other Details</h4>
+                                    <div class="row">
+                                        <!--<div class="col-md-3">
+                        <div class="form-group">
+                            <label for="">Date Required By</label>
+                            <input type="text" name="DateRequiredBy" ng-disabled="IsSApproveButton" autocomplete="off" placeholder="DD/MM/YYYY"  ng-model="appProperties.ITServiceRequests.DateRequiredBy" id="DateRequiredBy" class="form-control" required>
+                            <span class="redColor" ng-show="appForm.DateRequiredBy.$invalid && appForm.DateRequiredBy.$touched">Date Required By is Required.</span>
+                        </div>
+                    </div>-->
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">Attachment</label>
+                                                <input ng-disabled="IsAttchment" type="file" class="form-control file-upload-info file-upload-browse btn btn-primary" multiple onchange="angular.element(this).scope().upload(this)" id="filex" name="filex" />
+                                                <span class="redColor" ng-show="isSelectedFile">Please select file to approve...</span>
+                                                <div ng-show="appProperties.appFiles.length>0 || appProperties.appFileProperties.length>0" class="Table center">
+                                                    <div class="form-group">
+                                                        <table id="file_list2" role="presentation" class="" aria-live="polite" tabindex="-1">
+                                                            <tfoot>
+                                                                <tr ng-repeat="item in appProperties.appFileProperties track by $index" class="active">
+                                                                    <td ng-if="item.url!='#'">
+                                                                        <a target="_blank" href="{{item.url}}">{{item.fileName}}</a>
+                                                                    </td>
+                                                                    <td ng-if="item.url=='#'">
+                                                                        {{item.fileName}}
+                                                                    </td>
+                                                                    <td ng-show="IsSubmitButton">
+                                                                        <a class="btn btn-xs delete-record" ng-click="removeFiles($index,item.fileName)">X</a>
+                                                                    </td>
+                                                                </tr>
+                                                            </tfoot>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleFormControlTextarea1">Remarks / Reasons</label>
+                                                <textarea ng-disabled="IsSApproveButton" cols="90" rows="3" name="RemarksReasons" id="RemarksReasons" ng-model="appProperties.ITServiceRequests.RemarksReasons" required></textarea>
+                                                <span class="redColor" ng-show="appForm.RemarksReasons.$invalid && appForm.RemarksReasons.$touched">RemarksReasons is Required.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-show="IsCommentsSection" class="card-group pt-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <!-- Other Detail Ends -->
+                                        <div class="col-md-12">
+                                            <label for="tNumber">Comments <span class="redColor">*</span></label>
+                                            <textarea id="ticketNumber" ng-model="appProperties.appComments.Comments" name="Comments" class="form-control"></textarea><!--required-->
+                                            <div ng-hide="!appProperties.appComments.length" class="Table center">
+                                                <div class="col-md-12 col-sm-12">
+                                                    <table id="file_list" role="presentation" class="table table-condensed" aria-live="polite" tabindex="-1">
+                                                        <thead>
+                                                            <tr class="active">
+                                                                <th scope="col">Comments</th>
+                                                                <th scope="col">Comments By</th>
+                                                                <th scope="col">Date</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tfoot>
+                                                            <tr ng-repeat="item in appProperties.appComments track by $index" class="">
+                                                                <td>
+                                                                    {{item.UserComments}}
+                                                                </td>
+                                                                <td>
+                                                                    {{item.Author.Title}}
+                                                                </td>
+                                                                <td>
+                                                                    {{item.Created | date : 'dd/MMM/yyyy hh:mm a'}}
+                                                                </td>
+                                                            </tr>
+                                                        </tfoot>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="card-group pt-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <!-- Button Section Starts here-->
+                                        <div class="col-md-6">
+                                            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pending" ng-show="IsSubmitButton" value="Submit" ng-click="submitListItem(1,$event,appForm)" role="tab" aria-controls="pills-home" aria-selected="true">Submit</a>
+                                                </li>
+
+                                                <li ng-show="IsUserReRouteButton" class="nav-item">
+                                                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" ng-click="submitListItem(4,$event,appForm)" href="#all" role="tab" aria-controls="pills-profile" aria-selected="false">Re-Route to User</a>
+                                                </li>
+                                                <li ng-show="IsUserReRouteIMNOButton" class="nav-item">
+                                                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" ng-click="submitListItem(5,$event,appForm)" href="#all" role="tab" aria-controls="pills-profile" aria-selected="false">Re-Route to User</a>
+                                                </li>
+                                                <li ng-show="IsReRouteButton" class="nav-item">
+                                                    <a href="#my_modal" data-toggle="modal" class="nav-link" id="pills-profile-tab" role="tab" aria-controls="pills-profile" aria-selected="false">Re-Route</a>
+                                                </li>
+                                                <li ng-show="IsSApproveButton" class="nav-item">
+                                                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" ng-click="submitListItem(2,$event,appForm)" href="#all" role="tab" aria-controls="pills-profile" aria-selected="false">Approve</a>
+                                                </li>
+                                                <li ng-show="IsRejectButton" class="nav-item">
+                                                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" ng-click="submitListItem(3,$event,appForm)" href="#all" role="tab" aria-controls="pills-profile" aria-selected="false">Reject</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" ng-click="submitListItem(0,$event,appForm)" href="#all" role="tab" aria-controls="pills-profile" aria-selected="false">Close</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!-- Button Section end here-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Main Section -->
+                    <footer class="footer d-flex flex-column flex-md-row align-items-center justify-content-between">
+                        <p class="text-muted text-center text-md-left">
+                            Copyright © 2020 NPark. All rights reserved
+                        </p>
+                    </footer>
+                </div>
+                <div class="modal" id="my_modal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div style="display:none;" class="pull-right">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="my-input">Delegate Approver </label>
+                                    <div ng-repeat="Information in CheckboxDelegateUserInfo">
+                                        <input type="checkbox" class="" name="SelectionChkboxDelegateUserInfo[]" value="{{Information}}" ng-checked="SelectionChkboxDelegateUserInfo.indexOf(Information) > -1"
+                                               ng-click="toggleSelectionChkboxDelegateUser(Information)"> {{Information}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <input id="btnSubmitRequest" class="frmbutton" value="Submit" ng-click="submitListItem(15,$event,appForm)" type="button" />
+                                <button class="btn btn-warning" type="button" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-form>
+            <div ng-show="loaded" class="loading">Loading&#8230;</div>
+        </div>
+        <!-- ===== child controller  =========================================================================================== -->
+        <script type="text/ng-template" id="myModal.html">
+            <div class="modal-dialog">
+                <div class="modal-header">
+
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="full_name" class="col-md-5 col-form-label rightText">Delegate Approver <span class="redColor"> *</span></label>
+                        <div class="col-md-7">
+                            <div ng-repeat="Information in CheckboxDelegateUserInfo">
+                                <input type="checkbox" class="custom-control-input" ng-disabled="IsSubmitMode" name="SelectionChkboxDelegateUserInfo[]" value="{{Information}}" ng-checked="SelectionChkboxDelegateUserInfo.indexOf(Information) > -1"
+                                       ng-click="toggleSelectionChkboxDelegateUser(Information)"> {{Information}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div align="center" class="form-group">
+                        <input id="btnSubmitRequest" class="frmbutton" value="Submit" ng-click="submitListItem(15,$event,appForm)" type="button" />
+                        <button class="btn btn-warning" type="button" ng-click="cancelModal()">Close</button>
+                    </div>
+                    <!--<button class="btn btn-primary" type="button" ng-click="ok()">Ok</button>-->
+
+                </div>
+            </div>
+        </script>
+        <style>
+            .modal-dialog {
+                top: 20%;
+                left: 0%;
+                width: 750px;
+            }
+
+            .modal-body {
+                position: relative;
+                padding-top: 15px;
+                padding-bottom: 30px;
+                /* padding-left: 5px; */
+                padding-right: 100px;
+            }
+        </style>
+    </div>
+</body>
+</html>

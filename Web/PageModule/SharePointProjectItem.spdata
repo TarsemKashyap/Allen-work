@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ProjectItem Type="Microsoft.VisualStudio.SharePoint.Module" DefaultFile="Elements.xml" SupportedTrustLevels="All" SupportedDeploymentScopes="Web, Site" xmlns="http://schemas.microsoft.com/VisualStudio/2010/SharePointTools/SharePointProjectItemModel">
+  <Files>
+    <ProjectItemFile Source="Elements.xml" Target="PageModule\" Type="ElementManifest" />
+    <ProjectItemFile Source="UtilityService.aspx" Target="PageModule\" Type="ElementFile" />
+    <ProjectItemFile Source="UtilityDashboard.aspx" Target="PageModule\" Type="ElementFile" />
+    <ProjectItemFile Source="UtilityEnquiry.aspx" Target="PageModule\" Type="ElementFile" />
+    <ProjectItemFile Source="ITServiceRequest.aspx" Target="PageModule\" Type="ElementFile" />
+    <ProjectItemFile Source="ITServiceDashboard.aspx" Target="PageModule\" Type="ElementFile" />
+    <ProjectItemFile Source="ITServiceEnquiry.aspx" Target="PageModule\" Type="ElementFile" />
+    <ProjectItemFile Source="CRSRRequest.aspx" Target="PageModule\" Type="ElementFile" />
+    <ProjectItemFile Source="CRSREnquiry.aspx" Target="PageModule\" Type="ElementFile" />
+    <ProjectItemFile Source="CRSRDashboard.aspx" Target="PageModule\" Type="ElementFile" />
+    <ProjectItemFile Source="eRequestHome.aspx" Target="PageModule\" Type="ElementFile" />
+    <ProjectItemFile Source="CRSRAdminDashboard.aspx" Target="PageModule\" Type="ElementFile" />
+    <ProjectItemFile Source="ITAdminDashboard.aspx" Target="PageModule\" Type="ElementFile" />
+    <ProjectItemFile Source="UtilityAdminDashboard.aspx" Target="PageModule\" Type="ElementFile" />
+    <ProjectItemFile Source="SystemAccessReq.aspx" Target="PageModule\" Type="ElementFile" />
+    <ProjectItemFile Source="SystemAccessGrid.aspx" Target="PageModule\" Type="ElementFile" />
+    <ProjectItemFile Source="SystemAccessAdmin.aspx" Target="PageModule\" Type="ElementFile" />
+    <ProjectItemFile Source="HReMRAdminDashboard.aspx" Target="PageModule\" Type="ElementFile" />
+    <ProjectItemFile Source="HReMRServiceRequest.aspx" Target="PageModule\" Type="ElementFile" />
+    <ProjectItemFile Source="HReMRServiceDashboard.aspx" Target="PageModule\" Type="ElementFile" />
+    <ProjectItemFile Source="ExportExcel.aspx" Target="PageModule\" Type="ElementFile" />
+  </Files>
+</ProjectItem>

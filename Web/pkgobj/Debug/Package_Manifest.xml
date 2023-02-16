@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Solution xmlns="http://schemas.microsoft.com/sharepoint/" SolutionId="e4280fa6-5257-47f1-b101-14be226e44b8" SharePointProductVersion="16.0">
+  <FeatureManifests>
+    <FeatureManifest Location="NParkseRequest_eRequestAssetsFeatures\Feature.xml" />
+  </FeatureManifests>
+</Solution>

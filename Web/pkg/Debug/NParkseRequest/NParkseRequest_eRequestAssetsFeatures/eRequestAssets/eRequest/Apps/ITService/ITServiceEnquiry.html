@@ -1,0 +1,278 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <!-- ===== STARTER: Jquery call always top =================================================================================================== -->
+    <script src="/erequest/_catalogs/masterpage/eRequest/Apps/StyleSheet/Branding/Scripts/jquery-1.12.4.min.js"></script>
+    <!-- ===== STARTER: Custom CSS  =================================================================================================== -->
+    <link href="/erequest/_catalogs/masterpage/eRequest/Apps/StyleSheet/Branding/Css/jquery-ui.css" rel="stylesheet" />
+    <link href="/erequest/_catalogs/masterpage/eRequest/Apps/StyleSheet/Branding/Css/bootstrap.css" rel="stylesheet" />
+    <link href="/erequest/_catalogs/masterpage/eRequest/Apps/StyleSheet/Branding/Css/bootstrap-multiselect.css" rel="stylesheet" />
+    <link href="/erequest/_catalogs/masterpage/eRequest/Apps/StyleSheet/Branding/Css/fontsgoogle.css" rel="stylesheet" />
+    <link href="/erequest/_catalogs/masterpage/eRequest/Apps/StyleSheet/Branding/Css/ng-grid.min.css" rel="stylesheet" />
+    <link href="/erequest/_catalogs/masterpage/eRequest/Apps/StyleSheet/Branding/Css/style.css" rel="stylesheet" />
+
+
+    <!--<link href="/erequest/_catalogs/masterpage/eRequest/Apps/StyleSheet/Branding/Css/master.css" rel="stylesheet" />-->
+    <link href="/erequest/_catalogs/masterpage/eRequest/Apps/StyleSheet/Branding/Css/form.css" rel="stylesheet" />
+    <link href="/erequest/_catalogs/masterpage/eRequest/Apps/StyleSheet/Branding/Css/spinner.css" rel="stylesheet" />
+
+    <!-- ===== Model dialog SharePoint Scripts in AngularJS  =========================================================================================== -->
+    <SharePoint:ScriptLink ID="slSAAuto" Name="sp.ui.dialog.js" LoadAfterUI="true" Localizable="false"></SharePoint:ScriptLink>
+    <!-- ===== Scripts in AngularJS  =========================================================================================== -->
+    <script src="/erequest/_catalogs/masterpage/eRequest/Apps/StyleSheet/Branding/Scripts/jquery-ui.min.js"></script>
+    <script src="/erequest/_catalogs/masterpage/eRequest/Apps/StyleSheet/Branding/Scripts/Angular-1.7.7/angular.min.js"></script>
+    <script src="/erequest/_catalogs/masterpage/eRequest/Apps/StyleSheet/Branding/Scripts/Angular-1.7.7/angular-ui.min.js"></script>
+    <script src="/erequest/_catalogs/masterpage/eRequest/Apps/StyleSheet/Branding/Scripts//Angular-1.7.7/angular-sanitize.js"></script>
+    <script src="/erequest/_catalogs/masterpage/eRequest/Apps/StyleSheet/Branding/Scripts/Angular-1.7.7/angular-resource.js"></script>
+    <script src="/erequest/_catalogs/masterpage/eRequest/Apps/StyleSheet/Branding/Scripts/Angular-1.7.7/angular-animate.js"></script>
+    <script src="/erequest/_catalogs/masterpage/eRequest/Apps/StyleSheet/Branding/Scripts/Angular-1.7.7/angular-filter.js"></script>
+    <script src="/erequest/_catalogs/masterpage/eRequest/Apps/StyleSheet/Branding/Scripts/Angular-1.7.7/angular-material.js"></script>
+    <script src="/erequest/_catalogs/masterpage/eRequest/Apps/StyleSheet/Branding/Scripts/Angular-1.7.7/angular-touch.js"></script>
+    <script src="/erequest/_catalogs/masterpage/eRequest/Apps/StyleSheet/Branding/Scripts/Angular-1.7.7/angular-local-storage.js"></script>
+    <!-- ===== Scripts in AngularJS Support =========================================================================================== -->
+    <script src="/erequest/_catalogs/masterpage/eRequest/Apps/StyleSheet/Branding/Scripts/vfs_fonts.js"></script>
+    <script src="/erequest/_catalogs/masterpage/eRequest/Apps/StyleSheet/Branding/Scripts/ng-grid.min.js"></script>
+    <script src="/erequest/_catalogs/masterpage/eRequest/Apps/StyleSheet/Branding/Scripts/ng-table.min.js"></script>
+    <script src="/erequest/_catalogs/masterpage/eRequest/Apps/StyleSheet/Branding/Scripts/ui-bootstrap-tpls.min.js"></script>
+    <script src="/erequest/_catalogs/masterpage/eRequest/Apps/StyleSheet/Branding/Scripts/ui-bootstrap-tpls-2.5.0.js"></script>
+    <script src="/erequest/_catalogs/masterpage/eRequest/Apps/StyleSheet/Branding/Scripts/underscore.js"></script>
+    <script src="/erequest/_catalogs/masterpage/eRequest/Apps/StyleSheet/Branding/Scripts/ng-grid.debug.js"></script>
+    <script src="/erequest/_catalogs/masterpage/eRequest/Apps/StyleSheet/Branding/Scripts/ng-grid-layout.js"></script>
+    <!-- ===== Scripts in export excel Support =========================================================================================== -->
+    <script src="/erequest/_catalogs/masterpage/eRequest/Apps/StyleSheet/Branding/Scripts/table2excel.js"></script>
+
+    <!-- ===== Layout Scripts in SharePoint  =========================================================================================== -->
+    <script src="/_layouts/15/clientpeoplepicker.js"></script>
+    <script src="/_layouts/15/clienttemplates.js"></script>
+    <script src="/_layouts/15/clientforms.js"></script>
+    <script src="/_layouts/15/sp.runtime.js"></script>
+    <script src="/_layouts/15/autofill.js"></script>
+    <script src="/_layouts/15/sp.js"></script>
+
+    <script type="text/javascript" src="/_layouts/15/init.js"></script>
+    <script type="text/javascript" src="/_layouts/15/1033/strings.js"></script>
+    <script type="text/javascript" src="/_layouts/15/core.js"></script>
+
+    <!-- ===== Custom Scripts in Master  =========================================================================================== -->
+    <script src="/erequest/_catalogs/masterpage/eRequest/Apps/StyleSheet/Branding/Scripts/master.js"></script>
+    <script src="/erequest/_catalogs/masterpage/eRequest/Apps/app.js"></script>
+    <script src="/erequest/_catalogs/masterpage/eRequest/Apps/baseSvc.js"></script>
+    <script src="/erequest/_catalogs/masterpage/eRequest/Apps/commonSvc.js"></script>
+    <script src="/erequest/_catalogs/masterpage/eRequest/Apps/utility.js"></script>
+    <script src="/erequest/_catalogs/masterpage/eRequest/Apps/ITService/ITServiceEnquiryController.js"></script>
+    <script src="/erequest/_catalogs/masterpage/eRequest/Apps/ITService/ITService.js"></script>
+    <!-- ===== Date Picker-jquery-ui.css  =========================================================================================== -->    
+    <script>
+        $(function () {
+            var dateToday = new Date();
+            $("#ApplicationDate").datepicker({
+                changeMonth: true,
+                changeYear: true,              
+                dateFormat: 'dd/mm/yy'
+
+            });
+            $("#ApplicationEndDate").datepicker({
+                changeMonth: true,
+                changeYear: true,              
+                dateFormat: 'dd/mm/yy'
+            });
+        });
+    </script>
+    <style type="text/css">
+        body {
+            font-family: "Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif;
+        }
+
+        .container {
+            width: 100% !important;
+        }
+
+        label {
+            display: inline-block;
+            /* max-width: 100%; */
+            margin-bottom: 5px;
+            font-weight: 500;
+            /* text-align: left; */
+            /* font-size: 12px; */
+        }
+
+        .odd {
+            background-color: #afb5ff;
+        }
+
+        .even {
+            background-color: #ccc;
+        }
+
+        .sort-icon {
+            font-size: 9px;
+            margin-left: 5px;
+        }
+
+        th {
+            cursor: pointer;
+        }
+
+        .active {
+            color: #023509 !important
+        }
+    </style>
+</head>
+<body>
+    <div ng-app="eRequestApp">       
+        <div ng-controller="ITServiceEnquiryController" ng-init="init()">
+            <!-- Main Section -->
+            <div class="main_section p-0">
+                <div class="container-fluid">
+                    <div class="row">
+                        <!-- Left Menu Section -->
+                        <div class="col-md-2 pr-0">
+                            <div class="dasboardUI">
+                                <a target="_self" href="/erequest/Pages/ITServiceDashboard.aspx"><span><img src="/erequest/_catalogs/masterpage/eRequest/Apps/StyleSheet/Branding/Images/dashboard_icon.png" alt="" /></span>Dashboard</a>
+                                <!-- <a href="javascript:void(0);"><span><img src="images/enquiry_status_icon.png" alt="" /></span> Enquiry Status</a> -->
+                                <a target="_self" href="/erequest/Pages/ITServiceRequest.aspx">
+                                    <span><img src="/erequest/_catalogs/masterpage/eRequest/Apps/StyleSheet/Branding/Images/new_request_icon.png" alt="" /></span>
+                                    New Request
+                                </a>
+                                <a  class="active" target="_self" href="/erequest/Pages/ITServiceEnquiry.aspx">
+                                    <span><img src="/erequest/_catalogs/masterpage/eRequest/Apps/StyleSheet/Branding/Images/enquiry_status_icon.png" alt="" /></span>
+                                    Enquiry Status
+                                </a>
+                            </div>
+                        </div>
+                        <!-- End Left Menu Section -->
+                        <!-- Start Right Section -->
+                        <div class="col-md-10">
+                            <div class="right_section">
+                                <!-- <h1 class="requestH1">My Submitted Requests</h1> -->
+                                <div class="main_heading">Enquiry Status</div>
+                                <div class="requestMain">
+                                    <div class="table_tabs_section mt-0">
+                                        <div class="tab-content" id="myTabContent">
+                                            <div class="tab-pane show active" id="pending" role="tabpanel" aria-labelledby="pending-tab">
+                                                <div class="table_tabs_section mt-0 dashboardButtonMain">
+                                                    <div class="row">
+                                                        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                                                            <div class="form-group">
+                                                                <label for="">Application ID</label>
+                                                                <input ng-model="appProperties.ApplicationID" type="text" class="form-control" name="Title" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                                                            <div class="form-group">
+                                                                <label for="">Work Area</label>
+                                                                <select name="ddlWorkArea" id="ddlWorkArea" class="form-control" ng-model="appProperties.WorkAreaCode" required>
+                                                                    <option ng-repeat="item in appProperties.WorkAreaMaster" ng-selected="appProperties.WorkAreaCode == item.WorkAreaCode" value="{{item.WorkAreaCode}}">{{item.Title}}</option>
+                                                                    <option value="">--Select--</option>
+                                                                </select>
+                                                                <span class="redColor" ng-show="appForm.ddlWorkArea.$invalid && appForm.ddlWorkArea.$touched">Work Area is Required.</span>
+                                                            </div>                                                          
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                                                            <div class="form-group">
+                                                                <label for="">Type of Request</label>
+                                                                <select name="ddlRequestType" id="ddlRequestType" class="form-control" ng-model="appProperties.RequestTypeCode" required>
+                                                                    <option ng-repeat="item in appProperties.RequestTypeMaster" ng-selected="appProperties.RequestTypeCode == item.RequestTypeCode" value="{{item.RequestTypeCode}}">{{item.Title}}</option>
+                                                                    <option value="">--Select--</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                                                            <div class="form-group">
+                                                                <label for="">From Date</label>
+                                                                <input type="text" name="ApplicationDate" placeholder="DD/MM/YYYY" ng-model="appProperties.ApplicationDate"  id="ApplicationDate" class="form-control" required>
+                                                                <!--<input class="datepicker form-control" placeholder="DD/MM/YYYY" name="ApplicationDate" id="StartDate" />-->
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                                                            <div class="form-group">
+                                                                <label for="">To Date</label>
+                                                                <input class="form-control" placeholder="DD/MM/YYYY" ng-model="appProperties.ApplicationEndDate"  name="ApplicationEndDate" id="ApplicationEndDate" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                                                            <div class="form-group">
+                                                                <label for="">Application Status</label>
+                                                                <select id="ApplicationStatus" ng-model="appProperties.ApplicationStatus" class="form-control" name="Status">
+                                                                    <option value="Pending">Pending</option>
+                                                                    <option value="Approved">Approved</option>
+                                                                    <option value="Rejected">Rejected</option>
+                                                                    <option ng-selected="" value="">--Select--</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            <input class="btn btn-default searchleftalign" ng-click="search()" value="Search" type="button" id="SearchDetails" />                                                                
+                                                           
+                                                            <input class="btn btn-default searchleftalign" value="Clear" type="button" id="ClearFilter" /> 
+                                                        </div>                                                      
+                                                    </div>
+                                                    <!-- Filter button Starts Here -->                                                    
+                                                    <table class="table  table-hover data-table myTable">
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="ID" custom-sort order="'ID'" sort="sort">ApplicationID</th>
+                                                                <th class="Author.Title" custom-sort order="'Author.Title'" sort="sort">Requester</th>
+                                                                <th class="WorkAreaCode" custom-sort order="'WorkAreaCode'" sort="sort">Work Area</th>
+                                                                <th class="RequestTypeCode" custom-sort order="'RequestTypeCode'" sort="sort">RequestType</th>
+                                                                <th class="Created" custom-sort order="'Created'" sort="sort">Created</th>
+                                                                <th class="WorkAreaCode" custom-sort order="'WorkAreaCode'" sort="sort">Application Status</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr ng-repeat="item in pagedItems[currentPage] |orderBy:sort.sortingOrder:sort.reverse" ng-class-odd="'odd'" ng-class-even="'even'">
+                                                                <td><a target="_self" href="/erequest/Pages/ITServiceRequest.aspx?ReqId={{item.ID}}">{{item.ApplicationID}}</a></td>
+                                                                <td>{{item.Author.Title}}</td>
+                                                                <td>{{item.WorkFlowCode}}</td>
+                                                                <td>{{item.RequestTypeCode}}</td>
+                                                                <td>{{item.Created | date : 'dd/MM/yyyy'}}</td>
+                                                                <td>{{getStatus(item.ApplicationStatus)}}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                        <tfoot>
+                                                            <tr ng-show="pagedItems.length>0">
+                                                                <td colspan="6">
+                                                                    <div class="pull-right">
+                                                                        <ul class="pagination">
+                                                                            <li ng-class="{disabled: currentPage == 0}">
+                                                                                <a href="#" ng-click="prevPage()">« Prev</a>
+                                                                            </li>
+                                                                            <li ng-repeat="n in range(pagedItems.length, currentPage, currentPage + gap) " ng-class="{active: n == currentPage}" ng-click="$parent.currentPage = n;">
+                                                                                <a href="#" ng-bind="n + 1">1</a>
+                                                                            </li>
+
+                                                                            <li ng-class="{disabled: (currentPage) == pagedItems.length - 1}">
+                                                                                <a href="#" ng-click="nextPage()">Next »</a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="6">
+                                                                    <span ng-hide="pagedItems.length>0">No records found</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tfoot>
+                                                    </table>
+                                                    <!-- Filter button ends here-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End of Right Section -->
+                    </div>
+                </div>
+            </div>
+            <!-- Main Section -->  
+            <div ng-show="loaded" class="loading">Loading&#8230;</div>
+        </div>
+    </div>    
+</body>
+</html>
