@@ -16,8 +16,6 @@ public class DbContext : IDisposable
 
     public async Task InsertData(IAsyncEnumerable<EmployeeModel> list)
     {
-        await OpenConnection();
-
         await foreach (var item in list)
         {
             if (await AlreadyExists(item.UserId))
@@ -40,7 +38,6 @@ public class DbContext : IDisposable
 
     private async Task InsertAsync(EmployeeModel item)
     {
-        await OpenConnection();
         string insertQuery = @"
                    INSERT INTO [dbo].[Employee] (
                      UserId
@@ -107,6 +104,8 @@ public class DbContext : IDisposable
                     ,@CreatedDate
                     ,@ModifiedDate
                     )";
+        item.CreatedDate = DateTime.Now;
+        item.ModifiedDate = DateTime.Now;
         var valueObject = QueryParams(item);
         await _sqlcon.ExecuteAsync(insertQuery, valueObject);
     }
@@ -149,15 +148,10 @@ public class DbContext : IDisposable
         };
     }
 
-    public async Task OpenConnection()
-    {
-        // if (_sqlcon.State != System.Data.ConnectionState.Open)
-        //     await _sqlcon.OpenAsync();
-    }
+
 
     private async Task UpdateDataAsync(EmployeeModel record)
     {
-        await OpenConnection();
         string updateQuery = @"
                 UPDATE [Employee]
                     SET 
@@ -188,7 +182,8 @@ public class DbContext : IDisposable
                         [CLUSTERCODE] = @CLUSTERCODE,
                         [BOARDNAME] = @BOARDNAME,
                         [BOARDCODE] = @BOARDCODE,
-                        TERMINATIONDATE = @TERMINATIONDATE
+                        TERMINATIONDATE = @TERMINATIONDATE,
+                        ModifiedDate=@ModifiedDate
                         WHERE [UserId] = @UserId
         ";
         record.ModifiedDate = DateTime.Now;
@@ -199,7 +194,6 @@ public class DbContext : IDisposable
 
     private async Task<bool> AlreadyExists(string userId)
     {
-        await OpenConnection();
 
         const string userExists = "select 1 from employee where userId=@userId";
         return _sqlcon.ExecuteScalar<bool>(userExists, new { userId = userId });

@@ -35,8 +35,6 @@ public static class Util
             BOARDNAME = HttpUtility.HtmlDecode(dto.BOARDNAME),
             BOARDCODE = HttpUtility.HtmlDecode(dto.BOARDCODE),
             TERMINATIONDATE = dto.TERMINATIONDATE.Trim() == "" ? null : ParseDate(dto.TERMINATIONDATE),
-            CreatedDate = DateTime.Now,
-            ModifiedDate = DateTime.Now
         };
 
     }

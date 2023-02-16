@@ -15,7 +15,8 @@ internal class Program
         {
             IConfiguration config = new ConfigurationBuilder()
               .SetBasePath(Directory.GetCurrentDirectory()) //From NuGet Package Microsoft.Extensions.Configuration.Json
-              .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+              .AddJsonFile("appsettings.json",false,true)
+              
               .Build();
 
           
