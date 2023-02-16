@@ -1,0 +1,818 @@
+﻿<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Module Name="PageModule" Url="Pages">
+    <File Path="PageModule\UtilityService.aspx" Url="UtilityService.aspx" Type="GhostableInLibrary" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Level="Published">
+      <AllUsersWebPart WebPartOrder ="6" WebPartZoneID ="UtilityServiceWP">
+        <![CDATA[
+        <WebPart xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/WebPart/v2">
+  <Title>Content Editor Testing</Title>
+  <FrameType>None</FrameType>
+  <Description>Allows authors to enter rich text content.</Description>
+  <IsIncluded>true</IsIncluded>
+  <ZoneID>deptCalendarEventWP</ZoneID>
+  <PartOrder>0</PartOrder>
+  <FrameState>Normal</FrameState>
+  <Height />
+  <Width />
+  <AllowRemove>true</AllowRemove>
+  <AllowZoneChange>true</AllowZoneChange>
+  <AllowMinimize>true</AllowMinimize>
+  <AllowConnect>true</AllowConnect>
+  <AllowEdit>true</AllowEdit>
+  <AllowHide>true</AllowHide>
+  <IsVisible>true</IsVisible>
+  <DetailLink />
+  <HelpLink />
+  <HelpMode>Modeless</HelpMode>
+  <Dir>Default</Dir>
+  <PartImageSmall />
+  <MissingAssembly>Cannot import this Web Part.</MissingAssembly>
+  <PartImageLarge>/_layouts/images/mscontl.gif</PartImageLarge>
+  <IsIncludedFilter />
+  <Assembly>Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c</Assembly>
+  <TypeName>Microsoft.SharePoint.WebPartPages.ContentEditorWebPart</TypeName> 
+  <ContentLink xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor">/erequest/_catalogs/masterpage/eRequest/Apps/Utility/UtilityServiceRequest.html</ContentLink>  
+  <PartStorage xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor" />
+</WebPart>
+]]>
+      </AllUsersWebPart>
+      <Property Name="Title" Value="$Resources:cmscore,Welcome Page;" />
+      <Property Name="MasterPageDescription" Value="$Resources:cmscore,PageLayout_BlankWebPartPage_Description;" />
+      <Property Name="ContentType" Value="$Resources:cmscore,Page Layout;" />
+      <Property Name="PublishingPreviewImage" Value="~SiteCollection/_catalogs/masterpage/$Resources:core,Culture;/Preview Images/BlankWebPartPage.png, ~SiteCollection/_catalogs/masterpage/$Resources:core,Culture;/Preview Images/BlankWebPartPage.png" />
+      <Property Name="PublishingAssociatedContentType" Value=";#$Resources:cmscore,contenttype_welcomepage_name;;#0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF390064DEA0F50FC8C147B0B6EA0636C4A7D4;#" />
+
+    </File>
+    <File Path="PageModule\UtilityDashboard.aspx" Url="UtilityDashboard.aspx" Type="GhostableInLibrary" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Level="Published">
+      <AllUsersWebPart WebPartOrder ="6" WebPartZoneID ="UtilityDashboard">
+        <![CDATA[
+        <WebPart xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/WebPart/v2">
+  <Title>Content Editor Testing</Title>
+  <FrameType>None</FrameType>
+  <Description>Allows authors to enter rich text content.</Description>
+  <IsIncluded>true</IsIncluded>
+  <ZoneID>deptCalendarEventWP</ZoneID>
+  <PartOrder>0</PartOrder>
+  <FrameState>Normal</FrameState>
+  <Height />
+  <Width />
+  <AllowRemove>true</AllowRemove>
+  <AllowZoneChange>true</AllowZoneChange>
+  <AllowMinimize>true</AllowMinimize>
+  <AllowConnect>true</AllowConnect>
+  <AllowEdit>true</AllowEdit>
+  <AllowHide>true</AllowHide>
+  <IsVisible>true</IsVisible>
+  <DetailLink />
+  <HelpLink />
+  <HelpMode>Modeless</HelpMode>
+  <Dir>Default</Dir>
+  <PartImageSmall />
+  <MissingAssembly>Cannot import this Web Part.</MissingAssembly>
+  <PartImageLarge>/_layouts/images/mscontl.gif</PartImageLarge>
+  <IsIncludedFilter />
+  <Assembly>Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c</Assembly>
+  <TypeName>Microsoft.SharePoint.WebPartPages.ContentEditorWebPart</TypeName> 
+  <ContentLink xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor">/erequest/_catalogs/masterpage/eRequest/Apps/Utility/UtilityDashboard.html</ContentLink>  
+  <PartStorage xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor" />
+</WebPart>
+]]>
+      </AllUsersWebPart>
+      <Property Name="Title" Value="$Resources:cmscore,Welcome Page;" />
+      <Property Name="ContentType" Value="$Resources:cmscore,Page Layout;" />
+      <Property Name="PublishingPreviewImage" Value="~SiteCollection/_catalogs/masterpage/$Resources:core,Culture;/Preview Images/BlankWebPartPage.png, ~SiteCollection/_catalogs/masterpage/$Resources:core,Culture;/Preview Images/BlankWebPartPage.png" />
+      <Property Name="PublishingAssociatedContentType" Value=";#$Resources:cmscore,contenttype_welcomepage_name;;#0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF390064DEA0F50FC8C147B0B6EA0636C4A7D4;#" />
+    </File>
+    <File Path="PageModule\UtilityEnquiry.aspx" Url="UtilityEnquiry.aspx" Type="GhostableInLibrary" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Level="Published">
+      <AllUsersWebPart WebPartOrder ="6" WebPartZoneID ="UtilityEnquiry">
+        <![CDATA[
+        <WebPart xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/WebPart/v2">
+  <Title>Content Editor Testing</Title>
+  <FrameType>None</FrameType>
+  <Description>Allows authors to enter rich text content.</Description>
+  <IsIncluded>true</IsIncluded>
+  <ZoneID>deptCalendarEventWP</ZoneID>
+  <PartOrder>0</PartOrder>
+  <FrameState>Normal</FrameState>
+  <Height />
+  <Width />
+  <AllowRemove>true</AllowRemove>
+  <AllowZoneChange>true</AllowZoneChange>
+  <AllowMinimize>true</AllowMinimize>
+  <AllowConnect>true</AllowConnect>
+  <AllowEdit>true</AllowEdit>
+  <AllowHide>true</AllowHide>
+  <IsVisible>true</IsVisible>
+  <DetailLink />
+  <HelpLink />
+  <HelpMode>Modeless</HelpMode>
+  <Dir>Default</Dir>
+  <PartImageSmall />
+  <MissingAssembly>Cannot import this Web Part.</MissingAssembly>
+  <PartImageLarge>/_layouts/images/mscontl.gif</PartImageLarge>
+  <IsIncludedFilter />
+  <Assembly>Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c</Assembly>
+  <TypeName>Microsoft.SharePoint.WebPartPages.ContentEditorWebPart</TypeName> 
+  <ContentLink xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor">/erequest/_catalogs/masterpage/eRequest/Apps/Utility/UtilityEnquiry.html</ContentLink>  
+  <PartStorage xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor" />
+</WebPart>
+]]>
+      </AllUsersWebPart>
+      <Property Name="Title" Value="Layout Intranet Home"></Property>
+      <Property Name="PublishingAssociatedContentType" Value=";#$Resources:cmscore,contenttype_articlepage_name;#0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF39002211F99918BD4D80B8E1DEF7585F0F9A;#" ></Property>
+      <Property Name="ContentType" Value="$Resources:cmscore,contenttype_pagelayout_name;"></Property>
+    </File>
+    <File Path="PageModule\ITServiceRequest.aspx" Url="ITServiceRequest.aspx" Type="GhostableInLibrary" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Level="Published">
+      <AllUsersWebPart WebPartOrder ="6" WebPartZoneID ="ITServiceRequestWP">
+        <![CDATA[
+        <WebPart xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/WebPart/v2">
+  <Title>Content Editor Testing</Title>
+  <FrameType>None</FrameType>
+  <Description>Allows authors to enter rich text content.</Description>
+  <IsIncluded>true</IsIncluded>
+  <ZoneID>deptCalendarEventWP</ZoneID>
+  <PartOrder>0</PartOrder>
+  <FrameState>Normal</FrameState>
+  <Height />
+  <Width />
+  <AllowRemove>true</AllowRemove>
+  <AllowZoneChange>true</AllowZoneChange>
+  <AllowMinimize>true</AllowMinimize>
+  <AllowConnect>true</AllowConnect>
+  <AllowEdit>true</AllowEdit>
+  <AllowHide>true</AllowHide>
+  <IsVisible>true</IsVisible>
+  <DetailLink />
+  <HelpLink />
+  <HelpMode>Modeless</HelpMode>
+  <Dir>Default</Dir>
+  <PartImageSmall />
+  <MissingAssembly>Cannot import this Web Part.</MissingAssembly>
+  <PartImageLarge>/_layouts/images/mscontl.gif</PartImageLarge>
+  <IsIncludedFilter />
+  <Assembly>Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c</Assembly>
+  <TypeName>Microsoft.SharePoint.WebPartPages.ContentEditorWebPart</TypeName> 
+  <ContentLink xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor">/erequest/_catalogs/masterpage/eRequest/Apps/ITService/ITServiceRequest.html</ContentLink>  
+  <PartStorage xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor" />
+</WebPart>
+]]>
+      </AllUsersWebPart>
+      <Property Name="Title" Value="Layout Intranet Home"></Property>
+      <Property Name="PublishingAssociatedContentType" Value=";#$Resources:cmscore,contenttype_articlepage_name;#0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF39002211F99918BD4D80B8E1DEF7585F0F9A;#" ></Property>
+      <Property Name="ContentType" Value="$Resources:cmscore,contenttype_pagelayout_name;"></Property>
+    </File>
+    <File Path="PageModule\ITServiceDashboard.aspx" Url="ITServiceDashboard.aspx" Type="GhostableInLibrary" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Level="Published">
+      <AllUsersWebPart WebPartOrder ="6" WebPartZoneID ="ITServiceDashboardWP">
+        <![CDATA[
+        <WebPart xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/WebPart/v2">
+  <Title>Content Editor Testing</Title>
+  <FrameType>None</FrameType>
+  <Description>Allows authors to enter rich text content.</Description>
+  <IsIncluded>true</IsIncluded>
+  <ZoneID>deptCalendarEventWP</ZoneID>
+  <PartOrder>0</PartOrder>
+  <FrameState>Normal</FrameState>
+  <Height />
+  <Width />
+  <AllowRemove>true</AllowRemove>
+  <AllowZoneChange>true</AllowZoneChange>
+  <AllowMinimize>true</AllowMinimize>
+  <AllowConnect>true</AllowConnect>
+  <AllowEdit>true</AllowEdit>
+  <AllowHide>true</AllowHide>
+  <IsVisible>true</IsVisible>
+  <DetailLink />
+  <HelpLink />
+  <HelpMode>Modeless</HelpMode>
+  <Dir>Default</Dir>
+  <PartImageSmall />
+  <MissingAssembly>Cannot import this Web Part.</MissingAssembly>
+  <PartImageLarge>/_layouts/images/mscontl.gif</PartImageLarge>
+  <IsIncludedFilter />
+  <Assembly>Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c</Assembly>
+  <TypeName>Microsoft.SharePoint.WebPartPages.ContentEditorWebPart</TypeName> 
+  <ContentLink xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor">/erequest/_catalogs/masterpage/eRequest/Apps/ITService/ITServiceDashboard.html</ContentLink>  
+  <PartStorage xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor" />
+</WebPart>
+]]>
+      </AllUsersWebPart>
+      <Property Name="Title" Value="Layout Intranet Home"></Property>
+      <Property Name="PublishingAssociatedContentType" Value=";#$Resources:cmscore,contenttype_articlepage_name;#0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF39002211F99918BD4D80B8E1DEF7585F0F9A;#" ></Property>
+      <Property Name="ContentType" Value="$Resources:cmscore,contenttype_pagelayout_name;"></Property>
+    </File>
+    <File Path="PageModule\ITServiceEnquiry.aspx" Url="ITServiceEnquiry.aspx" Type="GhostableInLibrary" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Level="Published">
+      <AllUsersWebPart WebPartOrder ="6" WebPartZoneID ="ITServiceEnquiryWP">
+        <![CDATA[
+        <WebPart xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/WebPart/v2">
+  <Title>Content Editor Testing</Title>
+  <FrameType>None</FrameType>
+  <Description>Allows authors to enter rich text content.</Description>
+  <IsIncluded>true</IsIncluded>
+  <ZoneID>deptCalendarEventWP</ZoneID>
+  <PartOrder>0</PartOrder>
+  <FrameState>Normal</FrameState>
+  <Height />
+  <Width />
+  <AllowRemove>true</AllowRemove>
+  <AllowZoneChange>true</AllowZoneChange>
+  <AllowMinimize>true</AllowMinimize>
+  <AllowConnect>true</AllowConnect>
+  <AllowEdit>true</AllowEdit>
+  <AllowHide>true</AllowHide>
+  <IsVisible>true</IsVisible>
+  <DetailLink />
+  <HelpLink />
+  <HelpMode>Modeless</HelpMode>
+  <Dir>Default</Dir>
+  <PartImageSmall />
+  <MissingAssembly>Cannot import this Web Part.</MissingAssembly>
+  <PartImageLarge>/_layouts/images/mscontl.gif</PartImageLarge>
+  <IsIncludedFilter />
+  <Assembly>Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c</Assembly>
+  <TypeName>Microsoft.SharePoint.WebPartPages.ContentEditorWebPart</TypeName> 
+  <ContentLink xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor">/erequest/_catalogs/masterpage/eRequest/Apps/ITService/ITServiceEnquiry.html</ContentLink>  
+  <PartStorage xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor" />
+</WebPart>
+]]>
+      </AllUsersWebPart>
+      <Property Name="Title" Value="Layout Intranet Home"></Property>
+      <Property Name="PublishingAssociatedContentType" Value=";#$Resources:cmscore,contenttype_articlepage_name;#0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF39002211F99918BD4D80B8E1DEF7585F0F9A;#" ></Property>
+      <Property Name="ContentType" Value="$Resources:cmscore,contenttype_pagelayout_name;"></Property>
+    </File>
+    <File Path="PageModule\CRSRRequest.aspx" Url="CRSRRequest.aspx" Type="GhostableInLibrary" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Level="Published">
+      <AllUsersWebPart WebPartOrder ="6" WebPartZoneID ="CRServiceRequestWP">
+        <![CDATA[
+        <WebPart xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/WebPart/v2">
+  <Title>Content Editor Testing</Title>
+  <FrameType>None</FrameType>
+  <Description>Allows authors to enter rich text content.</Description>
+  <IsIncluded>true</IsIncluded>
+  <ZoneID>deptCalendarEventWP</ZoneID>
+  <PartOrder>0</PartOrder>
+  <FrameState>Normal</FrameState>
+  <Height />
+  <Width />
+  <AllowRemove>true</AllowRemove>
+  <AllowZoneChange>true</AllowZoneChange>
+  <AllowMinimize>true</AllowMinimize>
+  <AllowConnect>true</AllowConnect>
+  <AllowEdit>true</AllowEdit>
+  <AllowHide>true</AllowHide>
+  <IsVisible>true</IsVisible>
+  <DetailLink />
+  <HelpLink />
+  <HelpMode>Modeless</HelpMode>
+  <Dir>Default</Dir>
+  <PartImageSmall />
+  <MissingAssembly>Cannot import this Web Part.</MissingAssembly>
+  <PartImageLarge>/_layouts/images/mscontl.gif</PartImageLarge>
+  <IsIncludedFilter />
+  <Assembly>Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c</Assembly>
+  <TypeName>Microsoft.SharePoint.WebPartPages.ContentEditorWebPart</TypeName> 
+  <ContentLink xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor">/erequest/_catalogs/masterpage/eRequest/Apps/CRSR/CRSRRequest.html</ContentLink>  
+  <PartStorage xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor" />
+</WebPart>
+]]>
+      </AllUsersWebPart>
+      <Property Name="Title" Value="Layout Intranet Home"></Property>
+      <Property Name="PublishingAssociatedContentType" Value=";#$Resources:cmscore,contenttype_articlepage_name;#0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF39002211F99918BD4D80B8E1DEF7585F0F9A;#" ></Property>
+      <Property Name="ContentType" Value="$Resources:cmscore,contenttype_pagelayout_name;"></Property>
+    </File>
+    <File Path="PageModule\CRSREnquiry.aspx" Url="CRSREnquiry.aspx" Type="GhostableInLibrary" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Level="Published">
+      <AllUsersWebPart WebPartOrder ="6" WebPartZoneID ="CRServiceEnquiryWP">
+        <![CDATA[
+        <WebPart xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/WebPart/v2">
+  <Title>Content Editor Testing</Title>
+  <FrameType>None</FrameType>
+  <Description>Allows authors to enter rich text content.</Description>
+  <IsIncluded>true</IsIncluded>
+  <ZoneID>deptCalendarEventWP</ZoneID>
+  <PartOrder>0</PartOrder>
+  <FrameState>Normal</FrameState>
+  <Height />
+  <Width />
+  <AllowRemove>true</AllowRemove>
+  <AllowZoneChange>true</AllowZoneChange>
+  <AllowMinimize>true</AllowMinimize>
+  <AllowConnect>true</AllowConnect>
+  <AllowEdit>true</AllowEdit>
+  <AllowHide>true</AllowHide>
+  <IsVisible>true</IsVisible>
+  <DetailLink />
+  <HelpLink />
+  <HelpMode>Modeless</HelpMode>
+  <Dir>Default</Dir>
+  <PartImageSmall />
+  <MissingAssembly>Cannot import this Web Part.</MissingAssembly>
+  <PartImageLarge>/_layouts/images/mscontl.gif</PartImageLarge>
+  <IsIncludedFilter />
+  <Assembly>Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c</Assembly>
+  <TypeName>Microsoft.SharePoint.WebPartPages.ContentEditorWebPart</TypeName> 
+  <ContentLink xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor">/erequest/_catalogs/masterpage/eRequest/Apps/CRSR/CRSREnquiry.html</ContentLink>  
+  <PartStorage xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor" />
+</WebPart>
+]]>
+      </AllUsersWebPart>
+      <Property Name="Title" Value="Layout Intranet Home"></Property>
+      <Property Name="PublishingAssociatedContentType" Value=";#$Resources:cmscore,contenttype_articlepage_name;#0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF39002211F99918BD4D80B8E1DEF7585F0F9A;#" ></Property>
+      <Property Name="ContentType" Value="$Resources:cmscore,contenttype_pagelayout_name;"></Property>
+    </File>
+    <File Path="PageModule\CRSRDashboard.aspx" Url="CRSRDashboard.aspx" Type="GhostableInLibrary" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Level="Published">
+      <AllUsersWebPart WebPartOrder ="6" WebPartZoneID ="CRServiceDashboardWP">
+        <![CDATA[
+        <WebPart xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/WebPart/v2">
+  <Title>Content Editor Testing</Title>
+  <FrameType>None</FrameType>
+  <Description>Allows authors to enter rich text content.</Description>
+  <IsIncluded>true</IsIncluded>
+  <ZoneID>deptCalendarEventWP</ZoneID>
+  <PartOrder>0</PartOrder>
+  <FrameState>Normal</FrameState>
+  <Height />
+  <Width />
+  <AllowRemove>true</AllowRemove>
+  <AllowZoneChange>true</AllowZoneChange>
+  <AllowMinimize>true</AllowMinimize>
+  <AllowConnect>true</AllowConnect>
+  <AllowEdit>true</AllowEdit>
+  <AllowHide>true</AllowHide>
+  <IsVisible>true</IsVisible>
+  <DetailLink />
+  <HelpLink />
+  <HelpMode>Modeless</HelpMode>
+  <Dir>Default</Dir>
+  <PartImageSmall />
+  <MissingAssembly>Cannot import this Web Part.</MissingAssembly>
+  <PartImageLarge>/_layouts/images/mscontl.gif</PartImageLarge>
+  <IsIncludedFilter />
+  <Assembly>Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c</Assembly>
+  <TypeName>Microsoft.SharePoint.WebPartPages.ContentEditorWebPart</TypeName> 
+  <ContentLink xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor">/erequest/_catalogs/masterpage/eRequest/Apps/CRSR/CRSRDashboard.html</ContentLink>  
+  <PartStorage xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor" />
+</WebPart>
+]]>
+      </AllUsersWebPart>
+      <Property Name="Title" Value="Layout Intranet Home"></Property>
+      <Property Name="PublishingAssociatedContentType" Value=";#$Resources:cmscore,contenttype_articlepage_name;#0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF39002211F99918BD4D80B8E1DEF7585F0F9A;#" ></Property>
+      <Property Name="ContentType" Value="$Resources:cmscore,contenttype_pagelayout_name;"></Property>
+    </File>
+    <File Path="PageModule\eRequestHome.aspx" Url="eRequestHome.aspx" Type="GhostableInLibrary" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Level="Published">
+      <AllUsersWebPart WebPartOrder ="6" WebPartZoneID ="eRequestHomeWP">
+        <![CDATA[
+        <WebPart xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/WebPart/v2">
+  <Title>Content Editor Testing</Title>
+  <FrameType>None</FrameType>
+  <Description>Allows authors to enter rich text content.</Description>
+  <IsIncluded>true</IsIncluded>
+  <ZoneID>deptCalendarEventWP</ZoneID>
+  <PartOrder>0</PartOrder>
+  <FrameState>Normal</FrameState>
+  <Height />
+  <Width />
+  <AllowRemove>true</AllowRemove>
+  <AllowZoneChange>true</AllowZoneChange>
+  <AllowMinimize>true</AllowMinimize>
+  <AllowConnect>true</AllowConnect>
+  <AllowEdit>true</AllowEdit>
+  <AllowHide>true</AllowHide>
+  <IsVisible>true</IsVisible>
+  <DetailLink />
+  <HelpLink />
+  <HelpMode>Modeless</HelpMode>
+  <Dir>Default</Dir>
+  <PartImageSmall />
+  <MissingAssembly>Cannot import this Web Part.</MissingAssembly>
+  <PartImageLarge>/_layouts/images/mscontl.gif</PartImageLarge>
+  <IsIncludedFilter />
+  <Assembly>Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c</Assembly>
+  <TypeName>Microsoft.SharePoint.WebPartPages.ContentEditorWebPart</TypeName> 
+  <ContentLink xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor">/erequest/_catalogs/masterpage/eRequest/Apps/Home/eRequestHome.html</ContentLink>  
+  <PartStorage xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor" />
+</WebPart>
+]]>
+
+
+      </AllUsersWebPart>
+      <Property Name="Title" Value="Layout Intranet Home"></Property>
+      <Property Name="PublishingAssociatedContentType" Value=";#$Resources:cmscore,contenttype_articlepage_name;#0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF39002211F99918BD4D80B8E1DEF7585F0F9A;#" ></Property>
+      <Property Name="ContentType" Value="$Resources:cmscore,contenttype_pagelayout_name;"></Property>
+    </File>
+    <File Path="PageModule\CRSRAdminDashboard.aspx" Url="CRSRAdminDashboard.aspx" Type="GhostableInLibrary" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Level="Published">
+      <AllUsersWebPart WebPartOrder ="6" WebPartZoneID ="AdminCRSRDashboardWP">
+        <![CDATA[
+        <WebPart xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/WebPart/v2">
+  <Title>Content Editor Testing</Title>
+  <FrameType>None</FrameType>
+  <Description>Allows authors to enter rich text content.</Description>
+  <IsIncluded>true</IsIncluded>
+  <ZoneID>deptCalendarEventWP</ZoneID>
+  <PartOrder>0</PartOrder>
+  <FrameState>Normal</FrameState>
+  <Height />
+  <Width />
+  <AllowRemove>true</AllowRemove>
+  <AllowZoneChange>true</AllowZoneChange>
+  <AllowMinimize>true</AllowMinimize>
+  <AllowConnect>true</AllowConnect>
+  <AllowEdit>true</AllowEdit>
+  <AllowHide>true</AllowHide>
+  <IsVisible>true</IsVisible>
+  <DetailLink />
+  <HelpLink />
+  <HelpMode>Modeless</HelpMode>
+  <Dir>Default</Dir>
+  <PartImageSmall />
+  <MissingAssembly>Cannot import this Web Part.</MissingAssembly>
+  <PartImageLarge>/_layouts/images/mscontl.gif</PartImageLarge>
+  <IsIncludedFilter />
+  <Assembly>Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c</Assembly>
+  <TypeName>Microsoft.SharePoint.WebPartPages.ContentEditorWebPart</TypeName> 
+  <ContentLink xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor">/erequest/_catalogs/masterpage/eRequest/Apps/Admin/CRSRAdminDashboard.html</ContentLink>  
+  <PartStorage xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor" />
+</WebPart>
+]]>
+
+
+      </AllUsersWebPart>
+      <Property Name="Title" Value="Layout Intranet Home"></Property>
+      <Property Name="PublishingAssociatedContentType" Value=";#$Resources:cmscore,contenttype_articlepage_name;#0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF39002211F99918BD4D80B8E1DEF7585F0F9A;#" ></Property>
+      <Property Name="ContentType" Value="$Resources:cmscore,contenttype_pagelayout_name;"></Property>
+    </File>
+    <File Path="PageModule\ITAdminDashboard.aspx" Url="ITAdminDashboard.aspx" Type="GhostableInLibrary" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Level="Published">
+            <AllUsersWebPart WebPartOrder ="6" WebPartZoneID ="ITAdminDashboardWP">
+        <![CDATA[
+        <WebPart xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/WebPart/v2">
+  <Title>Content Editor Testing</Title>
+  <FrameType>None</FrameType>
+  <Description>Allows authors to enter rich text content.</Description>
+  <IsIncluded>true</IsIncluded>
+  <ZoneID>deptCalendarEventWP</ZoneID>
+  <PartOrder>0</PartOrder>
+  <FrameState>Normal</FrameState>
+  <Height />
+  <Width />
+  <AllowRemove>true</AllowRemove>
+  <AllowZoneChange>true</AllowZoneChange>
+  <AllowMinimize>true</AllowMinimize>
+  <AllowConnect>true</AllowConnect>
+  <AllowEdit>true</AllowEdit>
+  <AllowHide>true</AllowHide>
+  <IsVisible>true</IsVisible>
+  <DetailLink />
+  <HelpLink />
+  <HelpMode>Modeless</HelpMode>
+  <Dir>Default</Dir>
+  <PartImageSmall />
+  <MissingAssembly>Cannot import this Web Part.</MissingAssembly>
+  <PartImageLarge>/_layouts/images/mscontl.gif</PartImageLarge>
+  <IsIncludedFilter />
+  <Assembly>Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c</Assembly>
+  <TypeName>Microsoft.SharePoint.WebPartPages.ContentEditorWebPart</TypeName> 
+  <ContentLink xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor">/erequest/_catalogs/masterpage/eRequest/Apps/Admin/ITAdminDashboard.html</ContentLink>  
+  <PartStorage xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor" />
+</WebPart>
+]]>
+
+
+      </AllUsersWebPart>
+      <Property Name="Title" Value="Layout Intranet Home"></Property>
+      <Property Name="PublishingAssociatedContentType" Value=";#$Resources:cmscore,contenttype_articlepage_name;#0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF39002211F99918BD4D80B8E1DEF7585F0F9A;#" ></Property>
+      <Property Name="ContentType" Value="$Resources:cmscore,contenttype_pagelayout_name;"></Property>
+    </File>
+    <File Path="PageModule\UtilityAdminDashboard.aspx" Url="UtilityAdminDashboard.aspx" Type="GhostableInLibrary" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Level="Published">
+            <AllUsersWebPart WebPartOrder ="6" WebPartZoneID ="UtilityAdminDashboardWP">
+        <![CDATA[
+        <WebPart xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/WebPart/v2">
+  <Title>Content Editor Testing</Title>
+  <FrameType>None</FrameType>
+  <Description>Allows authors to enter rich text content.</Description>
+  <IsIncluded>true</IsIncluded>
+  <ZoneID>deptCalendarEventWP</ZoneID>
+  <PartOrder>0</PartOrder>
+  <FrameState>Normal</FrameState>
+  <Height />
+  <Width />
+  <AllowRemove>true</AllowRemove>
+  <AllowZoneChange>true</AllowZoneChange>
+  <AllowMinimize>true</AllowMinimize>
+  <AllowConnect>true</AllowConnect>
+  <AllowEdit>true</AllowEdit>
+  <AllowHide>true</AllowHide>
+  <IsVisible>true</IsVisible>
+  <DetailLink />
+  <HelpLink />
+  <HelpMode>Modeless</HelpMode>
+  <Dir>Default</Dir>
+  <PartImageSmall />
+  <MissingAssembly>Cannot import this Web Part.</MissingAssembly>
+  <PartImageLarge>/_layouts/images/mscontl.gif</PartImageLarge>
+  <IsIncludedFilter />
+  <Assembly>Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c</Assembly>
+  <TypeName>Microsoft.SharePoint.WebPartPages.ContentEditorWebPart</TypeName> 
+  <ContentLink xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor">/erequest/_catalogs/masterpage/eRequest/Apps/Admin/UtilityAdminDashboard.html</ContentLink>  
+  <PartStorage xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor" />
+</WebPart>
+]]>
+
+
+      </AllUsersWebPart>
+      <Property Name="Title" Value="Layout Intranet Home"></Property>
+      <Property Name="PublishingAssociatedContentType" Value=";#$Resources:cmscore,contenttype_articlepage_name;#0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF39002211F99918BD4D80B8E1DEF7585F0F9A;#" ></Property>
+      <Property Name="ContentType" Value="$Resources:cmscore,contenttype_pagelayout_name;"></Property>
+    </File>
+    <File Path="PageModule\SystemAccessReq.aspx" Url="SystemAccessReq.aspx" Type="GhostableInLibrary" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Level="Published">
+      <AllUsersWebPart WebPartOrder ="7" WebPartZoneID ="SysAccRequestWP">
+        <![CDATA[
+        <WebPart xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/WebPart/v2">
+  <Title>Content Editor Testing</Title>
+  <FrameType>None</FrameType>
+  <Description>Allows authors to enter rich text content.</Description>
+  <IsIncluded>true</IsIncluded>
+  <ZoneID>deptCalendarEventWP</ZoneID>
+  <PartOrder>0</PartOrder>
+  <FrameState>Normal</FrameState>
+  <Height />
+  <Width />
+  <AllowRemove>true</AllowRemove>
+  <AllowZoneChange>true</AllowZoneChange>
+  <AllowMinimize>true</AllowMinimize>
+  <AllowConnect>true</AllowConnect>
+  <AllowEdit>true</AllowEdit>
+  <AllowHide>true</AllowHide>
+  <IsVisible>true</IsVisible>
+  <DetailLink />
+  <HelpLink />
+  <HelpMode>Modeless</HelpMode>
+  <Dir>Default</Dir>
+  <PartImageSmall />
+  <MissingAssembly>Cannot import this Web Part.</MissingAssembly>
+  <PartImageLarge>/_layouts/images/mscontl.gif</PartImageLarge>
+  <IsIncludedFilter />
+  <Assembly>Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c</Assembly>
+  <TypeName>Microsoft.SharePoint.WebPartPages.ContentEditorWebPart</TypeName> 
+  <ContentLink xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor">/erequest/_catalogs/masterpage/eRequest/Apps/SystemAccess/SysAccRequest.html</ContentLink>  
+  <PartStorage xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor" />
+</WebPart>
+]]>
+      </AllUsersWebPart>
+      <Property Name="Title" Value="$Resources:cmscore,Welcome Page;" />
+      <Property Name="MasterPageDescription" Value="$Resources:cmscore,PageLayout_BlankWebPartPage_Description;" />
+      <Property Name="ContentType" Value="$Resources:cmscore,Page Layout;" />
+      <Property Name="PublishingPreviewImage" Value="~SiteCollection/_catalogs/masterpage/$Resources:core,Culture;/Preview Images/BlankWebPartPage.png, ~SiteCollection/_catalogs/masterpage/$Resources:core,Culture;/Preview Images/BlankWebPartPage.png" />
+      <Property Name="PublishingAssociatedContentType" Value=";#$Resources:cmscore,contenttype_welcomepage_name;;#0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF390064DEA0F50FC8C147B0B6EA0636C4A7D4;#" />
+
+    </File>
+    <File Path="PageModule\SystemAccessGrid.aspx" Url="SystemAccessGrid.aspx" Type="GhostableInLibrary" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Level="Published">
+      <AllUsersWebPart WebPartOrder ="7" WebPartZoneID ="SystemAccessGridWP">
+        <![CDATA[
+        <WebPart xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/WebPart/v2">
+  <Title>Content Editor Testing</Title>
+  <FrameType>None</FrameType>
+  <Description>Allows authors to enter rich text content.</Description>
+  <IsIncluded>true</IsIncluded>
+  <ZoneID>deptCalendarEventWP</ZoneID>
+  <PartOrder>0</PartOrder>
+  <FrameState>Normal</FrameState>
+  <Height />
+  <Width />
+  <AllowRemove>true</AllowRemove>
+  <AllowZoneChange>true</AllowZoneChange>
+  <AllowMinimize>true</AllowMinimize>
+  <AllowConnect>true</AllowConnect>
+  <AllowEdit>true</AllowEdit>
+  <AllowHide>true</AllowHide>
+  <IsVisible>true</IsVisible>
+  <DetailLink />
+  <HelpLink />
+  <HelpMode>Modeless</HelpMode>
+  <Dir>Default</Dir>
+  <PartImageSmall />
+  <MissingAssembly>Cannot import this Web Part.</MissingAssembly>
+  <PartImageLarge>/_layouts/images/mscontl.gif</PartImageLarge>
+  <IsIncludedFilter />
+  <Assembly>Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c</Assembly>
+  <TypeName>Microsoft.SharePoint.WebPartPages.ContentEditorWebPart</TypeName> 
+  <ContentLink xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor">/erequest/_catalogs/masterpage/eRequest/Apps/SystemAccess/SysAccDashboard.html</ContentLink>  
+  <PartStorage xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor" />
+</WebPart>
+]]>
+      </AllUsersWebPart>
+      <Property Name="Title" Value="$Resources:cmscore,Welcome Page;" />
+      <Property Name="MasterPageDescription" Value="$Resources:cmscore,PageLayout_BlankWebPartPage_Description;" />
+      <Property Name="ContentType" Value="$Resources:cmscore,Page Layout;" />
+      <Property Name="PublishingPreviewImage" Value="~SiteCollection/_catalogs/masterpage/$Resources:core,Culture;/Preview Images/BlankWebPartPage.png, ~SiteCollection/_catalogs/masterpage/$Resources:core,Culture;/Preview Images/BlankWebPartPage.png" />
+      <Property Name="PublishingAssociatedContentType" Value=";#$Resources:cmscore,contenttype_welcomepage_name;;#0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF390064DEA0F50FC8C147B0B6EA0636C4A7D4;#" />
+    </File>
+   
+    <File Path="PageModule\SystemAccessAdmin.aspx" Url="SystemAccessAdmin.aspx" Type="GhostableInLibrary" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Level="Published">
+      <AllUsersWebPart WebPartOrder ="6" WebPartZoneID ="SystemAdminDashboardWP">
+        <![CDATA[
+        <WebPart xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/WebPart/v2">
+  <Title>Content Editor Testing</Title>
+  <FrameType>None</FrameType>
+  <Description>Allows authors to enter rich text content.</Description>
+  <IsIncluded>true</IsIncluded>
+  <ZoneID>deptCalendarEventWP</ZoneID>
+  <PartOrder>0</PartOrder>
+  <FrameState>Normal</FrameState>
+  <Height />
+  <Width />
+  <AllowRemove>true</AllowRemove>
+  <AllowZoneChange>true</AllowZoneChange>
+  <AllowMinimize>true</AllowMinimize>
+  <AllowConnect>true</AllowConnect>
+  <AllowEdit>true</AllowEdit>
+  <AllowHide>true</AllowHide>
+  <IsVisible>true</IsVisible>
+  <DetailLink />
+  <HelpLink />
+  <HelpMode>Modeless</HelpMode>
+  <Dir>Default</Dir>
+  <PartImageSmall />
+  <MissingAssembly>Cannot import this Web Part.</MissingAssembly>
+  <PartImageLarge>/_layouts/images/mscontl.gif</PartImageLarge>
+  <IsIncludedFilter />
+  <Assembly>Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c</Assembly>
+  <TypeName>Microsoft.SharePoint.WebPartPages.ContentEditorWebPart</TypeName> 
+  <ContentLink xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor">/erequest/_catalogs/masterpage/eRequest/Apps/Admin/SysAccessAdmin.html</ContentLink>  
+  <PartStorage xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor" />
+</WebPart>
+]]>
+      </AllUsersWebPart>
+      <Property Name="Title" Value="$Resources:cmscore,Welcome Page;" />
+      <Property Name="MasterPageDescription" Value="$Resources:cmscore,PageLayout_BlankWebPartPage_Description;" />
+      <Property Name="ContentType" Value="$Resources:cmscore,Page Layout;" />
+      <Property Name="PublishingPreviewImage" Value="~SiteCollection/_catalogs/masterpage/$Resources:core,Culture;/Preview Images/BlankWebPartPage.png, ~SiteCollection/_catalogs/masterpage/$Resources:core,Culture;/Preview Images/BlankWebPartPage.png" />
+      <Property Name="PublishingAssociatedContentType" Value=";#$Resources:cmscore,contenttype_welcomepage_name;;#0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF390064DEA0F50FC8C147B0B6EA0636C4A7D4;#" />
+
+    </File>
+
+    <File Path="PageModule\HReMRAdminDashboard.aspx" Url="HReMRAdminDashboard.aspx" Type="GhostableInLibrary" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Level="Published">
+      <AllUsersWebPart WebPartOrder ="6" WebPartZoneID ="HReMRAdminDashboardWP">
+        <![CDATA[
+        <WebPart xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/WebPart/v2">
+  <Title>Content Editor Testing</Title>
+  <FrameType>None</FrameType>
+  <Description>Allows authors to enter rich text content.</Description>
+  <IsIncluded>true</IsIncluded>
+  <ZoneID>deptCalendarEventWP</ZoneID>
+  <PartOrder>0</PartOrder>
+  <FrameState>Normal</FrameState>
+  <Height />
+  <Width />
+  <AllowRemove>true</AllowRemove>
+  <AllowZoneChange>true</AllowZoneChange>
+  <AllowMinimize>true</AllowMinimize>
+  <AllowConnect>true</AllowConnect>
+  <AllowEdit>true</AllowEdit>
+  <AllowHide>true</AllowHide>
+  <IsVisible>true</IsVisible>
+  <DetailLink />
+  <HelpLink />
+  <HelpMode>Modeless</HelpMode>
+  <Dir>Default</Dir>
+  <PartImageSmall />
+  <MissingAssembly>Cannot import this Web Part.</MissingAssembly>
+  <PartImageLarge>/_layouts/images/mscontl.gif</PartImageLarge>
+  <IsIncludedFilter />
+  <Assembly>Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c</Assembly>
+  <TypeName>Microsoft.SharePoint.WebPartPages.ContentEditorWebPart</TypeName> 
+  <ContentLink xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor">/erequest/_catalogs/masterpage/eRequest/Apps/Admin/HReMRAdmin.html</ContentLink>  
+  <PartStorage xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor" />
+</WebPart>
+]]>
+      </AllUsersWebPart>
+      <Property Name="Title" Value="$Resources:cmscore,Welcome Page;" />
+      <Property Name="MasterPageDescription" Value="$Resources:cmscore,PageLayout_BlankWebPartPage_Description;" />
+      <Property Name="ContentType" Value="$Resources:cmscore,Page Layout;" />
+      <Property Name="PublishingPreviewImage" Value="~SiteCollection/_catalogs/masterpage/$Resources:core,Culture;/Preview Images/BlankWebPartPage.png, ~SiteCollection/_catalogs/masterpage/$Resources:core,Culture;/Preview Images/BlankWebPartPage.png" />
+      <Property Name="PublishingAssociatedContentType" Value=";#$Resources:cmscore,contenttype_welcomepage_name;;#0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF390064DEA0F50FC8C147B0B6EA0636C4A7D4;#" />
+
+    </File>
+    <File Path="PageModule\HReMRServiceRequest.aspx" Url="HReMRServiceRequest.aspx" Type="GhostableInLibrary" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Level="Published">
+      <AllUsersWebPart WebPartOrder ="6" WebPartZoneID ="HReMRServiceRequestWP">
+        <![CDATA[
+        <WebPart xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/WebPart/v2">
+  <Title>Content Editor Testing</Title>
+  <FrameType>None</FrameType>
+  <Description>Allows authors to enter rich text content.</Description>
+  <IsIncluded>true</IsIncluded>
+  <ZoneID>deptCalendarEventWP</ZoneID>
+  <PartOrder>0</PartOrder>
+  <FrameState>Normal</FrameState>
+  <Height />
+  <Width />
+  <AllowRemove>true</AllowRemove>
+  <AllowZoneChange>true</AllowZoneChange>
+  <AllowMinimize>true</AllowMinimize>
+  <AllowConnect>true</AllowConnect>
+  <AllowEdit>true</AllowEdit>
+  <AllowHide>true</AllowHide>
+  <IsVisible>true</IsVisible>
+  <DetailLink />
+  <HelpLink />
+  <HelpMode>Modeless</HelpMode>
+  <Dir>Default</Dir>
+  <PartImageSmall />
+  <MissingAssembly>Cannot import this Web Part.</MissingAssembly>
+  <PartImageLarge>/_layouts/images/mscontl.gif</PartImageLarge>
+  <IsIncludedFilter />
+  <Assembly>Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c</Assembly>
+  <TypeName>Microsoft.SharePoint.WebPartPages.ContentEditorWebPart</TypeName> 
+  <ContentLink xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor">/erequest/_catalogs/masterpage/eRequest/Apps/HReMRF/HReMRRequest.html</ContentLink>  
+  <PartStorage xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor" />
+</WebPart>
+]]>
+      </AllUsersWebPart>
+      <Property Name="Title" Value="$Resources:cmscore,Welcome Page;" />
+      <Property Name="MasterPageDescription" Value="$Resources:cmscore,PageLayout_BlankWebPartPage_Description;" />
+      <Property Name="ContentType" Value="$Resources:cmscore,Page Layout;" />
+      <Property Name="PublishingPreviewImage" Value="~SiteCollection/_catalogs/masterpage/$Resources:core,Culture;/Preview Images/BlankWebPartPage.png, ~SiteCollection/_catalogs/masterpage/$Resources:core,Culture;/Preview Images/BlankWebPartPage.png" />
+      <Property Name="PublishingAssociatedContentType" Value=";#$Resources:cmscore,contenttype_welcomepage_name;;#0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF390064DEA0F50FC8C147B0B6EA0636C4A7D4;#" />
+
+    </File>
+    <File Path="PageModule\HReMRServiceDashboard.aspx" Url="HReMRServiceDashboard.aspx" Type="GhostableInLibrary" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Level="Published">
+      <AllUsersWebPart WebPartOrder ="6" WebPartZoneID ="HReMRServiceDashboardWP">
+        <![CDATA[
+        <WebPart xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/WebPart/v2">
+  <Title>Content Editor Testing</Title>
+  <FrameType>None</FrameType>
+  <Description>Allows authors to enter rich text content.</Description>
+  <IsIncluded>true</IsIncluded>
+  <ZoneID>deptCalendarEventWP</ZoneID>
+  <PartOrder>0</PartOrder>
+  <FrameState>Normal</FrameState>
+  <Height />
+  <Width />
+  <AllowRemove>true</AllowRemove>
+  <AllowZoneChange>true</AllowZoneChange>
+  <AllowMinimize>true</AllowMinimize>
+  <AllowConnect>true</AllowConnect>
+  <AllowEdit>true</AllowEdit>
+  <AllowHide>true</AllowHide>
+  <IsVisible>true</IsVisible>
+  <DetailLink />
+  <HelpLink />
+  <HelpMode>Modeless</HelpMode>
+  <Dir>Default</Dir>
+  <PartImageSmall />
+  <MissingAssembly>Cannot import this Web Part.</MissingAssembly>
+  <PartImageLarge>/_layouts/images/mscontl.gif</PartImageLarge>
+  <IsIncludedFilter />
+  <Assembly>Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c</Assembly>
+  <TypeName>Microsoft.SharePoint.WebPartPages.ContentEditorWebPart</TypeName> 
+  <ContentLink xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor">/erequest/_catalogs/masterpage/eRequest/Apps/HReMRF/HReMRDashboard.html</ContentLink>  
+  <PartStorage xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor" />
+</WebPart>
+]]>
+      </AllUsersWebPart>
+      <Property Name="Title" Value="$Resources:cmscore,Welcome Page;" />
+      <Property Name="MasterPageDescription" Value="$Resources:cmscore,PageLayout_BlankWebPartPage_Description;" />
+      <Property Name="ContentType" Value="$Resources:cmscore,Page Layout;" />
+      <Property Name="PublishingPreviewImage" Value="~SiteCollection/_catalogs/masterpage/$Resources:core,Culture;/Preview Images/BlankWebPartPage.png, ~SiteCollection/_catalogs/masterpage/$Resources:core,Culture;/Preview Images/BlankWebPartPage.png" />
+      <Property Name="PublishingAssociatedContentType" Value=";#$Resources:cmscore,contenttype_welcomepage_name;;#0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF390064DEA0F50FC8C147B0B6EA0636C4A7D4;#" />
+
+    </File>
+    <File Path="PageModule\ExportExcel.aspx" Url="ExportExcel.aspx" Type="GhostableInLibrary" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Level="Published">
+      <AllUsersWebPart WebPartOrder ="6" WebPartZoneID ="HReMRServiceDashboardWP">
+        <![CDATA[
+        <WebPart xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/WebPart/v2">
+  <Title>Content Editor Testing</Title>
+  <FrameType>None</FrameType>
+  <Description>Allows authors to enter rich text content.</Description>
+  <IsIncluded>true</IsIncluded>
+  <ZoneID>deptCalendarEventWP</ZoneID>
+  <PartOrder>0</PartOrder>
+  <FrameState>Normal</FrameState>
+  <Height />
+  <Width />
+  <AllowRemove>true</AllowRemove>
+  <AllowZoneChange>true</AllowZoneChange>
+  <AllowMinimize>true</AllowMinimize>
+  <AllowConnect>true</AllowConnect>
+  <AllowEdit>true</AllowEdit>
+  <AllowHide>true</AllowHide>
+  <IsVisible>true</IsVisible>
+  <DetailLink />
+  <HelpLink />
+  <HelpMode>Modeless</HelpMode>
+  <Dir>Default</Dir>
+  <PartImageSmall />
+  <MissingAssembly>Cannot import this Web Part.</MissingAssembly>
+  <PartImageLarge>/_layouts/images/mscontl.gif</PartImageLarge>
+  <IsIncludedFilter />
+  <Assembly>Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c</Assembly>
+  <TypeName>Microsoft.SharePoint.WebPartPages.ContentEditorWebPart</TypeName> 
+  <ContentLink xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor">/erequest/_catalogs/masterpage/eRequest/Apps/ExportExcel/ExportExcel.html</ContentLink>  
+  <PartStorage xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor" />
+</WebPart>
+]]>
+      </AllUsersWebPart>
+      <Property Name="Title" Value="$Resources:cmscore,Welcome Page;" />
+      <Property Name="MasterPageDescription" Value="$Resources:cmscore,PageLayout_BlankWebPartPage_Description;" />
+      <Property Name="ContentType" Value="$Resources:cmscore,Page Layout;" />
+      <Property Name="PublishingPreviewImage" Value="~SiteCollection/_catalogs/masterpage/$Resources:core,Culture;/Preview Images/BlankWebPartPage.png, ~SiteCollection/_catalogs/masterpage/$Resources:core,Culture;/Preview Images/BlankWebPartPage.png" />
+      <Property Name="PublishingAssociatedContentType" Value=";#$Resources:cmscore,contenttype_welcomepage_name;;#0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF390064DEA0F50FC8C147B0B6EA0636C4A7D4;#" />
+
+    </File>
+  </Module>
+</Elements>

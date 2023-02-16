@@ -1,0 +1,814 @@
+﻿<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <!-- ===== Layout Scripts in SharePoint  =========================================================================================== -->
+    <script src="/_layouts/15/clientpeoplepicker.js"></script>
+    <script src="/_layouts/15/clienttemplates.js"></script>
+    <script src="/_layouts/15/clientforms.js"></script>
+    <script src="/_layouts/15/sp.runtime.js"></script>
+    <script src="/_layouts/15/autofill.js"></script>
+    <script src="/_layouts/15/sp.js"></script>
+
+    <script type="text/javascript" src="/_layouts/15/init.js"></script>
+    <script type="text/javascript" src="/_layouts/15/1033/strings.js"></script>
+    <script type="text/javascript" src="/_layouts/15/core.js"></script>
+    <link rel="stylesheet" href="../_catalogs/masterpage/eRequest/Apps/StyleLib/Styles/style.css" />
+    <link rel="stylesheet" href="../_catalogs/masterpage/eRequest/Apps/StyleLib/Styles/Spinner.css" />
+    <!-- ===== Custom Scripts in Master  =========================================================================================== -->
+
+    <script src="../_catalogs/masterpage/eRequest/Apps/app.js"></script>
+    <script src="../_catalogs/masterpage/eRequest/Apps/baseSvc.js"></script>
+    <script src="../_catalogs/masterpage/eRequest/Apps/commonSvc.js"></script>
+    <script src="../_catalogs/masterpage/eRequest/Apps/utility.js"></script>
+    <script src="../_catalogs/masterpage/eRequest/Apps/ITService/ITService.js"></script>
+    <script src="../_catalogs/masterpage/eRequest/Apps/ITService/ITServiceRequestController.js"></script>
+    <!-- ===== Date Picker-jquery-ui.css  =========================================================================================== -->
+    <style type="text/css">
+        body {
+            font-family: "Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif;
+        }
+
+        .container {
+            width: 100% !important;
+        }
+
+        h4, .ms-h4 {
+            font-size: 1.7em;
+            color: #262626;
+        }
+
+        label {
+            display: inline-block;
+            /* max-width: 100%; */
+            margin-bottom: 5px;
+            font-weight: 500;
+            /* text-align: left; */
+            /* font-size: 12px; */
+        }
+
+        .sp-peoplepicker-topLevel, .sp-peoplepicker-topLevelDisabled {
+            cursor: text;
+            height: 100%;
+            width: 305px !important;
+            position: relative;
+            padding: 3px 25px 3px 0px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .redColor {
+            color: red;
+        }
+
+        .checkbox, .radio {
+            position: relative;
+            display: initial !important;
+            margin-top: 10px;
+            margin-left: 25px !important;
+            margin-bottom: 0px !important;
+            color: darkslateblue !important;
+        }
+    </style>
+    <style>
+        #ui-datepicker-div.ui-datepicker .ui-widget-header {
+            border: 1px solid #aaa;
+            background: #e9e9e9;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+            #ui-datepicker-div.ui-datepicker .ui-state-hover, #ui-datepicker-div.ui-datepicker.ui-widget-content .ui-state-hover, #ui-datepicker-div.ui-datepicker .ui-widget-header .ui-state-hover {
+                border: 1px solid #ccc;
+                background: #ededed;
+                color: #2b2b2b;
+            }
+
+                #ui-datepicker-div.ui-datepicker .ui-state-hover .ui-icon {
+                    background-image: url(images/ui-icons_222222_256x240.png)
+                }
+
+            #ui-datepicker-div.ui-datepicker .ui-widget-header .ui-icon {
+                background-image: url(images/ui-icons_222222_256x240.png)
+            }
+
+        #ui-datepicker-div.ui-datepicker .ui-state-default, #ui-datepicker-div.ui-datepicker.ui-widget-content .ui-state-default {
+            color: rgb(0,69,126);
+        }
+
+        #ui-datepicker-div.ui-datepicker .ui-widget-header select, #ui-datepicker-div.ui-datepicker.ui-helper-clearfix select {
+            font-weight: normal;
+            display: inline;
+            height: auto;
+            margin: 1px 0;
+            padding: 0;
+            -webkit-appearance: menulist;
+            -moz-appearance: menulist;
+            background-image: none;
+        }
+
+        #ui-datepicker-div.ui-datepicker .ui-datepicker-prev-hover, #ui-datepicker-div.ui-datepicker .ui-datepicker-next-hover {
+            top: 2px;
+        }
+
+        #ui-datepicker-div.ui-datepicker .ui-datepicker-prev-hover {
+            left: 2px;
+        }
+
+        #ui-datepicker-div.ui-datepicker .ui-datepicker-next-hover {
+            right: 2px;
+        }
+    </style>
+    <script>
+        $(function () {
+            var dateToday = new Date();
+            $("#DateRequiredBy").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                minDate: 0,
+                dateFormat: 'dd/mm/yy'
+            });
+            $("#OffRenoProjectEndDate").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                minDate: 0,
+                dateFormat: 'dd/mm/yy'
+            });
+            $("#OffRenoProjectStartDate").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                minDate: 0,
+                dateFormat: 'dd/mm/yy'
+            });
+        });
+    </script>
+</head>
+<body>
+    <div ng-app="eRequestApp">
+        <div ng-controller="ITServiceRequestController" ng-init="init()">
+            <ng-form name="appForm" ng-app novalidate>
+                <!-- partial:../../partials/_sidebar.html -->
+                <nav class="sidebar">
+
+                    <div class="sidebar-header">
+                        <a href="#" class="sidebar-brand">
+                            <img src="../_catalogs/masterpage/eRequest/Apps/StyleLib/Images/logo.png" alt="" class="img-fluid" style="padding: 35px">
+                        </a>
+                        <div class="sidebar-toggler not-active">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-body">
+                        <ul class="nav">
+                            <li class="nav-item nav-category">Main</li>
+                            <li class="nav-item">
+                                <a target="_parent" href="/erequest/Pages/ITServiceRequest.aspx" class="nav-link">
+                                    <i class="link-icon" data-feather="send"></i>
+                                    <span class="link-title">New Request</span>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a target="_parent" href="/erequest/Pages/ITServiceDashboard.aspx" class="nav-link">
+                                    <i class="link-icon" data-feather="send"></i>
+                                    <span class="link-title">Dashboard</span>
+                                </a>
+                            </li>
+                            <li ng-show="isAdminGroup" class="nav-item ">
+                                <a target="_parent" href="/erequest/Pages/ITAdminDashboard.aspx" class="nav-link">
+                                    <i class="link-icon" data-feather="send"></i>
+                                    <span class="link-title">Admin Dashboard</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <!-- partial -->
+                <div class="page-wrapper">
+                    <nav class="navbar">
+                        <a href="#" class="sidebar-toggler">
+                            <i data-feather="menu"></i>
+                        </a>
+                        <div class="navbar-content" style="background-color: #fff;">
+                            
+                            <ul class="navbar-nav">
+                                <li class="nav-item dropdown nav-profile">
+                                    <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-toggle="dropdown"
+                                       aria-haspopup="true" aria-expanded="false">
+                                        <img src="../_catalogs/masterpage/eRequest/Apps/StyleLib/Images/faces/face1.jpg" alt="profile">
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="profileDropdown">
+                                        <div class="dropdown-header d-flex flex-column align-items-center">
+                                            <div class="figure mb-3">
+                                                <img src="../_catalogs/masterpage/eRequest/Apps/StyleLib/Images/faces/face1.jpg" alt="">
+                                            </div>
+                                            <div class="info text-center">
+                                                <p class="name font-weight-bold mb-0">Hi {{appProperties.CurrentUser.Title}}</p>
+                                                <p class="email text-muted mb-3">{{appProperties.CurrentUser.Email}}</p>
+                                            </div>
+                                        </div>
+                                        <div ng-show="isSiteAdmin" class="dropdown-body">
+                                            <ul class="profile-nav p-0 pt-3">
+                                                <li class="nav-item">
+                                                    <a target="_parent" href="/erequest/_layouts/15/viewlsts.aspx" class="nav-link">
+                                                        <i data-feather="edit"></i>
+                                                        <span>Site Contents</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a target="_parent" href="/erequest/_layouts/15/settings.aspx" class="nav-link">
+                                                        <i data-feather="log-out"></i>
+                                                        <span>Site Settings</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <!-- Main Section -->
+                    <div class="page-content">
+                        <h4 class="pb-2 pagehead">NEW REQUEST</h4>
+                        <div class="row">
+                            <div ng-if="appProperties.ITServiceRequests.ID != ''" class="col-md-4">
+                                <div class="form-group">
+                                    <label for="exampleInputUsername1">Application ID</label>
+                                    <input type="text" class="form-control" name="apllicationID" id="apllicationID" ng-model="appProperties.ITServiceRequests.ApplicationID" disabled />
+                                </div>
+                            </div>
+                            <div style="display:none" class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInputUsername1">Application Date</label>
+                                    <input type="text" class="form-control" id="apllicationDate" ng-model="appProperties.ITServiceRequests.ApplicationDate" disabled />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="exampleInputUsername1">Requestor ID</label>
+                                    <input type="text" class="form-control" id="requesterID" ng-model="appProperties.ITServiceRequests.Author.LoginName" disabled />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="exampleInputUsername1">Requestor Name</label>
+                                    <input type="text" class="form-control" id="requesterName" ng-model="appProperties.ITServiceRequests.Author.Title" disabled />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInputUsername1">On Behalf</label>
+                                    <input type='checkbox' ng-disabled="IsSApproveButton" id="chkboxBehalf" ng-click='checkVal()' value='1' ng-model="OnBehalf">
+                                </div>
+                            </div>
+                            <div ng-show="OnBehalf" class="col-md-3">
+                                <div class="form-group">
+                                    <label for="my-input">User Name</label>
+                                    <input ng-hide="IsSubmitButton" type="text" class="form-control" id="username" ng-model="appProperties.ITServiceRequests.RequestedFor.Title" disabled />
+                                    <div ng-show="IsSubmitButton" title="peoplePickerRequestedFor" id="peoplePickerRequestedFor"></div>
+                                    <span class="redColor" ng-show="IsRequestedReq">User Name is Required.</span>
+                                </div>
+                            </div>
+                            <div ng-show="OnBehalf" class="col-md-3">
+                                <div class="form-group">
+                                    <label for="exampleInputText1">User Id</label>
+                                    <input type="text" class="form-control" id="userID" ng-model="appProperties.ITServiceRequests.RequestedFor.LoginName" disabled />
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="card-group">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Request Details</h4>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Work Area</label>
+                                                <select name="ddlWorkArea" ng-disabled="IsSApproveButton||IsReRouteButton" id="ddlWorkArea" ng-change="getRequestType()" class="form-control form-control-sm mb-3" ng-model="appProperties.ITServiceRequests.WorkAreaCode" required>
+                                                    <option ng-repeat="item in appProperties.WorkAreaMaster" ng-selected="appProperties.ITServiceRequests.WorkAreaCode == item.WorkAreaCode" value="{{item.WorkAreaCode}}">{{item.Title}}</option>
+                                                    <option value="">--Select--</option>
+                                                </select>
+                                                <span class="redColor" ng-if="isAvailMsg"><h6>Subject to hardware avilability</h6></span>
+                                                <span class="redColor" ng-show="appForm.ddlWorkArea.$invalid && appForm.ddlWorkArea.$touched">Work Area is Required.</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Request Type</label>
+                                                <select name="ddlRequestType" id="ddlRequestType" ng-disabled="IsSApproveButton||IsReRouteButton" class="form-control form-control-sm mb-3" ng-change="SelectRequestTypeFields()" ng-model="appProperties.ITServiceRequests.RequestTypeCode" required>
+                                                    <option ng-repeat="item in appProperties.RequestTypeMaster" ng-selected="appProperties.ITServiceRequests.RequestTypeCode == item.RequestTypeCode" value="{{item.RequestTypeCode}}">{{item.Title}}</option>
+                                                    <option value="">--Select--</option>
+                                                </select>
+                                                <span class="redColor" ng-show="appForm.ddlRequestType.$invalid && appForm.ddlRequestType.$touched">Request Type is Required.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-show="IsINSTRUCTIONS" class="card-group">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Instructions</h4>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <p>1. Downoad the checklist from <a href="https://google.com/">Here </a> <br>2. Fill up the check list<br>3. Upload the checklist as an attachment before submitting the request<br /></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div ng-show="IsIntranetLaptop" class="card-group pt-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Intranet Laptop</h4>
+                                    <div class="form-check form-check-flat form-check-primary">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="custom-control-input" ng-disabled="IsSApproveButton" ng-change="checkValADNew()" ng-model="NewADAcc" name="nparksnet" id="nparksnet" />
+                                            New AD Account Required
+                                            <i class="input-frame"></i>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- removal-->
+                        <div ng-if="IsITSoftwareRemoval" class="card-group pt-4">
+                            <div class="card">
+
+                                <div class="card-body">
+                                    <h4 class="card-title">Removal</h4>
+
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="my-input">User ID</label>
+                                                <input type="text" class="form-control" ng-disabled="IsSApproveButton" id="RemovalSWHostID" ng-model="appProperties.ITServiceRequests.RemovalSWHostName.RemovalSWHostID" name="RemovalSWHostID" required />
+                                                <input style="display:none" type="text" class="form-control" id="userHostID" ng-model="appProperties.ITServiceRequests.RemovalSWHostName.LoginName" disabled />
+                                                <span class="redColor" ng-show="appForm.RemovalSWHostID.$invalid && appForm.RemovalSWHostID.$touched">User ID is Required.</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="exampleInputText1">Host Name</label>
+                                                <input type="text" ng-disabled="IsSApproveButton" ng-model="appProperties.ITServiceRequests.RemovalSWHostNameTitle" class="form-control" name="RemovalSWHostNameTitle" id="RemovalSWHostNameTitle" required />
+                                                <input style="display:none" ng-hide="IsSubmitButton" type="text" class="form-control" id="isrUserID" ng-model="appProperties.ITServiceRequests.RemovalSWHostName.Title" disabled />
+                                                <div style="display:none" ng-show="IsSubmitButton" title="peoplePickerRemovalSWHostName" id="peoplePickerRemovalSWHostName"></div>
+                                                <span class="redColor" ng-show="appForm.RemovalSWHostNameTitle.$invalid && appForm.RemovalSWHostNameTitle.$touched">User ID is Required.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end removal-->
+                        <!-- install / Upgrade-->
+                        <div ng-if="IsInstallUpgrade" class="card-group pt-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Install / Upgrade</h4>
+                                    <div class="row">
+                                        <div class="col-md-3" ng-repeat="Information in CheckboxSotwareReqInfo">
+                                            <div class="form-check form-check-flat form-check-primary">
+                                                <label class="form-check-label">
+                                                    <input type="checkbox" class="form-check-input" ng-required="appForm.SelectionChkboxSotwareReqInfo.length == 0" ng-disabled="IsSApproveButton" name="SelectionChkboxSotwareReqInfo[]" value="{{Information}}" ng-checked="SelectionChkboxSotwareReqInfo.indexOf(Information) > -1"
+                                                           ng-click="toggleSelectionChkboxSotwareReqInfo(Information)"> {{Information}}
+                                                    <i class="input-frame"></i>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <span class="redColor col-md-9" ng-if="!SelectionChkboxSotwareReqInfo.length">Install / Upgrade is Required.</span>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="exampleInputUsername1">Host Name</label>
+                                                <input type="text" ng-disabled="IsSApproveButton" ng-model="appProperties.ITServiceRequests.InstallUpgradeSWHostNameTitle" class="form-control" name="InstallUpgradeSWHostNameTitle" id="InstallUpgradeSWHostNameTitle" required />
+                                                <span class="redColor" ng-show="appForm.InstallUpgradeSWHostNameTitle.$invalid && appForm.InstallUpgradeSWHostNameTitle.$touched">Host name is Required.</span>
+                                                <div style="display:none" ng-show="IsSubmitButton" title="peoplePickerInstallUpgradeSWHostName" id="peoplePickerInstallUpgradeSWHostName"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="exampleInputUsername1">Software Links</label>
+                                                <input type="text" ng-disabled="IsSApproveButton" ng-model="appProperties.ITServiceRequests.InstallUpgradeSWLink" class="form-control" name="InstallUpgradeSWLink" id="InstallUpgradeSWLink" required />
+                                                <span class="redColor" ng-show="appForm.InstallUpgradeSWLink.$invalid && appForm.InstallUpgradeSWLink.$touched">Software Link is mandatory.</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Supporting document</label>
+                                            <input type="file" class="form-control file-upload-info" multiple onchange="angular.element(this).scope().uploadInstallUpgradeSWDocuments(this)" id="InstallUpgrade" ng-disabled="IsSApproveButton" name="InstallUpgrade" />
+                                            <span class="redColor" ng-show="isSelectedFile">Please select file to approve...</span>
+                                            <div ng-show="appProperties.appInstallUpgradeSWDocumentsFiles.length>0 || appProperties.appFileInstallUpgradeSWDocumentsProperties.length>0" class="Table center">
+                                                <div class="form-group">
+                                                    <table id="file_list4" role="presentation" class="" aria-live="polite" tabindex="-1">
+                                                        <tfoot>
+                                                            <tr ng-repeat="item in appProperties.appFileInstallUpgradeSWDocumentsProperties track by $index" class="active">
+                                                                <td ng-if="item.url!='#'">
+                                                                    <a target="_blank" href="{{item.url}}">{{item.fileName}}</a>
+                                                                </td>
+                                                                <td ng-if="item.url=='#'">
+                                                                    {{item.fileName}}
+                                                                </td>
+                                                                <td ng-show="IsSubmitButton">
+                                                                    <a class="btn btn-xs delete-record" ng-click="removeuploadInstallUpgradeSWDocumentsFiles($index,item.fileName)">X</a>
+                                                                </td>
+                                                            </tr>
+                                                        </tfoot>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- end install-->
+                        <!-- User Login Account-->
+                        <div ng-if="IsUserLoginAccount" class="card-group pt-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">User Login Account</h4>
+                                    <div class="row">
+                                        <div class="col-md-3" ng-repeat="Information in CheckboxLoginAccountTypeInfo">
+                                            <div class="form-check form-check-flat form-check-primary">
+                                                <label class="form-check-label">
+                                                    <input type="checkbox" class="form-check-input" ng-required="appForm.SelectionChkboxLoginAccountTypeInfo.length == 0" ng-disabled="IsSApproveButton||IsReRouteButton" name="SelectionChkboxLoginAccountTypeInfo[]" value="{{Information}}" ng-checked="SelectionChkboxLoginAccountTypeInfo.indexOf(Information) > -1"
+                                                           ng-click="toggleSelectionChkboxLoginAccountTypeInfo(Information)"> {{Information}}
+                                                    <i class="input-frame"></i>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <span class="redColor col-md-9" ng-if="!SelectionChkboxLoginAccountTypeInfo.length">User Login Account is Required.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end User Login Account-->
+                        <!-- User Login Account-->
+                        <div ng-if="IsOfficeRenovation" class="card-group pt-4">
+                            <script>
+                                $(function () {
+                                    $("#OffRenoProjectEndDate").datepicker({
+                                        changeMonth: true,
+                                        changeYear: true,
+                                        minDate: 0,
+                                        dateFormat: 'dd/mm/yy'
+                                    });
+                                    $("#OffRenoProjectStartDate").datepicker({
+                                        changeMonth: true,
+                                        changeYear: true,
+                                        minDate: 0,
+                                        dateFormat: 'dd/mm/yy'
+                                    });
+                                });
+                            </script>
+                            <div class="card">
+
+                                <div class="card-body">
+                                    <h4 class="card-title">Office Renovation</h4>
+                                    <div class="row">
+                                        <div class="col-md-3" ng-repeat="Information in CheckboxInformation">
+                                            <div class="form-check form-check-flat form-check-primary">
+                                                <label class="form-check-label">
+                                                    <input type="checkbox" class="form-check-input" ng-required="appForm.SelectionCheckboxInformation.length == 0" ng-disabled="IsSApproveButton||IsReRouteButton" name="SelectionCheckboxInformation[]" value="{{Information}}" ng-checked="SelectionCheckboxInformation.indexOf(Information) > -1"
+                                                           ng-click="toggleCheckboxInfoSelection(Information)"> {{Information}}
+                                                    <i class="input-frame"></i>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <span class="redColor col-md-6" ng-if="!SelectionCheckboxInformation.length">Office Renovation is Required.</span>
+                                    </div>
+                                    <div class="row pt-3">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">Fund Details</label>
+                                                <input type="text" name="OffRenoFundDetail" id="OffRenoFundDetail" autocomplete="off" ng-disabled="IsSApproveButton||IsReRouteButton" ng-model="appProperties.ITServiceRequests.OffRenoFundDetail" class="form-control" required />
+                                                <span class="redColor" ng-show="appForm.OffRenoFundDetail.$invalid && appForm.OffRenoFundDetail.$touched">Request Type is Required.</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">Location Address</label>
+                                                <input type="text" ng-model="appProperties.ITServiceRequests.OffRenoLocationAddress" autocomplete="off" class="form-control" name="OffRenoLocationAddress" ng-disabled="IsSApproveButton||IsReRouteButton" id="OffRenoLocationAddress" placeholder="Location Address" required />
+                                                <span class="redColor" ng-if="appForm.OffRenoLocationAddress.$invalid && appForm.OffRenoLocationAddress.$touched">Location Address is Required.</span>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">Project Start Date</label>
+                                                <input type='text' id="OffRenoProjectStartDate" name="OffRenoProjectStartDate" autocomplete="off" placeholder="DD/MM/YYYY" ng-disabled="IsSApproveButton||IsReRouteButton" ng-model="appProperties.ITServiceRequests.OffRenoProjectStartDate" class="form-control" required />
+                                                <span class="redColor" ng-show="appForm.OffRenoProjectStartDate.$invalid && appForm.OffRenoProjectStartDate.$touched">Project Start Date is Required.</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">Project End Date</label>
+                                                <input type='text' id="OffRenoProjectEndDate" name="OffRenoProjectEndDate" autocomplete="off" placeholder="DD/MM/YYYY" ng-disabled="IsSApproveButton||IsReRouteButton" ng-model="appProperties.ITServiceRequests.OffRenoProjectEndDate" class="form-control" required />
+                                                <span class="redColor" ng-show="appForm.OffRenoProjectEndDate.$invalid && appForm.OffRenoProjectEndDate.$touched">Project End Date is Required.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Floor Plan</label>
+                                                <input type="file" ng-disabled="IsSApproveButton||IsReRouteButton" class="form-control file-upload-info" multiple onchange="angular.element(this).scope().uploadFloor(this)" id="fileFloorPlan" name="fileFloorPlan" />
+                                                <span class="redColor" ng-show="isSelectedFile">Please select file to approve...</span>
+                                                <div ng-show="appProperties.appFloorPlanFiles.length>0 || appProperties.appFileFloorPlanProperties.length>0" class="Table center">
+                                                    <div class="form-group">
+                                                        <table id="file_list4" role="presentation" class="" aria-live="polite" tabindex="-1">
+                                                            <tfoot>
+                                                                <tr ng-repeat="item in appProperties.appFileFloorPlanProperties track by $index" class="active">
+                                                                    <td ng-if="item.url!='#'">
+                                                                        <a target="_blank" href="{{item.url}}">{{item.fileName}}</a>
+                                                                    </td>
+                                                                    <td ng-if="item.url=='#'">
+                                                                        {{item.fileName}}
+                                                                    </td>
+                                                                    <td ng-show="IsSubmitButton">
+                                                                        <a class="btn btn-xs delete-record" ng-click="removeFloorPlanFiles($index,item.fileName)">X</a>
+                                                                    </td>
+                                                                </tr>
+                                                            </tfoot>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Checklist Upload</label>
+                                                <input type="file" ng-disabled="IsSApproveButton||IsReRouteButton" class="form-control file-upload-info" multiple onchange="angular.element(this).scope().uploadChecklist(this)" id="fileChecklist" name="fileChecklist" />
+                                                <span class="redColor" ng-show="isSelectedFile">Please select file to approve...</span>
+                                                <div ng-show="appProperties.appChecklistFiles.length>0 || appProperties.appFileChecklistProperties.length>0" class="Table center">
+                                                    <div class="form-group">
+                                                        <table id="file_list3" role="presentation" class="" aria-live="polite" tabindex="-1">
+                                                            <tfoot>
+                                                                <tr ng-repeat="item in appProperties.appFileChecklistProperties track by $index" class="active">
+                                                                    <td ng-if="item.url!='#'">
+                                                                        <a target="_blank" href="{{item.url}}">{{item.fileName}}</a>
+                                                                    </td>
+                                                                    <td ng-if="item.url=='#'">
+                                                                        {{item.fileName}}
+                                                                    </td>
+                                                                    <td ng-show="IsSubmitButton">
+                                                                        <a class="btn btn-xs delete-record" ng-click="removeChecklistFiles($index,item.fileName)">X</a>
+                                                                    </td>
+                                                                </tr>
+                                                            </tfoot>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- end User Login Account-->
+                        <!-- User Login Account-->
+                        <div ng-show="IsEmailService" class="card-group pt-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">E-mail Service</h4>
+                                    <div class="row">
+                                        <div ng-repeat="Information in CheckboxEmailServiceInfo" class="col-md-6">
+                                            <div class="form-check form-check-flat form-check-primary">
+                                                <label class="form-check-label">
+                                                    <input type="checkbox" class="custom-control-input" ng-disabled="IsAfterSubmitDisabled" name="SelectionChkboxEmailServiceInfo[]" value="{{Information}}" ng-checked="SelectionChkboxEmailServiceInfo.indexOf(Information) > -1"
+                                                           ng-click="toggleCheckboxEmailServiceSelection(Information)"> {{Information}}
+                                                    <i class="input-frame"></i>
+                                                <!--</label>  <input type="text" ng-disabled="IsAfterSubmitDisabled" ng-if="SelectionChkboxEmailServiceInfo.indexOf(Information) > -1" placeholder="{{Information}}" ng-model="appProperties.ITServiceRequests.EmailInformation[$index]" class="form-control" name="Information{{$index}}" id="Information{{$index}}" required />-->
+                                                </label>  <input type="text" ng-disabled="IsAfterSubmitDisabled" ng-if="SelectionChkboxEmailServiceInfo.indexOf(Information) > -1" ng-model="appProperties.ITServiceRequests.EmailInformation[$index]" class="form-control" name="Information{{$index}}" id="Information{{$index}}" required />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span class="redColor" ng-show="!SelectionChkboxEmailServiceInfo.length">Email Service is Required.</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end User Login Account-->
+                        <div class="card-group pt-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Other Details</h4>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">Target Implementation Date</label>
+                                                <input type="text" name="DateRequiredBy" ng-disabled="IsSApproveButton||IsReRouteButton" autocomplete="off" placeholder="DD/MM/YYYY" ng-model="appProperties.ITServiceRequests.DateRequiredBy" id="DateRequiredBy" class="form-control" required>
+                                                <span class="redColor"><h7>Normal request will take 3 working days to fulfilled and Urgent is within one day(chargeable)</h7></span>
+                                                <span class="redColor" ng-show="appForm.DateRequiredBy.$invalid && appForm.DateRequiredBy.$touched">Target Implementation Date is Required.</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">Attachment</label>
+                                                <input ng-disabled="IsSApproveButton" type="file" class="form-control file-upload-info file-upload-browse btn btn-primary" multiple onchange="angular.element(this).scope().upload(this)" id="filex" name="filex" />
+                                                <span class="redColor" ng-show="isSelectedFile">Please select file to approve...</span>
+                                                <div ng-show="appProperties.appFiles.length>0 || appProperties.appFileProperties.length>0" class="Table center">
+                                                    <div class="form-group">
+                                                        <table id="file_list2" role="presentation" class="" aria-live="polite" tabindex="-1">
+                                                            <tfoot>
+                                                                <tr ng-repeat="item in appProperties.appFileProperties track by $index" class="active">
+                                                                    <td ng-if="item.url!='#'">
+                                                                        <a target="_blank" href="{{item.url}}">{{item.fileName}}</a>
+                                                                    </td>
+                                                                    <td ng-if="item.url=='#'">
+                                                                        {{item.fileName}}
+                                                                    </td>
+                                                                    <td ng-show="IsSubmitButton">
+                                                                        <a class="btn btn-xs delete-record" ng-click="removeFiles($index,item.fileName)">X</a>
+                                                                    </td>
+                                                                </tr>
+                                                            </tfoot>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleFormControlTextarea1">Remarks / Reasons</label>
+                                                <textarea ng-disabled="IsSApproveButton||IsReRouteButton" cols="90" rows="3" name="RemarksReasons" id="RemarksReasons" ng-model="appProperties.ITServiceRequests.RemarksReasons" required></textarea>
+                                               
+                                                <span class="redColor" ng-show="appForm.RemarksReasons.$invalid && appForm.RemarksReasons.$touched">Remarks/Reasons is Required.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-show="IsCommentsSection" class="card-group pt-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <!-- Other Detail Ends -->
+                                        <div class="col-md-12">
+                                            <label for="tNumber">Comments <span class="redColor">*</span></label>
+                                            <textarea id="ticketNumber" ng-model="appProperties.appComments.Comments" name="Comments" class="form-control"></textarea><!--required-->
+                                            <div ng-hide="!appProperties.appComments.length" class="Table center">
+                                                <div class="col-md-12 col-sm-12">
+                                                    <table id="file_list" role="presentation" class="table table-condensed" aria-live="polite" tabindex="-1">
+                                                        <thead>
+                                                            <tr class="active">
+                                                                <th scope="col">Comments / Action</th>
+                                                                <th scope="col">Action By</th>
+                                                                <th scope="col">Date</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tfoot>
+                                                            <tr ng-repeat="item in appProperties.appComments track by $index" class="">
+                                                                <td>
+                                                                    {{item.UserComments}}
+                                                                </td>
+                                                                <td>
+                                                                    {{item.CommentsBy.Title}}
+                                                                </td>
+                                                                <td>
+                                                                    {{item.Created | date : 'dd/MMM/yyyy hh:mm a'}}
+                                                                </td>
+                                                            </tr>
+                                                        </tfoot>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-group pt-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <!-- Button Section Starts here-->
+                                        <div class="col-md-6">
+                                            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pending" ng-show="IsSubmitButton" value="Submit" ng-click="submitITServiceRequest(1,$event,appForm)" role="tab" aria-controls="pills-home" aria-selected="true">Submit</a>
+                                                </li>
+
+                                                <li ng-show="IsUserReRouteButton" class="nav-item">
+                                                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" ng-click="submitITServiceRequest(4,$event,appForm)" href="#all" role="tab" aria-controls="pills-profile" aria-selected="false">Re-Route to User</a>
+                                                </li>
+                                                <li ng-show="IsUserReRouteIMNOButton" class="nav-item">
+                                                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" ng-click="submitITServiceRequest(5,$event,appForm)" href="#all" role="tab" aria-controls="pills-profile" aria-selected="false">Re-Route to User</a>
+                                                </li>
+                                                <li ng-show="IsReRouteButton" class="nav-item">
+                                                    <a href="#my_modal" data-toggle="modal" class="nav-link" id="pills-profile-tab" role="tab" aria-controls="pills-profile" aria-selected="false">Approve</a>
+                                                </li>
+                                                <li ng-show="IsSApproveButton" class="nav-item">
+                                                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" ng-click="submitITServiceRequest(2,$event,appForm)" href="#all" role="tab" aria-controls="pills-profile" aria-selected="false">Approve</a>
+                                                </li>
+                                                <li ng-show="IsRejectButton" class="nav-item">
+                                                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" ng-click="submitITServiceRequest(3,$event,appForm)" href="#all" role="tab" aria-controls="pills-profile" aria-selected="false">Reject</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" ng-click="submitITServiceRequest(0,$event,appForm)" href="#all" role="tab" aria-controls="pills-profile" aria-selected="false">Close</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!-- Button Section end here-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- Main Section -->
+                    <footer class="footer d-flex flex-column flex-md-row align-items-center justify-content-between">
+                        <p class="text-muted text-center text-md-left">
+                            Copyright © 2020 NPark. All rights reserved
+                        </p>
+                    </footer>
+                </div>
+                <div class="modal" id="my_modal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div style="display:none;" class="pull-right">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="my-input">Delegate Approver </label>
+                                    <div ng-repeat="Information in CheckboxDelegateUserInfo">
+                                        <input type="checkbox" class="" name="SelectionChkboxDelegateUserInfo[]" value="{{Information}}" ng-checked="SelectionChkboxDelegateUserInfo.indexOf(Information) > -1"
+                                               ng-click="toggleSelectionChkboxDelegateUser(Information)"> {{Information}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <input id="btnSubmitRequest" class="frmbutton" value="Submit" ng-click="submitITServiceRequest(15,$event,appForm)" type="button" />
+                                <button class="btn btn-warning" type="button" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-form>
+            <div ng-show="loaded" class="loading">Loading&#8230;</div>
+        </div>
+        <!-- ===== child controller  =========================================================================================== -->
+        <script type="text/ng-template" id="myModal.html">
+            <div class="modal-dialog">
+                <div class="modal-header">
+
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="full_name" class="col-md-5 col-form-label rightText">Delegate Approver <span class="redColor"> *</span></label>
+                        <div class="col-md-7">
+                            <div ng-repeat="Information in CheckboxDelegateUserInfo">
+                                <input type="checkbox" class="custom-control-input" ng-disabled="IsSubmitMode" name="SelectionChkboxDelegateUserInfo[]" value="{{Information}}" ng-checked="SelectionChkboxDelegateUserInfo.indexOf(Information) > -1"
+                                       ng-click="toggleSelectionChkboxDelegateUser(Information)"> {{Information}}                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div align="center" class="form-group">
+                        <input id="btnSubmitRequest" class="frmbutton" value="Submit" ng-click="submitITServiceRequest(15,$event,appForm)" type="button" />
+                        <button class="btn btn-warning" type="button" ng-click="cancelModal()">Close</button>
+                    </div>
+                    <!--<button class="btn btn-primary" type="button" ng-click="ok()">Ok</button>-->
+
+                </div>
+            </div>
+        </script>
+        <style>
+            .modal-dialog {
+                top: 20%;
+                left: 0%;
+                width: 750px;
+            }
+
+            .modal-body {
+                position: relative;
+                padding-top: 15px;
+                padding-bottom: 30px;
+                /* padding-left: 5px; */
+                padding-right: 100px;
+            }
+        </style>
+    </div>
+</body>
+</html>

@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Module Name="eRequestAssets" Url="_catalogs/masterpage">
+    <!-- common  -->
+    <File Path="eRequestAssets\eRequest\Apps\app.js" Url="eRequest/Apps/app.js" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Type="GhostableInLibrary"  />
+    <File Path="eRequestAssets\eRequest\Apps\baseSvc.js" Url="eRequest/Apps/baseSvc.js" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\commonSvc.js" Url="eRequest/Apps/commonSvc.js" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\utility.js" Url="eRequest/Apps/utility.js" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    
+    <!-- Home.html  -->
+    <File Path="eRequestAssets\eRequest\Apps\Home\eRequestHome.html" Url="eRequest/Apps/Home/eRequestHome.html" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    
+    <!-- Home.Js  -->
+    
+    <!-- utitliy.html  -->
+    <File Path="eRequestAssets\eRequest\Apps\Utility\UtilityDashboard.html" Url="eRequest/Apps/Utility/UtilityDashboard.html" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\Utility\UtilityServiceRequest.html" Url="eRequest/Apps/Utility/UtilityServiceRequest.html" IgnoreIfAlreadyExists="TRUE"  ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\Utility\UtilityEnquiry.html" Url="eRequest/Apps/Utility/UtilityEnquiry.html" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    <!-- utitliy.Js  -->
+    <File Path="eRequestAssets\eRequest\Apps\Utility\UtilityServiceRequestController.js" Url="eRequest/Apps/Utility/UtilityServiceRequestController.js" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\Utility\UtilityDashboardController.js" Url="eRequest/Apps/Utility/UtilityDashboardController.js" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\Utility\UtilityService.js" Url="eRequest/Apps/Utility/UtilityService.js" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\Utility\UtilityEnquiryController.js" Url="eRequest/Apps/Utility/UtilityEnquiryController.js" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    <!-- ITservice.html  -->
+    <File Path="eRequestAssets\eRequest\Apps\ITService\ITserviceDashboard.html" Url="eRequest/Apps/ITService/ITserviceDashboard.html" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\ITService\ITserviceEnquiry.html" Url="eRequest/Apps/ITService/ITserviceEnquiry.html" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\ITService\ITserviceRequest.html" Url="eRequest/Apps/ITService/ITserviceRequest.html" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    <!-- ITservice.Js  -->
+    <File Path="eRequestAssets\eRequest\Apps\ITService\ITserviceEnquiryController.js" Url="eRequest/Apps/ITService/ITserviceEnquiryController.js" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Type="GhostableInLibrary" />    
+    <File Path="eRequestAssets\eRequest\Apps\ITService\ITserviceDashboardController.js" Url="eRequest/Apps/ITService/ITserviceDashboardController.js" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\ITService\ITServiceRequestController.js" Url="eRequest/Apps/ITService/ITServiceRequestController.js" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\ITService\ITService.js" Url="eRequest/Apps/ITService/ITService.js" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    <!-- CRSR.html  -->
+    <File Path="eRequestAssets\eRequest\Apps\CRSR\CRSRDashboard.html" Url="eRequest/Apps/CRSR/CRSRDashboard.html" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\CRSR\CRSREnquiry.html" Url="eRequest/Apps/CRSR/CRSREnquiry.html" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\CRSR\CRSRRequest.html" Url="eRequest/Apps/CRSR/CRSRRequest.html" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    <!-- CRSR.Js  -->
+    <File Path="eRequestAssets\eRequest\Apps\CRSR\CRSREnquiryController.js" Url="eRequest/Apps/CRSR/CRSREnquiryController.js" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\CRSR\CRSRDashboardController.js" Url="eRequest/Apps/CRSR/CRSRDashboardController.js" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\CRSR\CRSRRequestController.js" Url="eRequest/Apps/CRSR/CRSRRequestController.js" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\CRSR\CRSRService.js" Url="eRequest/Apps/CRSR/CRSRService.js" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    <!-- Admin  -->
+    <File Path="eRequestAssets\eRequest\Apps\Admin\CRSRAdminDashboard.html" Url="eRequest/Apps/Admin/CRSRAdminDashboard.html" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\Admin\CRSRAdminDashboardController.js" Url="eRequest/Apps/Admin/CRSRAdminDashboardController.js" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\Admin\CRSRAdminDashboardService.js" Url="eRequest/Apps/Admin/CRSRAdminDashboardService.js" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+
+    <File Path="eRequestAssets\eRequest\Apps\Admin\ITAdminDashboard.html" Url="eRequest/Apps/Admin/ITAdminDashboard.html" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\Admin\ITAdminDashboardController.js" Url="eRequest/Apps/Admin/ITAdminDashboardController.js" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\Admin\ITAdminDashboardService.js" Url="eRequest/Apps/Admin/ITAdminDashboardService.js" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    
+    <File Path="eRequestAssets\eRequest\Apps\Admin\UtilityAdminDashboard.html" Url="eRequest/Apps/Admin/UtilityAdminDashboard.html" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\Admin\UtilityAdminDashboardController.js" Url="eRequest/Apps/Admin/UtilityAdminDashboardController.js" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\Admin\UtilityAdminDashboardService.js" Url="eRequest/Apps/Admin/UtilityAdminDashboardService.js" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    
+    <!-- Login  -->
+    <File Path="eRequestAssets\eRequest\Apps\UserLog\loginUserController.js" Url="eRequest/Apps/UserLog/loginUserController.js" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\UserLog\loginUserService.js" Url="eRequest/Apps/UserLog/loginUserService.js" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+   
+   
+    
+  <!-- style sheet -->
+    <!-- NewMaster sheet -->
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\fonts\glyphicons-halflings-regular.ttf" Url="eRequest/Apps/StyleLib/fonts/glyphicons-halflings-regular.ttf" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\fonts\glyphicons-halflings-regular.woff" Url="eRequest/Apps/StyleLib/fonts/glyphicons-halflings-regular.woff" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\fonts\glyphicons-halflings-regular.woff2" Url="eRequest/Apps/StyleLib/fonts/glyphicons-halflings-regular.woff2" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Images\404.svg" Url="eRequest/Apps/StyleLib/Images/404.svg" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Images\bgOffice.jpg" Url="eRequest/Apps/StyleLib/Images/bgOffice.jpg" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Images\favicon.ico" Url="eRequest/Apps/StyleLib/Images/favicon.ico" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Images\favicon.png" Url="eRequest/Apps/StyleLib/Images/favicon.png" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Images\folder.png" Url="eRequest/Apps/StyleLib/Images/folder.png" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Images\logo-placeholder.png" Url="eRequest/Apps/StyleLib/Images/logo-placeholder.png" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Images\logo.png" Url="eRequest/Apps/StyleLib/Images/logo.png" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Images\meeting.png" Url="eRequest/Apps/StyleLib/Images/meeting.png" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Images\overlay-placeholder.jpg" Url="eRequest/Apps/StyleLib/Images/overlay-placeholder.jpg" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Images\placeholder.jpg" Url="eRequest/Apps/StyleLib/Images/placeholder.jpg" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Images\sample1.jpg" Url="eRequest/Apps/StyleLib/Images/sample1.jpg" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Images\sample2.jpg" Url="eRequest/Apps/StyleLib/Images/sample2.jpg" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Images\sample3.jpg" Url="eRequest/Apps/StyleLib/Images/sample3.jpg" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Images\tree.png" Url="eRequest/Apps/StyleLib/Images/tree.png" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Images\carousel\img1.jpg" Url="eRequest/Apps/StyleLib/Images/carousel/img1.jpg" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Images\carousel\img10.jpg" Url="eRequest/Apps/StyleLib/Images/carousel/img10.jpg" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Images\carousel\img11.jpg" Url="eRequest/Apps/StyleLib/Images/carousel/img11.jpg" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Images\carousel\img12.jpg" Url="eRequest/Apps/StyleLib/Images/carousel/img12.jpg" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Images\carousel\img2.jpg" Url="eRequest/Apps/StyleLib/Images/carousel/img2.jpg" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Images\carousel\img3.jpg" Url="eRequest/Apps/StyleLib/Images/carousel/img3.jpg" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Images\carousel\img4.jpg" Url="eRequest/Apps/StyleLib/Images/carousel/img4.jpg" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Images\carousel\img5.jpg" Url="eRequest/Apps/StyleLib/Images/carousel/img5.jpg" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Images\carousel\img6.jpg" Url="eRequest/Apps/StyleLib/Images/carousel/img6.jpg" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Images\carousel\img7.jpg" Url="eRequest/Apps/StyleLib/Images/carousel/img7.jpg" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Images\carousel\img8.jpg" Url="eRequest/Apps/StyleLib/Images/carousel/img8.jpg" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Images\carousel\img9.jpg" Url="eRequest/Apps/StyleLib/Images/carousel/img9.jpg" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Images\faces\face1.jpg" Url="eRequest/Apps/StyleLib/Images/faces/face1.jpg" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Images\faces\face2.jpg" Url="eRequest/Apps/StyleLib/Images/faces/face2.jpg" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Images\faces\face3.jpg" Url="eRequest/Apps/StyleLib/Images/faces/face3.jpg" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Images\faces\face4.jpg" Url="eRequest/Apps/StyleLib/Images/faces/face4.jpg" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Images\faces\face5.jpg" Url="eRequest/Apps/StyleLib/Images/faces/face5.jpg" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Images\faces\face6.jpg" Url="eRequest/Apps/StyleLib/Images/faces/face6.jpg" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Images\faces\face7.jpg" Url="eRequest/Apps/StyleLib/Images/faces/face7.jpg" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Images\faces\face8.html" Url="eRequest/Apps/StyleLib/Images/faces/face8.html" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Images\faces\face9.html" Url="eRequest/Apps/StyleLib/Images/faces/face9.html" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Js\angular-animate.js" Url="eRequest/Apps/StyleLib/Js/angular-animate.js" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Js\angular-filter.js" Url="eRequest/Apps/StyleLib/Js/angular-filter.js" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Js\angular-local-storage.js" Url="eRequest/Apps/StyleLib/Js/angular-local-storage.js" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Js\angular-material.js" Url="eRequest/Apps/StyleLib/Js/angular-material.js" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Js\angular-resource.js" Url="eRequest/Apps/StyleLib/Js/angular-resource.js" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Js\angular-resource.min.js" Url="eRequest/Apps/StyleLib/Js/angular-resource.min.js" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Js\angular-route.js" Url="eRequest/Apps/StyleLib/Js/angular-route.js" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Js\angular-sanitize.js" Url="eRequest/Apps/StyleLib/Js/angular-sanitize.js" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Js\angular-touch.js" Url="eRequest/Apps/StyleLib/Js/angular-touch.js" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Js\angular-ui.min.js" Url="eRequest/Apps/StyleLib/Js/angular-ui.min.js" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Js\angular.min.js" Url="eRequest/Apps/StyleLib/Js/angular.min.js" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Js\bootstrap.min.js" Url="eRequest/Apps/StyleLib/Js/bootstrap.min.js" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Js\csv.js" Url="eRequest/Apps/StyleLib/Js/csv.js" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Js\jquery-3.6.0.js" Url="eRequest/Apps/StyleLib/Js/jquery-3.6.0.js" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Js\jquery-3.6.0.min.js" Url="eRequest/Apps/StyleLib/Js/jquery-3.6.0.min.js" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Js\jquery-ui.min.js" Url="eRequest/Apps/StyleLib/Js/jquery-ui.min.js" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Js\ng-grid-layout.js" Url="eRequest/Apps/StyleLib/Js/ng-grid-layout.js" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Js\ng-grid.debug.js" Url="eRequest/Apps/StyleLib/Js/ng-grid.debug.js" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Js\ng-grid.min.js" Url="eRequest/Apps/StyleLib/Js/ng-grid.min.js" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Js\ng-table.min.js" Url="eRequest/Apps/StyleLib/Js/ng-table.min.js" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Js\pdfmake.js" Url="eRequest/Apps/StyleLib/Js/pdfmake.js" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Js\quick-ng-repeat.js" Url="eRequest/Apps/StyleLib/Js/quick-ng-repeat.js" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Js\ui-bootstrap-tpls-2.5.0.js" Url="eRequest/Apps/StyleLib/Js/ui-bootstrap-tpls-2.5.0.js" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Js\ui-bootstrap-tpls.min.js" Url="eRequest/Apps/StyleLib/Js/ui-bootstrap-tpls.min.js" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Js\ui-bootstrap.min.js" Url="eRequest/Apps/StyleLib/Js/ui-bootstrap.min.js" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Js\ui-grid.js" Url="eRequest/Apps/StyleLib/Js/ui-grid.js" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Js\underscore.js" Url="eRequest/Apps/StyleLib/Js/underscore.js" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Js\vfs_fonts.js" Url="eRequest/Apps/StyleLib/Js/vfs_fonts.js" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Styles\animate.min.css" Url="eRequest/Apps/StyleLib/Styles/animate.min.css" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Styles\carousel.js" Url="eRequest/Apps/StyleLib/Styles/carousel.js" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Styles\core.css" Url="eRequest/Apps/StyleLib/Styles/core.css" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Styles\core.js" Url="eRequest/Apps/StyleLib/Styles/core.js" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Styles\feather.min.js" Url="eRequest/Apps/StyleLib/Styles/feather.min.js" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Styles\flag-icon.min.css" Url="eRequest/Apps/StyleLib/Styles/flag-icon.min.css" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Styles\iconfont.css" Url="eRequest/Apps/StyleLib/Styles/iconfont.css" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Styles\owl.carousel.min.css" Url="eRequest/Apps/StyleLib/Styles/owl.carousel.min.css" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Styles\owl.carousel.min.js" Url="eRequest/Apps/StyleLib/Styles/owl.carousel.min.js" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Styles\owl.theme.default.min.css" Url="eRequest/Apps/StyleLib/Styles/owl.theme.default.min.css" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Styles\owl.video.play.html" Url="eRequest/Apps/StyleLib/Styles/owl.video.play.html" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Styles\style.css" Url="eRequest/Apps/StyleLib/Styles/style.css" ReplaceContent="TRUE" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Styles\template.js" Url="eRequest/Apps/StyleLib/Styles/template.js" ReplaceContent="TRUE" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Js\dropify.js" Url="eRequest/Apps/StyleLib/Js/dropify.js" ReplaceContent="TRUE" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Styles\dropify.min.js" Url="eRequest/Apps/StyleLib/Styles/dropify.min.js" ReplaceContent="TRUE" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Styles\dropify.min.css" Url="eRequest/Apps/StyleLib/Styles/dropify.min.css" ReplaceContent="TRUE" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Styles\bootstrap.min.css" Url="eRequest/Apps/StyleLib/Styles/bootstrap.min.css" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Js\jquery.min.js" Url="eRequest/Apps/StyleLib/Js/jquery.min.js" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Styles\jquery-ui.min.css" Url="eRequest/Apps/StyleLib/Styles/jquery-ui.min.css" ReplaceContent="TRUE" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\StyleLib\Styles\spinner.css" Url="eRequest/Apps/StyleLib/Styles/spinner.css" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\SystemAccess\SysAccService.js" Url="eRequest/Apps/SystemAccess/SysAccService.js" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\SystemAccess\SysAccDashboard.html" Url="eRequest/Apps/SystemAccess/SysAccDashboard.html" ReplaceContent="TRUE" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\SystemAccess\SysAccDashboardController.js" Url="eRequest/Apps/SystemAccess/SysAccDashboardController.js" ReplaceContent="TRUE" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\SystemAccess\SysAccRequest.html" Url="eRequest/Apps/SystemAccess/SysAccRequest.html" ReplaceContent="TRUE" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\SystemAccess\SysAccRequestController.js" Url="eRequest/Apps/SystemAccess/SysAccRequestController.js" ReplaceContent="TRUE" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\Admin\SysAccessAdmin.html" Url="eRequest/Apps/Admin/SysAccessAdmin.html" ReplaceContent="TRUE" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\Admin\SysAccessAdminController.js" Url="eRequest/Apps/Admin/SysAccessAdminController.js" ReplaceContent="TRUE" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\Admin\SysAccAdminService.js" Url="eRequest/Apps/Admin/SysAccAdminService.js" ReplaceContent="TRUE" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\HReMRF\HReMRRequestController.js" Url="eRequest/Apps/HReMRF/HReMRRequestController.js" ReplaceContent="TRUE" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\HReMRF\HReMRDashboard.html" Url="eRequest/Apps/HReMRF/HReMRDashboard.html" ReplaceContent="TRUE" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\HReMRF\HReMRDashboardController.js" Url="eRequest/Apps/HReMRF/HReMRDashboardController.js" ReplaceContent="TRUE" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\HReMRF\HReMRRequest.html" Url="eRequest/Apps/HReMRF/HReMRRequest.html" ReplaceContent="TRUE" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\HReMRF\HReMR.js" Url="eRequest/Apps/HReMRF/HReMR.js" ReplaceContent="TRUE" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\Admin\HReMRAdminService.js" Url="eRequest/Apps/Admin/HReMRAdminService.js" ReplaceContent="TRUE" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\Admin\HReMRAdmin.html" Url="eRequest/Apps/Admin/HReMRAdmin.html" ReplaceContent="TRUE" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\Admin\HReMRAdminController.js" Url="eRequest/Apps/Admin/HReMRAdminController.js" ReplaceContent="TRUE" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\ExportExcel\ExportExcel.html" Url="eRequest/Apps/ExportExcel/ExportExcel.html"  ReplaceContent="TRUE" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\ExportExcel\ExportExcelController.js" Url="eRequest/Apps/ExportExcel/ExportExcelController.js"  ReplaceContent="TRUE" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+    <File Path="eRequestAssets\eRequest\Apps\ExportExcel\ExportExcelService.js" Url="eRequest/Apps/ExportExcel/ExportExcelService.js"  ReplaceContent="TRUE" IgnoreIfAlreadyExists="TRUE" Type="GhostableInLibrary" />
+  </Module>
+</Elements>
