@@ -4,6 +4,7 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>INTSG319_NPARKS_001_EIB_MAVENII_EmployeeData_Upload</AssemblyName>
   </PropertyGroup>
 
 
@@ -27,7 +28,7 @@
     <PackageReference Include="nlog" Version="5.1.1" />
     <PackageReference Include="NLog.Extensions.Logging" Version="5.2.1" />
   </ItemGroup>
- <ItemGroup>
-     <None Update="nlog.config" CopyToOutputDirectory="Always" />
- </ItemGroup>
+  <ItemGroup>
+    <None Update="nlog.config" CopyToOutputDirectory="Always" />
+  </ItemGroup>
 </Project>
