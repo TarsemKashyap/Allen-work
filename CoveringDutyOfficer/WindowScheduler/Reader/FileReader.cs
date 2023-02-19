@@ -60,7 +60,7 @@ public class FileReader
         }
         catch (Exception ex)
         {
-            throw ex;
+            _logger.LogError(ex, ex.Message);
         }
 
 
