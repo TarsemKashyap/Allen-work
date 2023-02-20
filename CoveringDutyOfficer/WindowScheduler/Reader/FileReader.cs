@@ -3,12 +3,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using CsvHelper;
 using CsvHelper.Configuration;
+using System.Reflection;
 
-public class FileReader
+public class FileReader : IDisposable
 {
     private readonly DbContext _context;
     private readonly ILogger<FileReader> _logger;
     private readonly IConfiguration _configuration;
+    private bool _disposedValue;
 
     public FileReader(DbContext context, ILogger<FileReader> logger, IConfiguration configuration)
     {
@@ -36,6 +38,8 @@ public class FileReader
             {
                 using (var reader = new StreamReader(file.FullName))
                 using (var pipeFile = new CsvReader(reader, config))
+                using (var writer = new StreamWriter(WriteProcessingLogs(file))
+                using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
                 {
                     await pipeFile.ReadAsync();
                     pipeFile.ReadHeader();
@@ -47,9 +51,8 @@ public class FileReader
                             var model = Util.Map(dto);
                             await _context.Upsert(model);
                         }
-                        catch (CsvHelper.MissingFieldException ex)
+                        catch (Exception ex)
                         {
-                            throw ex;
                         }
                     }
                 }
@@ -63,22 +66,31 @@ public class FileReader
             _logger.LogError(ex, ex.Message);
         }
 
-
-
-
-
     }
 
     private static void MoveFile(string folder, FileInfo file)
+    {
+
+        string fileName = $"{DateTime.Today.ToString("yyyyMMdd")}_{file.Name}";
+        MoveFile(folder, fileName, file);
+    }
+
+    private static void MoveFile(string folder, string fileName, FileInfo file)
     {
         if (!Directory.Exists(folder))
         {
             Directory.CreateDirectory(folder);
         }
-        string fileName = $"{DateTime.Today.ToString("yyyyMMdd")}_{file.Name}";
 
         string archievePath = Path.Combine(folder, fileName);
         File.Move(file.FullName, archievePath);
+    }
+
+    private string WriteProcessingLogs(FileInfo file)
+    {
+        var processingLogFolder = _configuration["FileConfig:ProcessingLogs"];
+        return Path.Combine(processingLogFolder, "Log_" + file.Name);
+
     }
 
     private FileConfig ReadImportConfig()
@@ -93,5 +105,34 @@ public class FileReader
             ProcessFolder = archive
         };
 
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (!_disposedValue)
+        {
+            if (disposing)
+            {
+                // TODO: dispose managed state (managed objects)
+            }
+
+            // TODO: free unmanaged resources (unmanaged objects) and override finalizer
+            // TODO: set large fields to null
+            _disposedValue = true;
+        }
+    }
+
+    // // TODO: override finalizer only if 'Dispose(bool disposing)' has code to free unmanaged resources
+    // ~FileReader()
+    // {
+    //     // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+    //     Dispose(disposing: false);
+    // }
+
+    public void Dispose()
+    {
+        // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+        Dispose(disposing: true);
+        GC.SuppressFinalize(this);
     }
 }
