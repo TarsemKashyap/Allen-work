@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 using NLog;
 using NLog.Extensions.Logging;
 using Microsoft.Extensions.Options;
-
+using System.Reflection;
 
 internal class Program
 {
@@ -13,8 +13,11 @@ internal class Program
         var logger = LogManager.GetCurrentClassLogger();
         try
         {
+            string location =System.AppContext.BaseDirectory;
+            string directory = Directory.GetCurrentDirectory();
+            logger.Info($"location:{location},directory:{directory}");
             IConfiguration config = new ConfigurationBuilder()
-               .SetBasePath(Directory.GetCurrentDirectory()) //From NuGet Package Microsoft.Extensions.Configuration.Json
+               .SetBasePath(location) //From NuGet Package Microsoft.Extensions.Configuration.Json
                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                .Build();
 
@@ -34,13 +37,12 @@ internal class Program
 
             var runner = servicesProvider.GetRequiredService<FileReader>();
             await runner.Import();
-            Console.WriteLine("Press ANY key to exit");
-            Console.Read();
+            Console.WriteLine("Scheduler executed successfully");
         }
         catch (Exception ex)
         {
             // NLog: catch any exception and log it.
-            logger.Error(ex, "Stopped program because of exception");
+            logger.Error(ex, ex.Message);
             throw;
         }
         finally

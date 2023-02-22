@@ -21,25 +21,25 @@ public class FileReader : IDisposable
     }
     internal async Task Import()
     {
-        _logger.LogInformation("Running Import Operation");
-        FileConfig importConfig = ReadImportConfig();
-        DirectoryInfo folder = new DirectoryInfo(importConfig.InboundFolder);
-
-        var files = folder.GetFiles(importConfig.SearchPattern);
-        var config = new CsvConfiguration(CultureInfo.InvariantCulture)
-        {
-            HasHeaderRecord = true,
-            //  MissingFieldFound = null,
-            Delimiter = "|"
-        };
         try
         {
+            _logger.LogInformation("Running Import Operation");
+            FileConfig importConfig = ReadImportConfig();
+            _logger.LogInformation("ImportConfig InboundFolder {0}", importConfig.InboundFolder);
+            DirectoryInfo folder = new DirectoryInfo(importConfig.InboundFolder);
+
+            var files = folder.GetFiles(importConfig.SearchPattern);
+            var config = new CsvConfiguration(CultureInfo.InvariantCulture)
+            {
+                HasHeaderRecord = true,
+                //  MissingFieldFound = null,
+                Delimiter = "|"
+            };
+
             foreach (var file in files)
             {
                 using (var reader = new StreamReader(file.FullName))
                 using (var pipeFile = new CsvReader(reader, config))
-                using (var writer = new StreamWriter(WriteProcessingLogs(file))
-                using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
                 {
                     await pipeFile.ReadAsync();
                     pipeFile.ReadHeader();
@@ -53,6 +53,7 @@ public class FileReader : IDisposable
                         }
                         catch (Exception ex)
                         {
+                            _logger.LogError(ex, ex.Message);
                         }
                     }
                 }
@@ -71,7 +72,7 @@ public class FileReader : IDisposable
     private static void MoveFile(string folder, FileInfo file)
     {
 
-        string fileName = $"{DateTime.Today.ToString("yyyyMMdd")}_{file.Name}";
+        string fileName = $"{DateTime.Now.ToString("yyyyMMdd.HHmmss")}_{file.Name}";
         MoveFile(folder, fileName, file);
     }
 
@@ -86,25 +87,28 @@ public class FileReader : IDisposable
         File.Move(file.FullName, archievePath);
     }
 
-    private string WriteProcessingLogs(FileInfo file)
-    {
-        var processingLogFolder = _configuration["FileConfig:ProcessingLogs"];
-        return Path.Combine(processingLogFolder, "Log_" + file.Name);
 
-    }
 
     private FileConfig ReadImportConfig()
     {
-        var folderPath = _configuration["FileConfig:InboundFolder"];
-        var archive = _configuration["FileConfig:ProcessFolder"];
-        var searchPattern = _configuration["FileConfig:SearchPattern"];
-        return new FileConfig
+        _logger.LogInformation("Reading Import Config");
+        try
         {
-            InboundFolder = folderPath,
-            SearchPattern = searchPattern,
-            ProcessFolder = archive
-        };
-
+            var folderPath = _configuration["FileConfig:InboundFolder"];
+            var archive = _configuration["FileConfig:ProcessFolder"];
+            var searchPattern = _configuration["FileConfig:SearchPattern"];
+            return new FileConfig
+            {
+                InboundFolder = folderPath,
+                SearchPattern = searchPattern,
+                ProcessFolder = archive
+            };
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, ex.Message);
+            throw;
+        }
     }
 
     protected virtual void Dispose(bool disposing)
@@ -116,18 +120,11 @@ public class FileReader : IDisposable
                 // TODO: dispose managed state (managed objects)
             }
 
-            // TODO: free unmanaged resources (unmanaged objects) and override finalizer
-            // TODO: set large fields to null
             _disposedValue = true;
         }
     }
 
-    // // TODO: override finalizer only if 'Dispose(bool disposing)' has code to free unmanaged resources
-    // ~FileReader()
-    // {
-    //     // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
-    //     Dispose(disposing: false);
-    // }
+
 
     public void Dispose()
     {
