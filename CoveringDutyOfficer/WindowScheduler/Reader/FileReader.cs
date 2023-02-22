@@ -5,6 +5,7 @@ using CsvHelper;
 using CsvHelper.Configuration;
 using System.Reflection;
 
+
 public class FileReader : IDisposable
 {
     private readonly DbContext _context;
@@ -34,13 +35,21 @@ public class FileReader : IDisposable
         };
         try
         {
+            
+                var records = new List<LogHeader>();
             foreach (var file in files)
             {
+                 
+                int successCount = 0;
+                int failedCount = 0;
                 using (var reader = new StreamReader(file.FullName))
                 using (var pipeFile = new CsvReader(reader, config))
-                using (var writer = new StreamWriter(WriteProcessingLogs(file))
+
+                using (var writer = new StreamWriter(WriteProcessingLogs(file)))
+               
                 using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
                 {
+                    
                     await pipeFile.ReadAsync();
                     pipeFile.ReadHeader();
                     while (await pipeFile.ReadAsync())
@@ -50,16 +59,30 @@ public class FileReader : IDisposable
                             var dto = pipeFile.GetRecord<CoveringDutyDto>();
                             var model = Util.Map(dto);
                             await _context.Upsert(model);
+                           
+                            successCount++;
                         }
                         catch (Exception ex)
                         {
+                           
+                            failedCount++;
                         }
+                        
                     }
                 }
 
                 MoveFile(importConfig.ProcessFolder, file);
-
+               
+                var record =  new LogHeader {FileName = file.Name,SuccessCount=successCount,FailedCount=failedCount};
+                records.Add(record);
             }
+                string textBody = " <table border="+1+" cellpadding="+0+" cellspacing="+0+" width = "+400+"><tr bgcolor='#4da6ff'><td><b>File Name</b></td> <td> <b> Success Count</b> </td><td> <b> Failed Count</b> </td></tr>";  
+                foreach(var rec in  records) {
+                    textBody += "<tr><td>" + rec.FileName + "</td><td> " + rec.SuccessCount+ "</td><td> " + rec.FailedCount+ "</td> </tr>";
+                }      
+                textBody += "</table>";
+
+                EmailService.Send("","",textBody,_configuration,_logger,"");
         }
         catch (Exception ex)
         {
@@ -68,10 +91,16 @@ public class FileReader : IDisposable
 
     }
 
+     public class LogHeader
+    {
+        public string FileName { get; set; }
+        public int SuccessCount { get; set; }
+        public int FailedCount { get; set; }
+    }
+
     private static void MoveFile(string folder, FileInfo file)
     {
-
-        string fileName = $"{DateTime.Today.ToString("yyyyMMdd")}_{file.Name}";
+        string fileName = $"{DateTime.Today.ToString("yyyyMMddhhmmssffftt")}_{file.Name}";
         MoveFile(folder, fileName, file);
     }
 
@@ -86,10 +115,12 @@ public class FileReader : IDisposable
         File.Move(file.FullName, archievePath);
     }
 
-    private string WriteProcessingLogs(FileInfo file)
+    private string WriteProcessingLogs(FileInfo file )
     {
         var processingLogFolder = _configuration["FileConfig:ProcessingLogs"];
-        return Path.Combine(processingLogFolder, "Log_" + file.Name);
+        string fileName = $"{DateTime.Today.ToString("yyyyMMddhhmmssfff")}_{file.Name}";
+       return Path.Combine(processingLogFolder, fileName+"Log_" + file.Name.Split('.')[0] + ".csv");
+       
 
     }
 
