@@ -1,0 +1,1 @@
+dotnet publish --sc true  -o d:\\publish -c release -r win-x64

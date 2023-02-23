@@ -14,13 +14,9 @@ internal class Program
         try
         {
             IConfiguration config = new ConfigurationBuilder()
-              .SetBasePath(Directory.GetCurrentDirectory()) //From NuGet Package Microsoft.Extensions.Configuration.Json
+              .SetBasePath(System.AppContext.BaseDirectory) //From NuGet Package Microsoft.Extensions.Configuration.Json
               .AddJsonFile("appsettings.json",false,true)
-              
               .Build();
-
-          
-
 
             using var servicesProvider = new ServiceCollection()
                 .AddSingleton<IConfiguration>(config)
@@ -37,8 +33,7 @@ internal class Program
 
             var runner = servicesProvider.GetRequiredService<FileReader>();
             await runner.Import();
-            Console.WriteLine("Press ANY key to exit");
-            Console.Read();
+            Console.WriteLine("Import successful");
         }
         catch (Exception ex)
         {

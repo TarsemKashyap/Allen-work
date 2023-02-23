@@ -21,14 +21,15 @@ public class FileReader
     }
     internal async Task Import()
     {
-        _logger.LogInformation("Running Import Operation");
-        ImportConfig importConfig = ReadImportConfig();
-        _logger.LogInformation("Folder config {@config}", importConfig);
-        DirectoryInfo folder = new DirectoryInfo(importConfig.InboundFolder);
-        var files = folder.GetFiles(importConfig.SearchPattern);
-        _logger.LogInformation("total file  {@count}", files.Count());
         try
         {
+            _logger.LogInformation("Running Import Operation");
+            ImportConfig importConfig = ReadImportConfig();
+            _logger.LogInformation("Folder config InboundFolder {0}", importConfig.InboundFolder);
+            DirectoryInfo folder = new DirectoryInfo(importConfig.InboundFolder);
+            var files = folder.GetFiles(importConfig.SearchPattern);
+            _logger.LogInformation("total file  {0}", files.Count());
+
             foreach (var file in files)
             {
                 _logger.LogInformation("total file  {@fileName}", file.Name);
@@ -80,6 +81,7 @@ public class FileReader
                     }
                     catch (Exception ex)
                     {
+                        _logger.LogError(ex.Message, ex);
                         throw;
                     }
                 }
@@ -93,7 +95,8 @@ public class FileReader
         }
         catch (Exception ex)
         {
-            throw ex;
+            _logger.LogError(ex, ex.Message);
+            throw;
         }
 
 
@@ -105,22 +108,30 @@ public class FileReader
         {
             Directory.CreateDirectory(folder);
         }
-        string fileName = $"{DateTime.Today.ToString("yyyyMMdd")}_{file.Name}";
+        string fileName = $"{DateTime.Now.ToString("yyyyMMdd.HHmmss")}_{file.Name}";
         string archievePath = Path.Combine(folder, fileName);
         File.Move(file.FullName, archievePath);
     }
 
     private ImportConfig ReadImportConfig()
     {
-        var folderPath = _configuration["ImportConfig:InboundFolder"];
-        var archive = _configuration["ImportConfig:ProcessFolder"];
-        var searchPattern = _configuration["ImportConfig:SearchPattern"];
-        return new ImportConfig
+        try
         {
-            InboundFolder = folderPath,
-            SearchPattern = searchPattern,
-            ProcessFolder = archive
-        };
+            var folderPath = _configuration["ImportConfig:InboundFolder"];
+            var archive = _configuration["ImportConfig:ProcessFolder"];
+            var searchPattern = _configuration["ImportConfig:SearchPattern"];
+            return new ImportConfig
+            {
+                InboundFolder = folderPath,
+                SearchPattern = searchPattern,
+                ProcessFolder = archive
+            };
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, ex.Message);
+            throw;
+        }
 
 
         // file.xml -- > process 20230216_file.xml
