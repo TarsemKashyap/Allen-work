@@ -1,0 +1,13 @@
+D:\SourceCode\RBS\skynapse.device\bin\Debug\skynapse.device.dll
+D:\SourceCode\RBS\skynapse.device\bin\Debug\skynapse.device.pdb
+D:\SourceCode\RBS\skynapse.device\bin\Debug\log4net.dll
+D:\SourceCode\RBS\skynapse.device\bin\Debug\skynapse.fbs.dll
+D:\SourceCode\RBS\skynapse.device\bin\Debug\Newtonsoft.Json.dll
+D:\SourceCode\RBS\skynapse.device\bin\Debug\Resources.dll
+D:\SourceCode\RBS\skynapse.device\bin\Debug\skynapse.fbs.pdb
+D:\SourceCode\RBS\skynapse.device\bin\Debug\Resources.pdb
+D:\SourceCode\RBS\skynapse.device\obj\Debug\skynapse.device.csproj.AssemblyReference.cache
+D:\SourceCode\RBS\skynapse.device\obj\Debug\skynapse.device.csproj.CoreCompileInputs.cache
+D:\SourceCode\RBS\skynapse.device\obj\Debug\skynapse.device.csproj.CopyComplete
+D:\SourceCode\RBS\skynapse.device\obj\Debug\skynapse.device.dll
+D:\SourceCode\RBS\skynapse.device\obj\Debug\skynapse.device.pdb

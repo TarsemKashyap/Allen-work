@@ -1,0 +1,15 @@
+D:\SourceCode\RBS\visitor_management\bin\Debug\visitor_management.dll
+D:\SourceCode\RBS\visitor_management\bin\Debug\visitor_management.pdb
+D:\SourceCode\RBS\visitor_management\bin\Debug\log4net.dll
+D:\SourceCode\RBS\visitor_management\bin\Debug\skynapse.core.dll
+D:\SourceCode\RBS\visitor_management\bin\Debug\skynapse.fbs.dll
+D:\SourceCode\RBS\visitor_management\bin\Debug\Newtonsoft.Json.dll
+D:\SourceCode\RBS\visitor_management\bin\Debug\Resources.dll
+D:\SourceCode\RBS\visitor_management\bin\Debug\skynapse.core.pdb
+D:\SourceCode\RBS\visitor_management\bin\Debug\skynapse.fbs.pdb
+D:\SourceCode\RBS\visitor_management\bin\Debug\Resources.pdb
+D:\SourceCode\RBS\visitor_management\obj\Debug\visitor_management.csproj.AssemblyReference.cache
+D:\SourceCode\RBS\visitor_management\obj\Debug\visitor_management.csproj.CoreCompileInputs.cache
+D:\SourceCode\RBS\visitor_management\obj\Debug\visitor_management.csproj.CopyComplete
+D:\SourceCode\RBS\visitor_management\obj\Debug\visitor_management.dll
+D:\SourceCode\RBS\visitor_management\obj\Debug\visitor_management.pdb

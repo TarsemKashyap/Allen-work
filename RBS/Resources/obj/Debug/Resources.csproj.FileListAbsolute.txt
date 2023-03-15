@@ -1,0 +1,7 @@
+D:\SourceCode\RBS\Resources\bin\Debug\Resources.dll
+D:\SourceCode\RBS\Resources\bin\Debug\Resources.pdb
+D:\SourceCode\RBS\Resources\obj\Debug\Resources.csproj.CoreCompileInputs.cache
+D:\SourceCode\RBS\Resources\obj\Debug\Resources.dll
+D:\SourceCode\RBS\Resources\obj\Debug\Resources.pdb
+D:\SourceCode\RBS\Resources\obj\Debug\Resources.fbs.resources
+D:\SourceCode\RBS\Resources\obj\Debug\Resources.csproj.GenerateResource.cache

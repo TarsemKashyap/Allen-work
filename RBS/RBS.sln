@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32126.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "skynapse.core", "skynapse.core\skynapse.core.csproj", "{2D6F1783-3E7E-4208-B3A0-4D70D64AC1BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "skynapse.device", "skynapse.device\skynapse.device.csproj", "{50E215EC-781F-4A96-A3D1-A0E4FA71995B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "skynapse.fbs", "skynapse.fbs\skynapse.fbs.csproj", "{ACEC1A9F-9662-4ED2-B71D-97158E961C64}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "visitor_management", "visitor_management\visitor_management.csproj", "{2758F9C2-760F-435E-9E6D-DA3CD7E7B8BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fbs", "fbs\fbs.csproj", "{AEE9CC46-0BE7-4FB9-8F65-C2969A700B83}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resources", "Resources\Resources.csproj", "{9D52D41C-6FF2-483B-8A44-E01572CA79B1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ASP", "ASP", "{E6458201-8B7B-48DD-A054-712B81BD2EA8}"
+	ProjectSection(SolutionItems) = preProject
+		ASP\global_asax.cs = ASP\global_asax.cs
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2D6F1783-3E7E-4208-B3A0-4D70D64AC1BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D6F1783-3E7E-4208-B3A0-4D70D64AC1BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D6F1783-3E7E-4208-B3A0-4D70D64AC1BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D6F1783-3E7E-4208-B3A0-4D70D64AC1BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50E215EC-781F-4A96-A3D1-A0E4FA71995B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50E215EC-781F-4A96-A3D1-A0E4FA71995B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50E215EC-781F-4A96-A3D1-A0E4FA71995B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50E215EC-781F-4A96-A3D1-A0E4FA71995B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACEC1A9F-9662-4ED2-B71D-97158E961C64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACEC1A9F-9662-4ED2-B71D-97158E961C64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACEC1A9F-9662-4ED2-B71D-97158E961C64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACEC1A9F-9662-4ED2-B71D-97158E961C64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2758F9C2-760F-435E-9E6D-DA3CD7E7B8BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2758F9C2-760F-435E-9E6D-DA3CD7E7B8BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2758F9C2-760F-435E-9E6D-DA3CD7E7B8BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2758F9C2-760F-435E-9E6D-DA3CD7E7B8BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEE9CC46-0BE7-4FB9-8F65-C2969A700B83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEE9CC46-0BE7-4FB9-8F65-C2969A700B83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEE9CC46-0BE7-4FB9-8F65-C2969A700B83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEE9CC46-0BE7-4FB9-8F65-C2969A700B83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D52D41C-6FF2-483B-8A44-E01572CA79B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D52D41C-6FF2-483B-8A44-E01572CA79B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D52D41C-6FF2-483B-8A44-E01572CA79B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D52D41C-6FF2-483B-8A44-E01572CA79B1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DF4EE128-752F-457B-992B-937C7DD8ABA0}
+	EndGlobalSection
+EndGlobal

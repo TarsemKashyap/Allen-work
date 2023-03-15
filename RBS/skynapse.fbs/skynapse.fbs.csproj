@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{ACEC1A9F-9662-4ED2-B71D-97158E961C64}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>skynapse.fbs</RootNamespace>
+    <AssemblyName>skynapse.fbs</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\..\..\RBS\rbs\rbs\bin\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\RBS\rbs\rbs\bin\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="account.cs" />
+    <Compile Include="account_property.cs" />
+    <Compile Include="activedirectory.cs" />
+    <Compile Include="additional_resource.cs" />
+    <Compile Include="ai_api.cs" />
+    <Compile Include="api_base.cs" />
+    <Compile Include="api_constants.cs" />
+    <Compile Include="asset.cs" />
+    <Compile Include="asset_api.cs" />
+    <Compile Include="asset_booking.cs" />
+    <Compile Include="asset_booking_invite.cs" />
+    <Compile Include="asset_document.cs" />
+    <Compile Include="asset_favourite.cs" />
+    <Compile Include="asset_permission.cs" />
+    <Compile Include="asset_property.cs" />
+    <Compile Include="asset_report_problem.cs" />
+    <Compile Include="attachment.cs" />
+    <Compile Include="audit_log.cs" />
+    <Compile Include="audit_logs_api.cs" />
+    <Compile Include="blacklist.cs" />
+    <Compile Include="blacklist_api.cs" />
+    <Compile Include="booking_api.cs" />
+    <Compile Include="booking_bl.cs" />
+    <Compile Include="book_slot_item.cs" />
+    <Compile Include="book_usage.cs" />
+    <Compile Include="cache_api.cs" />
+    <Compile Include="clsHelp.cs" />
+    <Compile Include="content_api.cs" />
+    <Compile Include="content_properties.cs" />
+    <Compile Include="core_class.cs" />
+    <Compile Include="dashboard_api.cs" />
+    <Compile Include="DataAccess.cs" />
+    <Compile Include="device.cs" />
+    <Compile Include="device_admin_api.cs" />
+    <Compile Include="device_setting.cs" />
+    <Compile Include="divison.cs" />
+    <Compile Include="email.cs" />
+    <Compile Include="email_api.cs" />
+    <Compile Include="excel.cs" />
+    <Compile Include="excel_api.cs" />
+    <Compile Include="fbs_base_master.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="fbs_base_page.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="fbs_base_user_control.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="feedback.cs" />
+    <Compile Include="feedback_api.cs" />
+    <Compile Include="groups_permission.cs" />
+    <Compile Include="help_api.cs" />
+    <Compile Include="holiday.cs" />
+    <Compile Include="holidays_api.cs" />
+    <Compile Include="hotdesk_api.cs" />
+    <Compile Include="hotdesk_booking.cs" />
+    <Compile Include="hotdesk_dashboard_api.cs" />
+    <Compile Include="hotdesk_layout.cs" />
+    <Compile Include="hotdesk_seat.cs" />
+    <Compile Include="hotdesk_seat_property.cs" />
+    <Compile Include="ialarm.cs" />
+    <Compile Include="icalendar.cs" />
+    <Compile Include="ievent.cs" />
+    <Compile Include="ldap_api.cs" />
+    <Compile Include="outlook_api.cs" />
+    <Compile Include="outlook_booking.cs" />
+    <Compile Include="outlook_device.cs" />
+    <Compile Include="reporting_api.cs" />
+    <Compile Include="reports_api.cs" />
+    <Compile Include="request.cs" />
+    <Compile Include="request_api.cs" />
+    <Compile Include="resource_api.cs" />
+    <Compile Include="resource_booking.cs" />
+    <Compile Include="resource_booking_item.cs" />
+    <Compile Include="resource_document.cs" />
+    <Compile Include="resource_permission.cs" />
+    <Compile Include="resource_settings.cs" />
+    <Compile Include="resource_template.cs" />
+    <Compile Include="resource_template_item.cs" />
+    <Compile Include="resource_type.cs" />
+    <Compile Include="RootObject.cs" />
+    <Compile Include="Sentence.cs" />
+    <Compile Include="setting.cs" />
+    <Compile Include="settings_api.cs" />
+    <Compile Include="template.cs" />
+    <Compile Include="templates_api.cs" />
+    <Compile Include="Timex.cs" />
+    <Compile Include="timezone_api.cs" />
+    <Compile Include="Token.cs" />
+    <Compile Include="usage_api.cs" />
+    <Compile Include="usage_quota.cs" />
+    <Compile Include="usage_timing.cs" />
+    <Compile Include="user.cs" />
+    <Compile Include="users_api.cs" />
+    <Compile Include="user_group.cs" />
+    <Compile Include="user_group_mapping.cs" />
+    <Compile Include="user_property.cs" />
+    <Compile Include="util.cs" />
+    <Compile Include="workflow.cs" />
+    <Compile Include="workflow_api.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Resources\Resources.csproj">
+      <Project>{9d52d41c-6ff2-483b-8a44-e01572ca79b1}</Project>
+      <Name>Resources</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
