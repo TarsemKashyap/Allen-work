@@ -25,13 +25,13 @@ public static class Util
 
     private static DateTime ParseDate(string dateTime)
     {
-        // DateTime.TryParse(dateTime, out DateTime dt);
-        if (DateTime.TryParseExact(dateTime, "d/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime dt))
+        const string dateFormat = "yyyyMMdd";
+       
+        if (DateTime.TryParseExact(dateTime, dateFormat, null, System.Globalization.DateTimeStyles.None, out DateTime dt))
         {
             return dt;
         }
-        DateTime.TryParseExact(dateTime, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime dt2);
-        return dt2;
+        throw new InvalidCastException($"Provided date {dateTime} not match with format {dateFormat}");
 
     }
 }
