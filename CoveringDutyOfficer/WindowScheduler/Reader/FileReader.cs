@@ -60,9 +60,10 @@ public class FileReader : IDisposable
                                 File = file,
                                 LineNumber = pipeFile.Parser.Row,
                                 exception = ex,
+                                Data = $"Exception while processing row {pipeFile.Parser.Row}"
                             };
                             errors[file.Name].Add(error);
-                            // _logger.LogError(ex, ex.Message);
+                            _logger.LogError(ex, ex.Message);
                         }
                     }
                 }

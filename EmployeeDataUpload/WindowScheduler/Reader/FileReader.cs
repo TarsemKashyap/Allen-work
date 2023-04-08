@@ -1,10 +1,8 @@
-using System.Globalization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using CsvHelper;
-using CsvHelper.Configuration;
 using System.Xml;
 using System.Xml.Linq;
+using Infrastructure;
 
 public class FileReader
 {
@@ -29,15 +27,15 @@ public class FileReader
             DirectoryInfo folder = new DirectoryInfo(importConfig.InboundFolder);
             var files = folder.GetFiles(importConfig.SearchPattern);
             _logger.LogInformation("total file  {0}", files.Count());
-
+            Dictionary<string, List<ProcessingError>> errors = new Dictionary<string, List<ProcessingError>>();
             foreach (var file in files)
             {
                 _logger.LogInformation("total file  {@fileName}", file.Name);
                 XmlReaderSettings settings = new XmlReaderSettings();
                 settings.ConformanceLevel = ConformanceLevel.Fragment;
                 using var reader = XmlReader.Create(file.FullName, settings);
-
                 var xdocument = XDocument.Load(file.FullName);
+                errors.Add(file.Name, new List<ProcessingError>());
                 IEnumerable<XElement> employees = xdocument.Root.Elements().Where(e => e.Name == "Employee");
                 foreach (var employee in employees)
                 {
@@ -81,14 +79,22 @@ public class FileReader
                     }
                     catch (Exception ex)
                     {
-                        _logger.LogError(ex.Message, ex);
-                        throw;
+                        var error = new ProcessingError
+                        {
+                            File = file,
+                            Data = $"Exception while processing record for UserId:{employee.Element("USER_ID").Value}",
+                            exception = ex,
+                        };
+                        errors[file.Name].Add(error);
+                        _logger.LogError(ex, ex.Message);
                     }
                 }
                 reader.Close();
                 reader.Dispose();
-                MoveFile(importConfig.ProcessFolder, file);
-
+                if (errors[file.Name].Count == 0)
+                {
+                    MoveFile(importConfig.ProcessFolder, file);
+                }
 
 
             }

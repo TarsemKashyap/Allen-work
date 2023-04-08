@@ -41,12 +41,12 @@ public static class Util
 
      private static DateTime ParseDate(string dateTime)
     {
-        if (DateTime.TryParseExact(dateTime, "yyyy-MM-dd-hh:mm", null, System.Globalization.DateTimeStyles.None, out DateTime dt))
+        string dateFormat = "ddMMyyyy";
+        if (DateTime.TryParseExact(dateTime, dateFormat, null, System.Globalization.DateTimeStyles.None, out DateTime dt))
         {
             return dt;
         }
-        DateTime.TryParseExact(dateTime, "yyyy-MM-dd-hh:mm", null, System.Globalization.DateTimeStyles.None, out DateTime dt2);
-        return dt2;
-
+        throw new InvalidCastException($"{dateTime} is not valid format. expected format is {dateFormat}");
+       
     }
 }
