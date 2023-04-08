@@ -35,7 +35,7 @@
     </Content>
   </ItemGroup>
 <ItemGroup>
-  <ProjectReference Include="..\Common.Util\Infrastructure.csproj" />
+  <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
 </ItemGroup>
  <ItemGroup>
      <None Update="nlog.config" CopyToOutputDirectory="Always" />
