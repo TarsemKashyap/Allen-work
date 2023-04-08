@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowScheduler", "WindowScheduler\WindowScheduler.csproj", "{67AFE8A9-83B9-46D0-8984-CE57C94BD861}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoveringDuty", "WindowScheduler\CoveringDuty.csproj", "{67AFE8A9-83B9-46D0-8984-CE57C94BD861}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Employee", "..\EmployeeDataUpload\WindowScheduler\Employee.csproj", "{53577A01-F6E2-4870-95B4-669CCE5D1E70}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Common.Util\Infrastructure.csproj", "{2C7FA1C4-ED8A-4C2A-B96C-442F13E3A11D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{67AFE8A9-83B9-46D0-8984-CE57C94BD861}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67AFE8A9-83B9-46D0-8984-CE57C94BD861}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67AFE8A9-83B9-46D0-8984-CE57C94BD861}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53577A01-F6E2-4870-95B4-669CCE5D1E70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53577A01-F6E2-4870-95B4-669CCE5D1E70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53577A01-F6E2-4870-95B4-669CCE5D1E70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53577A01-F6E2-4870-95B4-669CCE5D1E70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C7FA1C4-ED8A-4C2A-B96C-442F13E3A11D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C7FA1C4-ED8A-4C2A-B96C-442F13E3A11D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C7FA1C4-ED8A-4C2A-B96C-442F13E3A11D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C7FA1C4-ED8A-4C2A-B96C-442F13E3A11D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

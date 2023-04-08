@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using CsvHelper;
 using CsvHelper.Configuration;
 using System.Reflection;
+using Infrastructure;
 
 public class FileReader : IDisposable
 {
@@ -35,12 +36,13 @@ public class FileReader : IDisposable
                 //  MissingFieldFound = null,
                 Delimiter = "|"
             };
-
+            Dictionary<string, List<ProcessingError>> errors = new Dictionary<string, List<ProcessingError>>();
             foreach (var file in files)
             {
                 using (var reader = new StreamReader(file.FullName))
                 using (var pipeFile = new CsvReader(reader, config))
                 {
+                    errors.Add(file.Name, new List<ProcessingError>());
                     await pipeFile.ReadAsync();
                     pipeFile.ReadHeader();
                     while (await pipeFile.ReadAsync())
@@ -53,12 +55,22 @@ public class FileReader : IDisposable
                         }
                         catch (Exception ex)
                         {
-                            _logger.LogError(ex, ex.Message);
+                            var error = new ProcessingError
+                            {
+                                File = file,
+                                LineNumber = pipeFile.Parser.Row,
+                                exception = ex,
+                            };
+                            errors[file.Name].Add(error);
+                            // _logger.LogError(ex, ex.Message);
                         }
                     }
                 }
-
-                MoveFile(importConfig.ProcessFolder, file);
+                // count 0 means no error
+                if (errors[file.Name].Count == 0)
+                {
+                    MoveFile(importConfig.ProcessFolder, file);
+                }
 
             }
         }

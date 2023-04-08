@@ -21,7 +21,8 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
-    <PackageReference Include="Microsoft.Extensions.options" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.options" Version="7.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="7.0.0" />
     <PackageReference Include="nlog" Version="5.1.1" />
     <PackageReference Include="NLog.Extensions.Logging" Version="5.2.1" />
   </ItemGroup>
@@ -33,6 +34,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+<ItemGroup>
+  <ProjectReference Include="..\Common.Util\Infrastructure.csproj" />
+</ItemGroup>
  <ItemGroup>
      <None Update="nlog.config" CopyToOutputDirectory="Always" />
  </ItemGroup>

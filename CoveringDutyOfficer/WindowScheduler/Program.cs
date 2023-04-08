@@ -3,8 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using NLog;
 using NLog.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using System.Reflection;
+using Infrastructure;
 
 internal class Program
 {
@@ -13,7 +12,7 @@ internal class Program
         var logger = LogManager.GetCurrentClassLogger();
         try
         {
-            string location =System.AppContext.BaseDirectory;
+            string location = System.AppContext.BaseDirectory;
             string directory = Directory.GetCurrentDirectory();
             logger.Info($"location:{location},directory:{directory}");
             IConfiguration config = new ConfigurationBuilder()
@@ -22,18 +21,22 @@ internal class Program
                .Build();
 
 
-            using var servicesProvider = new ServiceCollection()
-                .AddSingleton<IConfiguration>(config)
-                .AddTransient(x => new DbContext(config.GetConnectionString("DbConn")))
-                .AddTransient<FileReader>() // Runner is the custom class
-                .AddLogging(loggingBuilder =>
-                {
-                    // configure Logging with NLog
-                    loggingBuilder.ClearProviders();
-                    loggingBuilder.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
-                    loggingBuilder.AddNLog(config);
-                })
-                .BuildServiceProvider();
+            var serviceCollection = new ServiceCollection();
+
+            serviceCollection.AddSingleton<IConfiguration>(config)
+            .AddTransient(x => new DbContext(config.GetConnectionString("DbConn")))
+            .AddTransient<FileReader>() // Runner is the custom class
+            .AddLogging(loggingBuilder =>
+            {
+                // configure Logging with NLog
+                loggingBuilder.ClearProviders();
+                loggingBuilder.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
+                loggingBuilder.AddNLog(config);
+            });
+
+            serviceCollection.Configure<EmailSetting>(config.GetSection("EmailSetting"));
+
+            var servicesProvider = serviceCollection.BuildServiceProvider();
 
             var runner = servicesProvider.GetRequiredService<FileReader>();
             await runner.Import();
